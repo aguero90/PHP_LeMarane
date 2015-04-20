@@ -1,0 +1,170 @@
+
+@import 'fonts';
+@import "mixins";
+
+// NOTA: approccio mobile-first
+// NOTA: le media query sono dettate da bootstrap
+
+/* BREAKPOINT 0 ( DEFAULT ) - Small devices (tablets, 768px and up)
+============================================================================= */
+body{
+    font-family: "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    padding-top: 50px; /* per la navbar di bootstrap */
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+/* per annullare quel padding fastidioso messo di default da bootstrap */
+.container-fluid.no-padding{
+    padding: 0;
+
+    .row{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+
+#outlineFooter{
+
+    background-color: #222222; // possibile variabile
+    color: #eeeeee; // possibile variabile
+
+    div{
+        text-align: center;
+
+        h1{
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: 1px solid #cc0000;
+        }
+
+        p{
+            padding: 0.5rem;
+            text-align: justify;
+        }
+    }
+
+}
+
+#logo{
+
+}
+
+.post{
+    position: relative;
+    padding: 0.1rem !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    header{
+        h1{
+            font-size: 1.5rem;
+            color: #880000;
+            text-transform: capitalize;
+        }
+    }
+
+    .postText{
+        display: none;
+    }
+
+    footer{
+        font-size: 0.8rem;
+
+        .goToPost{
+            display: none;
+        }
+    }
+
+    .only-mobile{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        a{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            z-index: 10;
+
+            &::after{
+                content: "\0003E";
+                z-index: 10;
+                font-size: 2.1rem;
+                color: #555555;
+                position: absolute;
+                right: 1rem;
+                top: 20%;
+                @include transform(scaleY(1.5));
+            }
+
+
+            &:hover{
+                text-decoration: none;
+                color: #555555;
+            }
+        }
+    }
+
+    &:last-of-type{
+        border-bottom: none;
+    }
+
+}
+
+
+
+
+
+
+
+/* BREAKPOINT 1 - Small devices (tablets, 768px and up)
+============================================================================= */
+@media (min-width: 768px) {
+
+}
+
+
+
+
+
+
+
+/* BREAKPOINT 2 - Medium devices (desktops, 992px and up)
+============================================================================= */
+@media (min-width: 992px) {
+
+}
+
+
+
+
+
+
+
+/* BREAKPOINT 3 - Large devices (large desktops, 1200px and up)
+============================================================================= */
+@media (min-width: 1200px) {
+
+}
+
+
+
+
+
+
+
+
+
+
+
