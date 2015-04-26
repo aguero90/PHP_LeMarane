@@ -18,7 +18,7 @@ class PostController extends MaraneBaseController {
 
 
         $this->getSmarty()->assign("contentTemplate", "front/Post.tpl"); // diciamo quale template deve includere
-        $this->getSmarty()->display("Outline.tpl"); // mostriamo il template
+        $this->getSmarty()->display("front/Outline.tpl"); // mostriamo il template
     }
 
 }

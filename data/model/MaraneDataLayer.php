@@ -11,8 +11,6 @@ interface MaraneDataLayer {
 
     public function createAdmin();
 
-    public function createComment();
-
     public function createImage();
 
     public function createPost();
@@ -31,12 +29,7 @@ interface MaraneDataLayer {
 
     public function getAdmins();
 
-    /**
-     * come usarlo:
-     *      - getPost($postID)
-     *      - getPost($comment)
-     */
-    public function getPost($arg1);
+    public function getPost($postID);
 
     /**
      * come usarlo:
@@ -45,15 +38,6 @@ interface MaraneDataLayer {
      *      - getPosts() -> restituisce tutti i post
      */
     public function getPosts($arg1 = null);
-
-    public function getComment($commentID);
-
-    /**
-     * come usarlo:
-     *      - getComments($post)
-     *      - getComments()
-     */
-    public function getComments(Post $post = null);
 
     public function getImage($imageID);
 
@@ -71,8 +55,6 @@ interface MaraneDataLayer {
 
     public function storePost(Post $post);
 
-    public function storeComment(Comment $comment);
-
     public function storeImage(Image $image);
 
     // DELETE
@@ -81,8 +63,6 @@ interface MaraneDataLayer {
     public function removeAdmin(Admin $admin);
 
     public function removePost(Post $post);
-
-    public function removeComment(Comment $comment);
 
     public function removeImage(Image $image);
 }

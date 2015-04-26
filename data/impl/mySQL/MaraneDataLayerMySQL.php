@@ -15,10 +15,6 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
             $iPost,
             $uPost,
             $dPost;
-    private $sCommentByID, $sCommentsByPost, $sComments,
-            $iComment,
-            $uComment,
-            $dComment;
     private $sImageByID, $sImagesByPost, $sImages,
             $iImage,
             $uImage,
@@ -52,16 +48,6 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
             $this->uPost = $this->connection->prepare("UPDATE e_post SET title=?, text=?, date=?, adminID=? WHERE ID=?");
             $this->dPost = $this->connection->prepare("DELETE FROM e_post WHERE ID=?");
 
-
-            // Comment
-            $this->sCommentByID = $this->connection->prepare("SELECT * FROM e_comment WHERE ID=?");
-            $this->sCommentsByPost = $this->connection->prepare("SELECT ID FROM e_comment WHERE postID=?");
-            $this->sComments = $this->connection->prepare("SELECT ID FROM e_comment");
-            $this->iComment = $this->connection->prepare("INSERT INTO e_comment (author, text, date, postID) VALUES (?, ?, ?, ?)");
-            $this->uComment = $this->connection->prepare("UPDATE e_comment SET author=?, text=?, date=?, postID=? WHERE ID=?");
-            $this->dComment = $this->connection->prepare("DELETE FROM e_comment WHERE ID=?");
-
-
             // Image
             $this->sImageByID = $this->connection->prepare("SELECT * FROM e_image WHERE ID=?");
             $this->sImagesByPost = $this->connection->prepare("SELECT imageID FROM r_post_image WHERE postID=?");
@@ -83,19 +69,8 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
     // CREATE
     // ========================================================================
 
-    /**
-     * <NOTA: QUI STO PROVANDO AD USARE LE INTERFACCE... POTREBBE ESPLODERE xD>
-     * <      LE STO USANDO SOLO NELLE "CREATE"... SE DOVESSERO FUNZIONARE>
-     * <      PROVARE A METTERLE ANCHE NELLE SELECT, INSERT e DELETE>
-     * <      SOSTITUENDO LE ISTRUZIONI CHE USANO LE CLASSI >
-     * <      ( es: new AdminMySQL() --- diventa --- new Admin() )>
-     */
     public function createAdmin() {
         return new AdminMySQL($this);
-    }
-
-    public function createComment() {
-        return new CommentMySQL($this);
     }
 
     public function createImage() {
@@ -215,78 +190,6 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
         return $result;
     }
 
-    public function getComment($commentID) {
-        return $this->selectCommentByID($commentID);
-    }
-
-    // sCommentByID = SELECT * FROM e_comment WHERE ID=?
-    private function selectCommentByID($commentID) {
-
-        $result = null;
-        try {
-
-            $this->sCommentByID->bindValue(1, $commentID);
-            $this->sCommentByID->execute();
-
-            if (($rs = $this->sCommentByID->fetch(PDO::FETCH_ASSOC)) !== false) {
-                $result = new CommentMySQL($this, $rs);
-            }
-        } catch (PDOException $ex) {
-            echo "PDOEXCEPTION ===========================";
-            var_dump($ex);
-        }
-        return $result;
-    }
-
-    /**
-     * come usarlo:
-     *      - getComments($post)
-     *      - getComments()
-     */
-    public function getComments(Post $post = null) {
-
-        if (MyUtils::isEmpty($post)) {
-            return $this->selectComments();
-        } else {
-            return $this->selectCommentsByPost($post);
-        }
-    }
-
-    // sCommentsByPost = SELECT ID FROM e_comment WHERE postID=?
-    private function selectCommentsByPost(Post $post) {
-
-        $result = array();
-        try {
-            $this->sCommentsByPost->bindValue(1, $post->getID());
-            $this->sCommentsByPost->execute();
-
-            while (($rs = $this->sCommentsByPost->fetch(PDO::FETCH_ASSOC)) !== false) {
-                array_push($result, $this->getComment((int) $rs["ID"]));
-            }
-        } catch (PDOException $ex) {
-            echo "PDOEXCEPTION ===========================";
-            var_dump($ex);
-        }
-        return $result;
-    }
-
-    // sComments = SELECT ID FROM e_comment
-    private function selectComments() {
-
-        $result = array();
-        try {
-            $this->sComments->execute();
-
-            while (($rs = $this->sComments->fetch(PDO::FETCH_ASSOC)) !== false) {
-                array_push($result, $this->getComment((int) $rs["ID"]));
-            }
-        } catch (PDOException $ex) {
-            echo "PDOEXCEPTION ===========================";
-            var_dump($ex);
-        }
-        return $result;
-    }
-
     public function getImage($imageID) {
         return $this->selectImageByID($imageID);
     }
@@ -359,18 +262,9 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
         return $result;
     }
 
-    /**
-     * come usarlo:
-     *      - getPost($postID)
-     *      - getPost($comment)
-     */
-    public function getPost($arg1) {
+    public function getPost($postID) {
 
-        if (is_int($arg1)) {
-            return $this->selectPostByID($arg1);
-        } else {
-            return $this->selectPostByComment($arg1);
-        }
+        return $this->selectPostByID($postID);
     }
 
     // sPostByID = SELECT * FROM e_post WHERE ID=?
@@ -384,24 +278,6 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
 
             if (($rs = $this->sPostByID->fetch(PDO::FETCH_ASSOC)) !== false) {
                 $result = new PostMySQL($this, $rs);
-            }
-        } catch (PDOException $ex) {
-            echo "PDOEXCEPTION ===========================";
-            var_dump($ex);
-        }
-        return $result;
-    }
-
-    // sPostByComment = SELECT postID FROM e_comment WHERE ID=?
-    private function selectPostByComment(Comment $comment) {
-
-        $result = null;
-        try {
-            $this->sPostByComment->bindValue(1, $comment->getID());
-            $this->sPostByComment->execute();
-
-            if (($rs = $this->sPostByComment->fetch(PDO::FETCH_ASSOC)) !== false) {
-                $result = $this->getPost((int) $rs["postID"]);
             }
         } catch (PDOException $ex) {
             echo "PDOEXCEPTION ===========================";
@@ -536,65 +412,6 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
         }
 
         return $admin;
-    }
-
-    public function storeComment(Comment $comment) {
-
-        try {
-            if ($comment->getID() > 0) {
-                // update
-                return $comment->isDirty() ? $this->updateComment($comment) : $comment;
-            } else {
-                // $comment
-                return $this->insertComment($comment);
-            }
-        } catch (PDOException $ex) {
-            echo "PDOEXCEPTION ===========================";
-            var_dump($ex);
-        }
-    }
-
-    // iComment = INSERT INTO e_comment (author, text, date, postID) VALUES (?, ?, ?, ?)
-    private function insertComment(Comment $comment) {
-
-        try {
-
-            $this->iComment->bindValue(1, $comment->getAuthor());
-            $this->iComment->bindValue(2, $comment->getText());
-            $this->iComment->bindValue(3, (new MyDate())->toStringForDB());
-            $this->iComment->bindValue(4, $comment->getPost()->getID());
-            $this->iComment->execute();
-
-            $comment->copyFrom($this->getComment((int) $this->connection->lastInsertId()));
-            $comment->setDirty(false);
-        } catch (PDOException $ex) {
-            echo "PDOEXCEPTION ===========================";
-            var_dump($ex);
-        }
-
-        return $comment;
-    }
-
-    // uComment = "UPDATE e_comment SET author=?, text=?, date=?, postID=? WHERE ID=?
-    private function updateComment(Comment $comment) {
-
-        try {
-
-            $this->uComment->bindValue(1, $comment->getAuthor());
-            $this->uComment->bindValue(2, $comment->getText());
-            $this->uComment->bindValue(3, $comment->getDate()->toStringForDB());
-            $this->uComment->bindValue(4, $comment->getPost()->getID());
-            $this->uComment->bindValue(6, $comment->getID());
-            $this->uComment->execute();
-
-            $comment->copyFrom($this->getComment($comment->getID()));
-            $comment->setDirty(false);
-        } catch (PDOException $ex) {
-            echo "PDOEXCEPTION ===========================";
-            var_dump($ex);
-        }
-
-        return $comment;
     }
 
     public function storeImage(Image $image) {
@@ -777,25 +594,6 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
         }
 
         return $admin;
-    }
-
-    public function removeComment(Comment $comment) {
-        return $this->deleteComment($comment);
-    }
-
-    // dComment = DELETE FROM e_comment WHERE ID=?
-    private function deleteComment(Comment $comment) {
-
-        try {
-
-            $this->dComment->bindValue(1, $comment->getID());
-            $this->dComment->execute();
-        } catch (PDOException $ex) {
-            echo "PDOEXCEPTION ===========================";
-            var_dump($ex);
-        }
-
-        return $comment;
     }
 
     public function removeImage(Image $image) {

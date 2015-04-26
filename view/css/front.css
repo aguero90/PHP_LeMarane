@@ -12,13 +12,115 @@
 /* MIXINS
 ===============================================================================================
 =============================================================================================== */
-/* BREAKPOINT 0 ( DEFAULT ) - Small devices (tablets, 768px and up)
-============================================================================= */
 body {
   font-family: "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   padding-top: 50px;
-  /* per la navbar di bootstrap */ }
+  /* per la navbar di bootstrap */
+  background-color: #eeeeee; }
+
+.fillTheContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+h1.hooked {
+  font-size: 1.5rem;
+  color: #ffffff;
+  background-color: #770000;
+  padding: 1rem 0;
+  text-align: center;
+  margin: auto;
+  text-transform: capitalize;
+  position: relative; }
+  h1.hooked::after, h1.hooked::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10; }
+  h1.hooked::before {
+    top: -0.7rem;
+    border-top: 0.8rem dashed #770000; }
+  h1.hooked::after {
+    bottom: -1rem;
+    border-bottom: 1.1rem dashed #770000; }
+
+h1.flag {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  background-color: #007700;
+  color: #fff;
+  display: inline-block;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  padding: 0 0.7rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10; }
+  h1.flag::after {
+    border-bottom: 1.1rem solid #007700;
+    border-right: 1.1rem solid transparent;
+    border-top: 1.1rem solid #007700;
+    border-left: 1.1rem solid #007700;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -2.1rem; }
+
+button, a {
+  outline: none !important;
+  text-decoration: none !important; }
+
+.handlebarsButton {
+  background-color: #007700;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  float: right;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.9rem;
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease; }
+  .handlebarsButton::before {
+    content: "\007B";
+    font-weight: bold;
+    position: relative;
+    left: 1rem;
+    opacity: 0;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease; }
+  .handlebarsButton::after {
+    content: "\007D";
+    font-weight: bold;
+    position: relative;
+    right: 1rem;
+    opacity: 0;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease; }
+  .handlebarsButton:hover {
+    text-decoration: none;
+    background-color: #005500; }
+    .handlebarsButton:hover::before {
+      left: -0.2rem;
+      opacity: 1; }
+    .handlebarsButton:hover::after {
+      right: -0.2rem;
+      opacity: 1; }
+  .handlebarsButton:active {
+    position: relative;
+    top: 1px;
+    left: 1px; }
+
+button.handlebarsButton {
+  border: none; }
 
 img {
   max-width: 100%;
@@ -30,6 +132,30 @@ img {
   .container-fluid.no-padding .row {
     margin-left: 0;
     margin-right: 0; }
+  .container-fluid.no-padding .col-xs-1, .container-fluid.no-padding .col-sm-1, .container-fluid.no-padding .col-md-1, .container-fluid.no-padding .col-lg-1,
+  .container-fluid.no-padding .col-xs-2, .container-fluid.no-padding .col-sm-2, .container-fluid.no-padding .col-md-2, .container-fluid.no-padding .col-lg-2,
+  .container-fluid.no-padding .col-xs-3, .container-fluid.no-padding .col-sm-3, .container-fluid.no-padding .col-md-3, .container-fluid.no-padding .col-lg-3,
+  .container-fluid.no-padding .col-xs-4, .container-fluid.no-padding .col-sm-4, .container-fluid.no-padding .col-md-4, .container-fluid.no-padding .col-lg-4,
+  .container-fluid.no-padding .col-xs-5, .container-fluid.no-padding .col-sm-5, .container-fluid.no-padding .col-md-5, .container-fluid.no-padding .col-lg-5,
+  .container-fluid.no-padding .col-xs-6, .container-fluid.no-padding .col-sm-6, .container-fluid.no-padding .col-md-6, .container-fluid.no-padding .col-lg-6,
+  .container-fluid.no-padding .col-xs-7, .container-fluid.no-padding .col-sm-7, .container-fluid.no-padding .col-md-7, .container-fluid.no-padding .col-lg-7,
+  .container-fluid.no-padding .col-xs-8, .container-fluid.no-padding .col-sm-8, .container-fluid.no-padding .col-md-8, .container-fluid.no-padding .col-lg-8,
+  .container-fluid.no-padding .col-xs-9, .container-fluid.no-padding .col-sm-9, .container-fluid.no-padding .col-md-9, .container-fluid.no-padding .col-lg-9,
+  .container-fluid.no-padding .col-xs-10, .container-fluid.no-padding .col-sm-10, .container-fluid.no-padding .col-md-10, .container-fluid.no-padding .col-lg-10,
+  .container-fluid.no-padding .col-xs-11, .container-fluid.no-padding .col-sm-11, .container-fluid.no-padding .col-md-11, .container-fluid.no-padding .col-lg-11,
+  .container-fluid.no-padding .col-xs-12, .container-fluid.no-padding .col-sm-12, .container-fluid.no-padding .col-md-12, .container-fluid.no-padding .col-lg-12 {
+    padding: 0;
+    min-height: 0; }
+
+#outlineMenu {
+  background-color: #222222;
+  background-image: none; }
+  #outlineMenu .nav.navbar-nav li span {
+    margin-right: 0.5rem; }
+  #outlineMenu .nav.navbar-nav li.active:nth-of-type(1) span {
+    color: #aa0000; }
+  #outlineMenu .nav.navbar-nav li.active:nth-of-type(2) span {
+    color: #00aa00; }
 
 #outlineFooter {
   background-color: #222222;
@@ -45,55 +171,217 @@ img {
       padding: 0.5rem;
       text-align: justify; }
 
-.post {
-  position: relative;
-  padding: 0.1rem !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
-  .post header h1 {
-    font-size: 1.5rem;
-    color: #880000;
-    text-transform: capitalize; }
-  .post .postText {
-    display: none; }
-  .post footer {
-    font-size: 0.8rem; }
-    .post footer .goToPost {
-      display: none; }
-  .post .only-mobile {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0; }
-    .post .only-mobile a {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      top: 0;
-      z-index: 10; }
-      .post .only-mobile a::after {
-        content: "\0003E";
-        z-index: 10;
-        font-size: 2.1rem;
-        color: #555555;
-        position: absolute;
-        right: 1rem;
-        top: 20%;
-        transform: scaleY(1.5);
-        -moz-transform: scaleY(1.5);
-        -webkit-transform: scaleY(1.5); }
-      .post .only-mobile a:hover {
-        text-decoration: none;
-        color: #555555; }
-  .post:last-of-type {
-    border-bottom: none; }
+#login {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 3px #c0c0c0;
+  margin: 10% auto auto;
+  width: 60%;
+  max-width: 700px;
+  min-width: 400px;
+  padding: 1rem; }
+  #login button {
+    height: 2.5rem;
+    width: 100%; }
 
+/*
+
+NOTA: separo nettamente tra versione per smartphone e le altre versioni
+      dato che sono molto differenti tra loro xD
+      ├¿ meglio usare l'approccio mobile-first di "enanchement" dal tablet in poi
+
+*/
+@media (max-width: 767px) {
+  .not-mobile {
+    display: none; }
+
+  p.flag {
+    background-color: #770000;
+    color: #fff;
+    display: inline-block;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    padding: 0 0.4rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10; }
+    p.flag::after {
+      border-bottom: 0.8rem solid #770000;
+      border-right: 0.8rem solid transparent;
+      border-top: 0.8rem solid #770000;
+      border-left: 0.8rem solid #770000;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -1.5rem; }
+
+  /* POST LIST
+  ============================================================================= */
+  .sectionTitle.only-mobile h1::after {
+    bottom: -0.3rem;
+    border-bottom: 0.4rem dashed #770000; }
+
+  .postContainer .post {
+    position: relative; }
+    .postContainer .post .postText {
+      display: none; }
+    .postContainer .post .postImage img {
+      height: 8rem;
+      object-fit: cover;
+      width: 100%; }
+    .postContainer .post footer {
+      font-size: 0.7rem; }
+      .postContainer .post footer .goToPost {
+        display: none; }
+    .postContainer .post span.only-mobile {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; }
+      .postContainer .post span.only-mobile a {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: 0;
+        z-index: 100; }
+        .postContainer .post span.only-mobile a::after {
+          content: "\0003E";
+          font-size: 2.1rem;
+          color: #ffffff;
+          float: right;
+          line-height: 8rem;
+          margin-right: 1rem;
+          transform: scaleY(1.5);
+          -moz-transform: scaleY(1.5);
+          -webkit-transform: scaleY(1.5);
+          text-shadow: 0 0 3px #000000; }
+        .postContainer .post span.only-mobile a:hover {
+          text-decoration: none;
+          color: #555555; }
+
+  /* POST CARD
+  ============================================================================= */
+  #postCardContainer #postCard .mobilePostContent {
+    width: 90%;
+    margin: auto;
+    box-shadow: 0 0 2px #555555;
+    -moz-box-shadow: 0 0 2px #555555;
+    -webkit-box-shadow: 0 0 2px #555555;
+    background-color: #ffffff; }
+  #postCardContainer #postCard .postCardText p {
+    padding: 0 1rem;
+    margin: 2.5rem auto 5rem;
+    font-size: 0.9rem;
+    text-align: justify; }
+  #postCardContainer #postCard footer .postCardDate {
+    margin-bottom: 1.5rem; }
+    #postCardContainer #postCard footer .postCardDate p {
+      background-color: #770000;
+      color: #fff;
+      display: inline-block;
+      height: 1.6rem;
+      line-height: 1.6rem;
+      padding-left: 0.3rem;
+      width: 8rem; }
+      #postCardContainer #postCard footer .postCardDate p::after {
+        border-bottom: 0.8rem solid #770000;
+        border-right: 0.8rem solid #fff;
+        border-top: 0.8rem solid #770000;
+        content: "";
+        float: right; } }
 /* BREAKPOINT 1 - Small devices (tablets, 768px and up)
+=============================================================================
 ============================================================================= */
+@media (min-width: 768px) {
+  .only-mobile {
+    display: none; }
+
+  .with-margin {
+    margin-top: 3rem;
+    margin-bottom: 3rem; }
+
+  p.flag {
+    background-color: #770000;
+    color: #fff;
+    display: inline-block;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    padding-left: 0.3rem; }
+    p.flag::after {
+      border-bottom: 0.8rem solid #770000;
+      border-right: 0.8rem solid #fff;
+      border-top: 0.8rem solid #770000;
+      border-left: 0.8rem solid #770000;
+      content: "";
+      float: right; }
+
+  /* POST LIST
+  ========================================================================= */
+  .postContainer {
+    position: relative;
+    /*
+    poich├¿ il primo elemento ├¿ il div nascosto
+    */ }
+    .postContainer .post {
+      width: 90%;
+      margin: auto;
+      padding: 0;
+      margin: 1rem auto;
+      border-bottom: none;
+      background-color: #ffffff;
+      box-shadow: 0 0 2px #555555;
+      -moz-box-shadow: 0 0 2px #555555;
+      -webkit-box-shadow: 0 0 2px #555555; }
+      .postContainer .post .postImage {
+        height: auto;
+        width: auto;
+        object-fit: fill;
+        /* valore iniziale di object-fit */ }
+      .postContainer .post .postText {
+        display: initial; }
+        .postContainer .post .postText p {
+          margin: 0.5rem auto;
+          padding: 1rem;
+          text-align: justify; }
+      .postContainer .post footer .postDate p {
+        font-size: 0.9rem; }
+      .postContainer .post footer .goToPost {
+        display: initial; }
+        .postContainer .post footer .goToPost a {
+          margin: auto 1rem 1rem auto; }
+      .postContainer .post .only-mobile {
+        display: none; }
+    .postContainer:nth-of-type(2n+2) {
+      clear: left; }
+
+  /* POST CARD
+  ============================================================================= */
+  #postCardContainer #postCard .postContent {
+    width: 90%;
+    margin: auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 2px #555555;
+    -moz-box-shadow: 0 0 2px #555555;
+    -webkit-box-shadow: 0 0 2px #555555; }
+  #postCardContainer #postCard .postCardText p {
+    padding: 0 1rem;
+    margin: 2.5rem auto; }
+  #postCardContainer #postCard footer {
+    padding-bottom: 1.5rem; } }
 /* BREAKPOINT 2 - Medium devices (desktops, 992px and up)
-============================================================================= */
+=============================================================================
+=============================================================================*/
 /* BREAKPOINT 3 - Large devices (large desktops, 1200px and up)
-============================================================================= */
+=============================================================================
+=============================================================================*/
+@media (min-width: 1200px) {
+  .postContainer:nth-of-type(2n+2) {
+    clear: none; }
+  .postContainer:nth-of-type(3n+2) {
+    clear: left; } }
 
 /*# sourceMappingURL=front.css.map */

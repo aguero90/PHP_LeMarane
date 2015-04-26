@@ -16,7 +16,8 @@ class SmartySetup extends Smarty {
         $this->setCacheDir($_SERVER["DOCUMENT_ROOT"] . "/PHP_LeMarane/view/smarty/cache/");
 
         // $this->caching = Smarty::CACHING_LIFETIME_CURRENT;
-        $this->caching = Smarty::CACHING_OFF;
+        $this->caching = Smarty::CACHING_OFF; // solo per la fase di sviluppo
+        $this->force_compile = true; // solo per la fase di sviluppo
         $this->assign('app_name', 'Le Marane');
     }
 

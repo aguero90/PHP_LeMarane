@@ -1,30 +1,31 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-20 21:42:45
-         compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\Outline.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:27014553556b5b30b93-62614959%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.17, created on 2015-04-26 08:25:15
+         compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\Outline.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:27390553c84cbc88c76-46541087%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'c3eb3f64a8645527de4eb95184b70de9cdefc959' => 
+    '996542f014898edc0c62d6394a5085e0df9b07f8' => 
     array (
-      0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\Outline.tpl',
-      1 => 1429533823,
+      0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\front\\Outline.tpl',
+      1 => 1429858643,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '27014553556b5b30b93-62614959',
+  'nocache_hash' => '27390553c84cbc88c76-46541087',
   'function' => 
   array (
   ),
   'variables' => 
   array (
     'app_name' => 0,
+    'sid' => 0,
     'contentTemplate' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_553556b5c42299_34136986',
+  'unifunc' => 'content_553c84cc12aae0_44682286',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553556b5c42299_34136986')) {function content_553556b5c42299_34136986($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_553c84cc12aae0_44682286')) {function content_553c84cc12aae0_44682286($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <!-- NOTA: bootstrap include già normalize.css quindi non c'è bisogno del reset -->
     <head>
@@ -35,8 +36,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <title><?php echo $_smarty_tpl->tpl_vars['app_name']->value;?>
 </title>
 
-        <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" type="text/css" href="view/lib/animate/animate.css"/>
         <link rel="stylesheet" type="text/css" href="view/lib/myFormFramework/main.min.css"/>
         <link rel="stylesheet" type="text/css" href="view/css/front.css"/>
@@ -69,22 +70,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Brand</a>
+                    <a class="navbar-brand" href="index.php">Brand</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php">Home</a></li>
-                        <li><a href="index.php?sid=2">News</a></li>
-                        <li><a href="index.php?sid=3">Gallery</a></li>
-                    </ul>
 
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
+                    <ul class="nav navbar-nav">
+                        <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==1) {?>class="active"<?php }?> >
+                            <a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+                        </li>
+                        <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==2) {?>class="active"<?php }?> >
+                            <a href="index.php?sid=3"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Gallery</a>
+                        </li>
+                    </ul>
                 </div><!-- /.navbar-collapse -->
             </div> <!-- /container -->
         </nav>
@@ -134,7 +132,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <!-- JAVASCRIPT
         ==================================================================== -->
         <script type="text/javascript" src="view/lib/jQuery/jquery-1.11.2.min.js"></script>
-        <script type="text/javascript" src="view/lib/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="view/lib/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="view/lib/myFormFramework/myFormFramework.min.js"></script>
     </body>
 </html><?php }} ?>

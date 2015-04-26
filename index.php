@@ -13,24 +13,21 @@ define("POST_ID", "pid");
 
 if (!MyUtils::isEmpty($_GET)) {
 
-    var_dump($_GET);
+//    var_dump($_GET);
 
     switch (filter_input(INPUT_GET, SECTION_ID, FILTER_SANITIZE_NUMBER_INT)) {
 
         case POST:
-            echo 'POST';
             $postController = new PostController();
             $postController->processRequest();
             break;
 
         case POST_LIST:
-            echo 'POST_LIST';
             $postListController = new PostListController();
             $postListController->processRequest();
             break;
 
         case GALLERY:
-            echo 'GALLERY';
             $galleryController = new GalleryController();
             $galleryController->processRequest();
             break;

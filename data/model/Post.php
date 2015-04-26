@@ -38,8 +38,4 @@ interface Post {
     public function getImages();
 
     public function setImages(array $images);
-
-    public function getComments();
-
-    public function setComments(array $comments);
 }

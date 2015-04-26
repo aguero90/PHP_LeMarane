@@ -1,0 +1,190 @@
+
+
+/*
+
+NOTA: separo nettamente tra versione per smartphone e le altre versioni
+      dato che sono molto differenti tra loro xD
+      è meglio usare l'approccio mobile-first di "enanchement" dal tablet in poi
+
+*/
+
+@media (max-width: 767px) {
+
+    .not-mobile{
+        display: none;
+    }
+
+    p.flag{
+        background-color: #770000;
+        color: #fff;
+        display: inline-block;
+        height: 1.6rem;
+        line-height: 1.6rem;
+        padding: 0 0.4rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+
+        &::after{
+            border-bottom: 0.8rem solid #770000;
+            border-right: 0.8rem solid transparent;
+            border-top: 0.8rem solid #770000;
+            border-left: 0.8rem solid #770000;
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -1.5rem;
+        }
+    }
+
+
+
+
+    /* POST LIST
+    ============================================================================= */
+
+    .sectionTitle.only-mobile{
+
+        h1{
+
+            &::after{
+                bottom: -0.3rem;
+                border-bottom: 0.4rem dashed #770000;
+            }
+        }
+    }
+
+    .postContainer{
+
+        .post{
+            position: relative;
+
+            header{
+                h1{
+                }
+            }
+
+            .postText{
+                display: none;
+            }
+
+            .postImage{
+
+                img{
+                    height: 8rem;
+                    object-fit: cover;
+                    width: 100%;
+                }
+            }
+
+            footer{
+                font-size: 0.7rem;
+
+                .postDate{
+                    p{
+                    }
+                }
+
+                .goToPost{
+                    display: none;
+                }
+            }
+
+            span.only-mobile{
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+
+                a{
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    top: 0;
+                    z-index: 100;
+
+                    &::after{
+                        content: "\0003E";
+                        font-size: 2.1rem;
+                        color: #ffffff;
+                        float: right;
+                        line-height: 8rem;
+                        margin-right: 1rem;
+                        @include transform(scaleY(1.5));
+                        text-shadow: 0 0 3px #000000;
+                    }
+
+
+                    &:hover{
+                        text-decoration: none;
+                        color: #555555;
+                    }
+                }
+            }
+        }
+
+    }
+
+    /* POST CARD
+    ============================================================================= */
+
+    #postCardContainer{
+
+        #postCard{
+
+            header{
+
+                h1{
+
+                }
+            }
+
+            .mobilePostContent{
+                width: 90%;
+                margin: auto;
+                @include boxShadow(0 0 2px #555555);
+                background-color: #ffffff;
+            }
+
+            .postCardText{
+
+                p{
+                    padding: 0 1rem;
+                    margin: 2.5rem auto 5rem;
+                    font-size: 0.9rem;
+                    text-align: justify;
+                }
+            }
+
+            footer{
+
+                .postCardDate{
+                    margin-bottom: 1.5rem;
+
+                    p{
+                        background-color: #770000;
+                        color: #fff;
+                        display: inline-block;
+                        height: 1.6rem;
+                        line-height: 1.6rem;
+                        padding-left: 0.3rem;
+                        width: 8rem;
+
+                        &::after{
+                            border-bottom: 0.8rem solid #770000;
+                            border-right: 0.8rem solid #fff;
+                            border-top: 0.8rem solid #770000;
+                            content: "";
+                            float: right;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

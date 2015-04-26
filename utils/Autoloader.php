@@ -71,6 +71,13 @@ class Autoloader {
         }
     }
 
+    public static function controllerBackAutoloader($class) {
+        $path = $_SERVER['DOCUMENT_ROOT'] . "/PHP_LeMarane/controller/back/{$class}.php";
+        if (is_readable($path)) {
+            require_once $path;
+        }
+    }
+
 }
 
 spl_autoload_register('Autoloader::smartyAutoloader');
@@ -85,4 +92,5 @@ spl_autoload_register('Autoloader::modelImplAutoloader');
 // Controller
 spl_autoload_register('Autoloader::controllerAutoloader');
 spl_autoload_register('Autoloader::controllerFrontAutoloader');
+spl_autoload_register('Autoloader::controllerBackAutoloader');
 

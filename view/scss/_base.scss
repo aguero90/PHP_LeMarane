@@ -1,0 +1,245 @@
+
+body{
+    font-family: "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    padding-top: 50px; /* per la navbar di bootstrap */
+    background-color: #eeeeee;
+}
+
+.fillTheContainer{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+h1.hooked{
+    font-size: 1.5rem;
+    color: #ffffff;
+    background-color: #770000;
+    padding: 1rem 0;
+    text-align: center;
+    margin: auto;
+    text-transform: capitalize;
+    position: relative;
+
+    &::after, &::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 10;
+    }
+
+    &::before{
+        top: -0.7rem;
+        border-top: 0.8rem dashed #770000;
+    }
+
+    &::after{
+        bottom: -1rem;
+        border-bottom: 1.1rem dashed #770000;
+    }
+}
+
+h1.flag{
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    background-color: #007700;
+    color: #fff;
+    display: inline-block;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    padding: 0 0.7rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    &::after{
+        border-bottom: 1.1rem solid #007700;
+        border-right: 1.1rem solid transparent;
+        border-top: 1.1rem solid #007700;
+        border-left: 1.1rem solid #007700;
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: -2.1rem;
+    }
+}
+
+button, a{
+    outline: none !important;
+    text-decoration: none !important;
+}
+
+
+.handlebarsButton{
+    background-color: #007700;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    float: right;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.9rem;
+    @include transition(all .5s ease);
+
+    &::before{
+        content: "\007B";
+        font-weight: bold;
+        position: relative;
+        left: 1rem;
+        opacity: 0;
+        @include transition(all .5s ease);
+    }
+
+    &::after{
+        content: "\007D";
+        font-weight: bold;
+        position: relative;
+        right: 1rem;
+        opacity: 0;
+        @include transition(all .5s ease);
+    }
+
+    &:hover{
+        text-decoration: none;
+        background-color: #005500;
+
+        &::before{
+            left: -0.2rem;
+            opacity: 1;
+        }
+
+        &::after{
+            right: -0.2rem;
+            opacity: 1;
+        }
+    }
+
+    &:active{
+        position: relative;
+        top: 1px;
+        left: 1px;
+    }
+}
+
+
+button.handlebarsButton{
+    border: none;
+}
+
+
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+/* per annullare quel padding fastidioso messo di default da bootstrap */
+.container-fluid.no-padding{
+    padding: 0;
+
+    .row{
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
+    .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
+    .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+    .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
+    .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
+    .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
+    .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
+    .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
+    .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
+    .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
+    .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
+    .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{
+        padding: 0;
+        min-height: 0;
+    }
+}
+
+#outlineMenu{
+    background-color: #222222;
+    background-image: none;
+
+    .nav.navbar-nav{
+
+        li{
+
+            span{
+                margin-right: 0.5rem;
+            }
+
+            &.active{
+
+                &:nth-of-type(1){
+                    span{
+                        color: #aa0000;
+                    }
+                }
+
+                &:nth-of-type(2){
+                    span{
+                        color: #00aa00;
+                    }
+                }
+
+            }
+        }
+    }
+
+}
+
+
+#outlineFooter{
+
+    background-color: #222222; // possibile variabile
+    color: #eeeeee; // possibile variabile
+
+    div{
+        text-align: center;
+
+        h1{
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: 1px solid #cc0000;
+        }
+
+        p{
+            padding: 0.5rem;
+            text-align: justify;
+        }
+    }
+
+}
+
+#logo{
+}
+
+#login{
+
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #c0c0c0;
+    margin: 10% auto auto;
+    width: 60%;
+    max-width: 700px;
+    min-width: 400px;
+    padding: 1rem;
+
+
+    button{
+        height: 2.5rem;
+        width: 100%;
+    }
+
+}

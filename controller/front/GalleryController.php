@@ -16,10 +16,11 @@ class GalleryController extends MaraneBaseController {
 
         // prendiamo tutti i prodotti nel DB
         $this->getSmarty()->assign("images", $this->getDataLayer()->getImages());
+        $this->getSmarty()->assign("sid", 2);
 
 
         $this->getSmarty()->assign("contentTemplate", "front/Gallery.tpl"); // diciamo quale template deve includere
-        $this->getSmarty()->display("Outline.tpl"); // mostriamo il template
+        $this->getSmarty()->display("front/Outline.tpl"); // mostriamo il template
     }
 
 }

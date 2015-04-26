@@ -8,8 +8,8 @@
         <meta charset=UTF-8>
         <title>{$app_name}</title>
 
-        <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" type="text/css" href="view/lib/animate/animate.css"/>
         <link rel="stylesheet" type="text/css" href="view/lib/myFormFramework/main.min.css"/>
         <link rel="stylesheet" type="text/css" href="view/css/front.css"/>
@@ -42,22 +42,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Brand</a>
+                    <a class="navbar-brand" href="index.php">Brand</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php">Home</a></li>
-                        <li><a href="index.php?sid=2">News</a></li>
-                        <li><a href="index.php?sid=3">Gallery</a></li>
-                    </ul>
 
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
+                    <ul class="nav navbar-nav">
+                        <li {if isset($sid) && $sid==1}class="active"{/if} >
+                            <a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+                        </li>
+                        <li {if isset($sid) && $sid==2}class="active"{/if} >
+                            <a href="index.php?sid=3"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Gallery</a>
+                        </li>
+                    </ul>
                 </div><!-- /.navbar-collapse -->
             </div> <!-- /container -->
         </nav>
@@ -106,7 +103,7 @@
         <!-- JAVASCRIPT
         ==================================================================== -->
         <script type="text/javascript" src="view/lib/jQuery/jquery-1.11.2.min.js"></script>
-        <script type="text/javascript" src="view/lib/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="view/lib/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="view/lib/myFormFramework/myFormFramework.min.js"></script>
     </body>
 </html>

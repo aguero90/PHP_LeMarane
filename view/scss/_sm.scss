@@ -1,0 +1,144 @@
+
+/* BREAKPOINT 1 - Small devices (tablets, 768px and up)
+=============================================================================
+============================================================================= */
+@media (min-width: 768px) {
+
+    .only-mobile{
+        display: none;
+    }
+
+    .with-margin{
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    p.flag{
+        background-color: #770000;
+        color: #fff;
+        display: inline-block;
+        height: 1.6rem;
+        line-height: 1.6rem;
+        padding-left: 0.3rem;
+
+        &::after{
+            border-bottom: 0.8rem solid #770000;
+            border-right: 0.8rem solid #fff;
+            border-top: 0.8rem solid #770000;
+            border-left: 0.8rem solid #770000;
+            content: "";
+            float: right;
+        }
+    }
+
+
+    /* POST LIST
+    ========================================================================= */
+
+    .postContainer{
+        position: relative;
+
+        .post{
+            width: 90%;
+            margin: auto;
+            padding: 0;
+            margin: 1rem auto;
+            border-bottom: none;
+            background-color: #ffffff;
+            @include boxShadow(0 0 2px #555555);
+
+            .postImage{
+                height: auto;
+                width: auto;
+                object-fit: fill; /* valore iniziale di object-fit */
+            }
+
+            .postText{
+                display: initial;
+
+                p{
+                    margin: 0.5rem auto;
+                    padding: 1rem;
+                    text-align: justify;
+                }
+            }
+
+            footer{
+
+                .postDate{
+
+                    p{
+                        font-size: 0.9rem;
+                    }
+                }
+
+                .goToPost{
+                    display: initial;
+
+                    a{
+                        margin: auto 1rem 1rem auto;
+                    }
+                }
+            }
+
+            .only-mobile{
+                display: none;
+            }
+
+        }
+
+        /*
+        poichè il primo elemento è il div nascosto
+        */
+        &:nth-of-type(2n+2){
+            clear: left;
+        }
+    }
+
+
+    /* POST CARD
+    ============================================================================= */
+
+    #postCardContainer{
+
+
+        #postCard{
+
+            header{
+
+                h1{
+
+                }
+            }
+
+            .postContent{
+                width: 90%;
+                margin: auto;
+                background-color: #ffffff;
+                @include boxShadow(0 0 2px #555555);
+            }
+
+            .postCardText{
+
+                p{
+                    padding: 0 1rem;
+                    margin: 2.5rem auto;
+
+                }
+            }
+
+            footer{
+                padding-bottom: 1.5rem;
+
+                .postCardDate{
+
+                    p{
+
+                    }
+                }
+            }
+
+        }
+    }
+
+}
