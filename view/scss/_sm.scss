@@ -45,7 +45,7 @@
             margin: 1rem auto;
             border-bottom: none;
             background-color: #ffffff;
-            @include boxShadow(0 0 2px #555555);
+            box-shadow: 0 0 2px #555555;
 
             .postImage{
                 height: auto;
@@ -115,7 +115,7 @@
                 width: 90%;
                 margin: auto;
                 background-color: #ffffff;
-                @include boxShadow(0 0 2px #555555);
+                box-shadow: 0 0 2px #555555;
             }
 
             .postCardText{

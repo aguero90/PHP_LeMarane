@@ -39,7 +39,12 @@ interface MaraneDataLayer {
      */
     public function getPosts($arg1 = null);
 
-    public function getImage($imageID);
+    /**
+     * come usarlo:
+     *      - getImage($imageID)
+     *      - getImage($post)
+     */
+    public function getImage($arg);
 
     /**
      * come usarlo:

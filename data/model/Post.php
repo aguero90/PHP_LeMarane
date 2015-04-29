@@ -35,6 +35,10 @@ interface Post {
 
     public function setAdmin(Admin $admin);
 
+    public function getImage();
+
+    public function setImage(Image $image);
+
     public function getImages();
 
     public function setImages(array $images);

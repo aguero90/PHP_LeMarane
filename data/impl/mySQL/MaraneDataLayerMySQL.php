@@ -50,10 +50,11 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
 
             // Image
             $this->sImageByID = $this->connection->prepare("SELECT * FROM e_image WHERE ID=?");
+            $this->sImageByPost = $this->connection->prepare("SELECT imageID FROM e_post WHERE ID=?");
             $this->sImagesByPost = $this->connection->prepare("SELECT imageID FROM r_post_image WHERE postID=?");
             $this->sImages = $this->connection->prepare("SELECT ID FROM e_image");
-            $this->iImage = $this->connection->prepare("INSERT INTO e_image (URL, description, name, banner) VALUES (?, ?, ?, ?)");
-            $this->uImage = $this->connection->prepare("UPDATE e_image SET URL=?, description=?, name=?, banner=? WHERE ID=?");
+            $this->iImage = $this->connection->prepare("INSERT INTO e_image (realName, fakeName, description) VALUES (?, ?, ?)");
+            $this->uImage = $this->connection->prepare("UPDATE e_image SET realName=?, fakeName=?, description=? WHERE ID=?");
             $this->dImage = $this->connection->prepare("DELETE FROM e_image WHERE ID=?");
 
 
@@ -190,8 +191,18 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
         return $result;
     }
 
-    public function getImage($imageID) {
-        return $this->selectImageByID($imageID);
+    /**
+     * come usarlo:
+     *      - getImage($imageID)
+     *      - getImage($post)
+     */
+    public function getImage($arg) {
+
+        if (is_int($arg)) {
+            return $this->selectImageByID($arg);
+        } else {
+            return $this->selectImageByPost($arg);
+        }
     }
 
     // sImageByID = SELECT * FROM e_image WHERE ID=?
@@ -204,6 +215,25 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
             $this->sImageByID->execute();
 
             if (($rs = $this->sImageByID->fetch(PDO::FETCH_ASSOC)) !== false) {
+                $result = new ImageMySQL($this, $rs);
+            }
+        } catch (PDOException $ex) {
+            echo "PDOEXCEPTION ===========================";
+            var_dump($ex);
+        }
+        return $result;
+    }
+
+    // sImageByPost = SELECT imageID FROM e_post WHERE ID=?
+    private function selectImageByPost(Post $post) {
+
+        $result = null;
+        try {
+
+            $this->sImageByPost->bindValue(1, $post->getID());
+            $this->sImageByPost->execute();
+
+            if (($rs = $this->selectImageByPost->fetch(PDO::FETCH_ASSOC)) !== false) {
                 $result = new ImageMySQL($this, $rs);
             }
         } catch (PDOException $ex) {
@@ -430,15 +460,14 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
         }
     }
 
-    // iImage = INSERT INTO e_image (URL, description, name, banner) VALUES (?, ?, ?, ?)
+    // iImage = INSERT INTO e_image (realName, fakeName, description) VALUES (?, ?, ?)
     private function insertImage(Image $image) {
 
         try {
 
-            $this->iImage->bindValue(1, $image->getURL());
-            $this->iImage->bindValue(2, $image->getDescription());
-            $this->iImage->bindValue(3, $image->getName());
-            $this->iImage->bindValue(4, $image->isBanner());
+            $this->iImage->bindValue(1, $image->getRealName());
+            $this->iImage->bindValue(2, $image->getFakeName());
+            $this->iImage->bindValue(3, $image->getDescription());
             $this->iImage->execute();
 
             $ID = (int) $this->connection->lastInsertId();
@@ -458,16 +487,15 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
         return $image;
     }
 
-    // uImage = UPDATE e_image SET URL=?, description=?, name=?, banner=? WHERE ID=?
+    // uImage = UPDATE e_image SET realName=?, fakeName=?, description=? WHERE ID=?
     private function updateImage(Image $image) {
 
         try {
 
-            $this->uImage->bindValue(1, $image->getURL());
-            $this->uImage->bindValue(2, $image->getDescription());
-            $this->uImage->bindValue(3, $image->getName());
-            $this->uImage->bindValue(4, $image->isBanner());
-            $this->uImage->bindValue(5, $image->getID());
+            $this->uImage->bindValue(1, $image->getRealName());
+            $this->uImage->bindValue(2, $image->getFakeName());
+            $this->uImage->bindValue(3, $image->getDescription());
+            $this->uImage->bindValue(4, $image->getID());
             $this->uImage->execute();
 
             // save relationship

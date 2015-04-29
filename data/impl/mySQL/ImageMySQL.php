@@ -8,10 +8,9 @@
 class ImageMySQL implements Image {
 
     private $ID;
-    private $URL;
+    private $realName;
+    private $fakeName;
     private $description;
-    private $name;
-    private $banner;
     protected $dirty;
     protected $dataLayer;
     private $posts;
@@ -24,10 +23,9 @@ class ImageMySQL implements Image {
     private function constructorData(MaraneDataLayer $dataLayer) {
 
         $this->ID = 0;
-        $this->URL = "";
+        $this->realName = "";
+        $this->fakeName = "";
         $this->description = "";
-        $this->name = "";
-        $this->banner = false;
 
         $this->dirty = false;
         $this->dataLayer = $dataLayer;
@@ -40,56 +38,45 @@ class ImageMySQL implements Image {
         $this->constructorData($dataLayer);
 
         $this->ID = (int) $resultSet["ID"];
-        $this->URL = $resultSet["URL"];
+        $this->realName = $resultSet["realName"];
+        $this->fakeName = $resultSet["fakeName"];
         $this->description = $resultSet["description"];
-        $this->name = $resultSet["name"];
-        $this->banner = (bool) $resultSet["banner"];
     }
 
     public function getID() {
         return $this->ID;
     }
 
-    public function getURL() {
-        return $this->URL;
+    public function getRealName() {
+        return $this->realName;
+    }
+
+    public function getFakeName() {
+        return $this->fakeName;
     }
 
     public function getDescription() {
         return $this->description;
     }
 
-    public function getName() {
-        return $this->name;
-    }
-
-    public function isBanner() {
-        return $this->banner;
-    }
-
     public function isDirty() {
         return $this->dirty;
     }
 
-    public function setURL($URL) {
-        $this->URL = $URL;
+    public function setRealName($name) {
+        $this->realName = $name;
+        $this->dirty = true;
+        return $this;
+    }
+
+    public function setFakeName($URL) {
+        $this->fakeName = $URL;
         $this->dirty = true;
         return $this;
     }
 
     public function setDescription($description) {
         $this->description = $description;
-        $this->dirty = true;
-        return $this;
-    }
-
-    public function setName($name) {
-        $this->name = $name;
-        $this->dirty = true;
-        return $this;
-    }
-
-    public function setBanner($banner) {
-        $this->banner = $banner;
         $this->dirty = true;
         return $this;
     }
@@ -121,10 +108,9 @@ class ImageMySQL implements Image {
     public function copyFrom(Image $image) {
 
         $this->ID = $image->getID();
-        $this->URL = $image->getURL();
+        $this->realName = $image->getRealName();
+        $this->fakeName = $image->getFakeName();
         $this->description = $image->getDescription();
-        $this->name = $image->getName();
-        $this->banner = $image->isBanner();
 
         unset($this->posts);
         $this->posts = null;

@@ -1,31 +1,4 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-27 10:06:04
-         compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\Images.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:24372553dedecb32914-77141509%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
-$_valid = $_smarty_tpl->decodeProperties(array (
-  'file_dependency' => 
-  array (
-    '7ed5d40d3d5af0e710ab3c81d7fbbb99916d3971' => 
-    array (
-      0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\back\\Images.tpl',
-      1 => 1430071178,
-      2 => 'file',
-    ),
-  ),
-  'nocache_hash' => '24372553dedecb32914-77141509',
-  'function' => 
-  array (
-  ),
-  'variables' => 
-  array (
-    'images' => 0,
-    'image' => 0,
-  ),
-  'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_553deded4c9f28_43542796',
-),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553deded4c9f28_43542796')) {function content_553deded4c9f28_43542796($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\Smarty-3.1.17\\libs\\plugins\\modifier.truncate.php';
-?>
+
 <!-- TABELLA NEWS
 ============================================================================ -->
 <div class="newsManagement table-responsive">
@@ -40,29 +13,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </tr>
         </thead>
         <tbody>
-            <?php  $_smarty_tpl->tpl_vars['image'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['image']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['images']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
- $_smarty_tpl->tpl_vars['image']->iteration=0;
-foreach ($_from as $_smarty_tpl->tpl_vars['image']->key => $_smarty_tpl->tpl_vars['image']->value) {
-$_smarty_tpl->tpl_vars['image']->_loop = true;
- $_smarty_tpl->tpl_vars['image']->iteration++;
-?>
+            {foreach $images as $image}
                 <tr>
-                    <td><?php echo $_smarty_tpl->tpl_vars['image']->iteration;?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['image']->value->getRealName();?>
-</td>
-                    <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['image']->value->getDescription(),50);?>
-</td>
-                    <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['image']->value->getFakeName(),50);?>
-</td>
+                    <td>{$image@iteration}</td>
+                    <td>{$image->getName()}</td>
+                    <td>{$image->getDescription()|truncate:50}</td>
+                    <td>{$image->getURL()|truncate:50}</td>
                     <td>
-                        <a class="previewButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-" data-toggle="tooltip" data-placement="top" title="Anteprima">
+                        <a class="previewButton" data-pid="{$image->getID()}" data-toggle="tooltip" data-placement="top" title="Anteprima">
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                         </a>
-                        <a class="editButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-" data-toggle="tooltip" data-placement="top" title="Modifica">
+                        <a class="editButton" data-pid="{$image->getID()}" data-toggle="tooltip" data-placement="top" title="Modifica">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </a>
                         <a class="removeButton" data-toggle="tooltip" data-placement="top" title="Rimuovi" data-toggle="modal" data-target=".removeNewsModal">
@@ -70,7 +31,7 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
                         </a>
                     </td>
                 </tr>
-            <?php } ?>
+            {/foreach}
             <tr class="insertNewsRow">
                 <td colspan="4">
                     Inserisci una nuova news
@@ -87,57 +48,38 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
 
 
 
-<?php  $_smarty_tpl->tpl_vars['image'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['image']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['images']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
- $_smarty_tpl->tpl_vars['image']->iteration=0;
-foreach ($_from as $_smarty_tpl->tpl_vars['image']->key => $_smarty_tpl->tpl_vars['image']->value) {
-$_smarty_tpl->tpl_vars['image']->_loop = true;
- $_smarty_tpl->tpl_vars['image']->iteration++;
-?>
+{foreach $images as $image}
 
     <!-- Lista delle anteprime
     ======================================================================== -->
-    <div class="imagePreview" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-">
-        <a class="closePreviewButton closeTooltip" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-" data-toggle="tooltip" data-placement="bottom" title="Chiudi anteprima">
+    <div class="imagePreview" data-pid="{$image->getID()}">
+        <a class="closePreviewButton closeTooltip" data-pid="{$image->getID()}" data-toggle="tooltip" data-placement="bottom" title="Chiudi anteprima">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </a>
         <div class="container-fluid no-padding">
-            <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value->getFakeName();?>
-" alt="<?php echo $_smarty_tpl->tpl_vars['image']->value->getRealName();?>
-" />
+            <img src="{$image->getURL()}" alt="{$image->getName()}" />
         </div>
     </div>
 
 
     <!-- Forms di edit
     ======================================================================== -->
-    <div class="editFormContainer" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-">
-        <a class="closeEditFormButton closeTooltip" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-" data-toggle="tooltip" data-placement="left" title="Chiudi anteprima">
+    <div class="editFormContainer" data-pid="{$image->getID()}">
+        <a class="closeEditFormButton closeTooltip" data-pid="{$image->getID()}" data-toggle="tooltip" data-placement="left" title="Chiudi anteprima">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </a>
         <form class="form-horizontal" action="" method="POST">
-            <input type="hidden" name="pid" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-" />
+            <input type="hidden" name="pid" value="{$image->getID()}" />
             <div class="form-group">
-                <label for="name<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-" class="col-sm-2 control-label">Nome</label>
+                <label for="name{$image->getID()}" class="col-sm-2 control-label">Nome</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-" name="name" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getRealName();?>
-" placeholder="Titolo">
+                    <input type="text" class="form-control" id="name{$image->getID()}" name="name" value="{$image->getName()}" placeholder="Titolo">
                 </div>
             </div>
             <div class="form-group">
-                <label for="description<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-" class="col-sm-2 control-label">Descrizione</label>
+                <label for="description{$image->getID()}" class="col-sm-2 control-label">Descrizione</label>
                 <div class="col-sm-10">
-                    <textarea id="description<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
-" name="description" class="form-control" rows="10" placeholder="Descrizione"><?php echo $_smarty_tpl->tpl_vars['image']->value->getDescription();?>
-</textarea>
+                    <textarea id="description{$image->getID()}" name="description" class="form-control" rows="10" placeholder="Descrizione">{$image->getDescription()}</textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -148,7 +90,7 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
         </form>
     </div>
 
-<?php } ?>
+{/foreach}
 
 
 <!-- Forms di insert
@@ -287,4 +229,3 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
 </script>
 
 
-<?php }} ?>

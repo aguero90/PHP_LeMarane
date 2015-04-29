@@ -23,18 +23,6 @@
     -webkit-transform-origin:      $value;
 }
 
-@mixin borderRadius($value){
-    border-radius:          $value;
-    -moz-border-radius:     $value;
-    -webkit-border-radius:  $value;
-}
-
-@mixin boxShadow($value){
-    box-shadow:             $value;
-    -moz-box-shadow:        $value;
-    -webkit-box-shadow:     $value;
-}
-
 @mixin animation($value){
     animation:              $value;
     -webkit-animation:      $value;

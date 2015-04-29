@@ -1,35 +1,44 @@
 <?php
 
+session_start();
+
 require_once "utils/Autoloader.php";
 
 // definiamo alcune costanti
-define("DASHBOARD", 1);
-define("NEWS", 2);
-define("IMAGE", 3);
+define("LOGIN", 0);
+define("NEWS", 1);
+define("IMAGE", 2);
 
 define("SECTION_ID", "sid");
-define("POST_ID", "pid");
-
 
 if (!MyUtils::isEmpty($_GET)) {
 
-//    var_dump($_GET);
+    dispatcherGET();
+} elseif (!MyUtils::isEmpty($_POST)) {
+
+    dispatcherPOST();
+} else {
+
+    SecurityLayer::checkSession() ? goToPostManagement() : goToLogin();
+}
+
+function dispatcherGET() {
 
     switch (filter_input(INPUT_GET, SECTION_ID, FILTER_SANITIZE_NUMBER_INT)) {
 
-        case DASHBOARD:
-            $dashboardController = new DashboardController();
-            $dashboardController->processRequest();
+        case LOGIN:
+            $loginController = new LoginController();
+            $loginController->processRequestGET();
             break;
 
         case NEWS:
-            $newsController = new NewsController();
-            $newsController->processRequest();
+            $postManagementController = new PostManagementController();
+            $postManagementController->processRequestGET();
             break;
 
         case IMAGE:
-            $imagesController = new ImagesController();
-            $imagesController->processRequest();
+            $imageManagementController = new ImageManagementController();
+            $imageManagementController->processRequestGET();
             break;
 
         default:
@@ -37,8 +46,40 @@ if (!MyUtils::isEmpty($_GET)) {
             echo 'errore, inserita url non valida';
             break;
     }
-} else {
+}
+
+function dispatcherPOST() {
+
+    switch (filter_input(INPUT_POST, SECTION_ID, FILTER_SANITIZE_NUMBER_INT)) {
+
+        case LOGIN:
+            $loginController = new LoginController();
+            $loginController->processRequestPOST();
+            break;
+
+        case NEWS:
+            $postManagementController = new PostManagementController();
+            $postManagementController->processRequestPOST();
+            break;
+
+        case IMAGE:
+            $imageManagementController = new ImageManagementController();
+            $imageManagementController->processRequestPOST();
+            break;
+
+        default:
+            // errore, inserita url non valida
+            echo 'errore, inserita url non valida';
+            break;
+    }
+}
+
+function goToLogin() {
     $loginController = new LoginController();
     $loginController->processRequest();
 }
 
+function goToPostManagement() {
+    $postManagementController = new PostManagementController();
+    $postManagementController->processRequest();
+}

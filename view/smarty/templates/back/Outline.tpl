@@ -18,31 +18,27 @@
 
 
         <div class="fillTheContainer container-fluid no-padding">
-            <div class="row">
+            <div class=" fullHeight row">
 
                 <!-- LEFT COL
                 ==================================================================== -->
-                <div id="leftCol">
-                    <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
 
-                        <ul class="nav nav-pills nav-stacked">
-                            <li {if isset($sid) && $sid==1} class="active" {/if}><a href="?sid=1">Dashboard</a></li>
-                            <li {if isset($sid) && $sid==2} class="active" {/if}><a href="?sid=2">News</a></li>
-                            <li {if isset($sid) && $sid==3} class="active" {/if}><a href="?sid=3">Immagini</a></li>
-                            <li><a href="Index.php">Sito</a></li>
-                        </ul>
-                    </div>
+                <div id="leftCol" class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
+
+                    <ul class="nav nav-pills nav-stacked">
+                        <li {if isset($sid) && $sid==1} class="active" {/if}><a href="?sid=1">News</a></li>
+                        <li {if isset($sid) && $sid==2} class="active" {/if}><a href="?sid=2">Immagini</a></li>
+                        <li><a href="Index.php">Sito</a></li>
+                    </ul>
                 </div>
+
 
 
 
                 <!-- BODY
                 ==================================================================== -->
-                <div id="outlineBody">
-                    <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
-
-                        {include file=$contentTemplate}
-                    </div>
+                <div id="outlineBodyBack" class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
+                    {include file=$contentTemplate}
                 </div>
 
             </div>

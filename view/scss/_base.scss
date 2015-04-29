@@ -6,12 +6,22 @@ body{
     background-color: #eeeeee;
 }
 
+textarea{
+    resize: vertical;
+    min-height: 10rem;
+    max-height: 25rem;
+}
+
 .fillTheContainer{
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.fullHeight{
+    height: 100%;
 }
 
 
@@ -225,6 +235,53 @@ img{
 #logo{
 }
 
+#leftCol{
+    height: 100%;
+    background-color: #222222;
+
+    li{
+        margin: 0;
+
+        a{
+            color: #ffffff;
+            border-radius: 0;
+
+            &:hover{
+                color: #770000;
+            }
+        }
+
+        &.active{
+
+            a{
+                background-color: #770000;
+                position: relative;
+
+                &:hover{
+                    color: #ffffff;
+                }
+
+                &::after{
+
+                    content: "";
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    border-right: 0.5rem solid #eeeeee;
+                    border-top: 0.5rem solid transparent;
+                    border-bottom: 0.5rem solid transparent;
+                    position: absolute;
+                    right: 0;
+                }
+
+            }
+        }
+
+    }
+
+
+}
+
 #login{
 
     background-color: #fff;
@@ -242,4 +299,172 @@ img{
         width: 100%;
     }
 
+}
+
+#outlineBodyBack{
+    height: 100%;
+    overflow-y: scroll;
+}
+
+
+.newsManagement{
+    width: 90%;
+    margin: 4rem auto auto;
+
+    th, td{
+        text-align: center;
+    }
+
+    tr.insertNewsRow{
+
+        td{
+
+
+            &:first-of-type{
+                background-color: #222222 !important;
+                color: #ffffff;
+            }
+
+            &:last-of-type{
+                background-color: #008800 !important;
+            }
+        }
+
+
+
+
+        a{
+            display: block;
+
+            span.glyphicon{
+                color: #ffffff;
+            }
+        }
+
+
+    }
+
+
+
+    a{
+        cursor: pointer;
+
+        span.glyphicon{
+            margin-left: 0.2rem;
+            margin-right: 0.2rem;
+
+        }
+
+        &:nth-of-type(1){
+            span.glyphicon{
+                color: #555555;
+            }
+        }
+
+        &:nth-of-type(2){
+            span.glyphicon{
+                color: #006699;
+            }
+        }
+
+        &:nth-of-type(3){
+            span.glyphicon{
+                color: #aa0000;
+            }
+        }
+    }
+}
+
+.postPreview{
+    background-color: #eeeeee;
+}
+
+.postPreview, .editFormContainer, .insertFormContainer, .removeFormContainer, .imagePreview{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    @include transform(scale(0, 0));
+    @include transition(all .7s ease);
+
+    .closeTooltip{
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        z-index: 10;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    &.show{
+        @include transform(scale(1, 1));
+        opacity: 1;
+    }
+}
+
+.editFormContainer, .insertFormContainer, .removeFormContainer{
+    top: 2rem;
+    bottom: auto;
+    width: 90%;
+    margin: auto;
+    max-width: 45rem;
+    padding: 3rem 2rem 1rem 2rem;
+    background-color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #c0c0c0;
+
+    label{
+        padding: 0.3rem 1rem 0 0 !important;
+    }
+
+    .closeTooltip{
+        top: 0.5rem;
+        right: 1rem;
+        color: #222222;
+    }
+}
+
+
+.removeFormContainer{
+    top: 5rem;
+    width: 60%;
+    max-width: 30rem;
+
+
+    form{
+        span{
+            display: block;
+            font-size: 1.5rem;
+            color: #770000;
+            margin-bottom: 1rem;
+        }
+
+        p{
+            margin-bottom: 1rem;
+        }
+
+        button{
+            background-color: #990000;
+
+            &:hover{
+                background-color: #770000;
+            }
+        }
+    }
+}
+
+
+.imagePreview{
+
+    .closeTooltip{
+        background-color: #ffffff;
+        height: 2rem;
+        width: 2rem;
+        text-align: center;
+        line-height: 2rem;
+        border-radius: 100rem;
+        color: #222222;
+    }
 }

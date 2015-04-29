@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-25 22:17:34
+<?php /* Smarty version Smarty-3.1.17, created on 2015-04-28 21:58:34
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\Outline.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:19586553bf65e6e10c6-33277857%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:30382553fe66a66abf8-41715443%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '39c1b06036ff386752fcee7e887cc4a9275042da' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\back\\Outline.tpl',
-      1 => 1429993052,
+      1 => 1430120777,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19586553bf65e6e10c6-33277857',
+  'nocache_hash' => '30382553fe66a66abf8-41715443',
   'function' => 
   array (
   ),
@@ -23,9 +23,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_553bf65e9a02d9_52840380',
+  'unifunc' => 'content_553fe66a89d3f6_43932546',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553bf65e9a02d9_52840380')) {function content_553bf65e9a02d9_52840380($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_553fe66a89d3f6_43932546')) {function content_553fe66a89d3f6_43932546($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <!-- NOTA: bootstrap include già normalize.css quindi non c'è bisogno del reset -->
     <head>
@@ -46,32 +46,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
         <div class="fillTheContainer container-fluid no-padding">
-            <div class="row">
+            <div class=" fullHeight row">
 
                 <!-- LEFT COL
                 ==================================================================== -->
-                <div id="leftCol">
-                    <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
 
-                        <ul class="nav nav-pills nav-stacked">
-                            <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==1) {?> class="active" <?php }?>><a href="?sid=1">Dashboard</a></li>
-                            <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==2) {?> class="active" <?php }?>><a href="?sid=2">News</a></li>
-                            <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==3) {?> class="active" <?php }?>><a href="?sid=3">Immagini</a></li>
-                            <li><a href="Index.php">Sito</a></li>
-                        </ul>
-                    </div>
+                <div id="leftCol" class="col-xs-3 col-sm-2 col-md-2 col-lg-2">
+
+                    <ul class="nav nav-pills nav-stacked">
+                        <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==1) {?> class="active" <?php }?>><a href="?sid=1">News</a></li>
+                        <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==2) {?> class="active" <?php }?>><a href="?sid=2">Immagini</a></li>
+                        <li><a href="Index.php">Sito</a></li>
+                    </ul>
                 </div>
+
 
 
 
                 <!-- BODY
                 ==================================================================== -->
-                <div id="outlineBody">
-                    <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
+                <div id="outlineBodyBack" class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
+                    <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['contentTemplate']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-                        <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['contentTemplate']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
-
-                    </div>
                 </div>
 
             </div>

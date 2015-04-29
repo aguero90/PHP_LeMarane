@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-25 21:59:14
+<?php /* Smarty version Smarty-3.1.17, created on 2015-04-27 21:30:17
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\Gallery.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:15454553bf212223353-35051115%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:21563553e8e4971fb46-59965839%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '15454553bf212223353-35051115',
+  'nocache_hash' => '21563553e8e4971fb46-59965839',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_553bf2123405e1_73590584',
+  'unifunc' => 'content_553e8e49860047_86267457',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553bf2123405e1_73590584')) {function content_553bf2123405e1_73590584($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_553e8e49860047_86267457')) {function content_553e8e49860047_86267457($_smarty_tpl) {?>
 <!-- LOGO
 ============================================================================ -->
 <div id="logo" class="container-fluid not-mobile">
@@ -51,8 +51,8 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
 ?>
         <div class="imageContainer col-xs-3 col-sm-3 col-md-3 col-lg-2">
             <div class="image">
-                <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value->getURL();?>
-" alt="<?php echo $_smarty_tpl->tpl_vars['image']->value->getName();?>
+                <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value->getFakeName();?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['image']->value->getRealName();?>
 " />
             </div>
         </div>

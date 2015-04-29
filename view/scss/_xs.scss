@@ -146,7 +146,7 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
             .mobilePostContent{
                 width: 90%;
                 margin: auto;
-                @include boxShadow(0 0 2px #555555);
+                box-shadow: 0 0 2px #555555;
                 background-color: #ffffff;
             }
 

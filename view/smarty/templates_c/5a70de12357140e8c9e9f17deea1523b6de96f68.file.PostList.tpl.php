@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-26 08:25:16
+<?php /* Smarty version Smarty-3.1.17, created on 2015-04-28 21:58:19
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\PostList.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:8799553c84cc15d767-26350293%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:4453553fe65b9d9547-60517583%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8799553c84cc15d767-26350293',
+  'nocache_hash' => '4453553fe65b9d9547-60517583',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_553c84cc6a1329_29167845',
+  'unifunc' => 'content_553fe65bdffd70_02107747',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553c84cc6a1329_29167845')) {function content_553c84cc6a1329_29167845($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\Smarty-3.1.17\\libs\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_553fe65bdffd70_02107747')) {function content_553fe65bdffd70_02107747($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\Smarty-3.1.17\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!-- LOGO
 ============================================================================ -->

@@ -22,6 +22,8 @@
 
             <form class="form-horizontal" id="login" action="Admin.php" method="POST">
 
+                <input type="hidden" name="sid" value="0" />
+
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Username</label>
                     <div class="col-sm-10">

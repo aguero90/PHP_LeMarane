@@ -8,21 +8,17 @@ interface Image {
 
     public function getID();
 
-    public function getURL();
+    public function getRealName();
 
-    public function setURL($URL);
+    public function setRealName($realName);
+
+    public function getFakeName();
+
+    public function setFakeName($fakeName);
 
     public function getDescription();
 
     public function setDescription($description);
-
-    public function getName();
-
-    public function setName($name);
-
-    public function isBanner();
-
-    public function setBanner($isBanner);
 
     public function isDirty();
 

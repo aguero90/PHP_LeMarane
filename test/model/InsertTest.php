@@ -27,9 +27,9 @@ switch ((int) $_POST["what"]) {
 
     case IMAGE:
         $image = $dl->createImage();
-        $image->setURL($_POST["URL"]);
+        $image->setFakeName($_POST["URL"]);
         $image->setDescription($_POST["description"]);
-        $image->setName($_POST["name"]);
+        $image->setRealName($_POST["name"]);
         if ($_POST["banner"]) {
             $image->setBanner(true);
         } else {

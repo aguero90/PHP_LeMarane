@@ -1,30 +1,30 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-27 09:46:23
-         compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\News.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:21537553de94f98d1e1-92793690%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.17, created on 2015-04-28 21:04:27
+         compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\ImageManagement.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:23620553fd9bb820894-39838234%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'd82e66b36f02993fab83a57b1197e09747a8a3bc' => 
+    'ed3b302bec4b7a977c67dd622b1aab0ff114cbb1' => 
     array (
-      0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\back\\News.tpl',
-      1 => 1430052779,
+      0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\back\\ImageManagement.tpl',
+      1 => 1430071178,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '21537553de94f98d1e1-92793690',
+  'nocache_hash' => '23620553fd9bb820894-39838234',
   'function' => 
   array (
   ),
   'variables' => 
   array (
-    'news' => 0,
-    'n' => 0,
+    'images' => 0,
+    'image' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_553de950435ef1_41715836',
+  'unifunc' => 'content_553fd9bc044d31_40792699',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553de950435ef1_41715836')) {function content_553de950435ef1_41715836($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\Smarty-3.1.17\\libs\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_553fd9bc044d31_40792699')) {function content_553fd9bc044d31_40792699($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\Smarty-3.1.17\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!-- TABELLA NEWS
 ============================================================================ -->
@@ -33,40 +33,35 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <thead>
             <tr>
                 <th>#</th>
-                <th>Titolo</th>
-                <th>Testo</th>
-                <th>Data</th>
-                <th>Autore</th>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>URL</th>
                 <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
-            <?php  $_smarty_tpl->tpl_vars['n'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['n']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['news']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
- $_smarty_tpl->tpl_vars['n']->iteration=0;
-foreach ($_from as $_smarty_tpl->tpl_vars['n']->key => $_smarty_tpl->tpl_vars['n']->value) {
-$_smarty_tpl->tpl_vars['n']->_loop = true;
- $_smarty_tpl->tpl_vars['n']->iteration++;
+            <?php  $_smarty_tpl->tpl_vars['image'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['image']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['images']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['image']->iteration=0;
+foreach ($_from as $_smarty_tpl->tpl_vars['image']->key => $_smarty_tpl->tpl_vars['image']->value) {
+$_smarty_tpl->tpl_vars['image']->_loop = true;
+ $_smarty_tpl->tpl_vars['image']->iteration++;
 ?>
                 <tr>
-                    <td><?php echo $_smarty_tpl->tpl_vars['n']->iteration;?>
+                    <td><?php echo $_smarty_tpl->tpl_vars['image']->iteration;?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['n']->value->getTitle();?>
+                    <td><?php echo $_smarty_tpl->tpl_vars['image']->value->getRealName();?>
 </td>
-                    <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['n']->value->getText(),50);?>
+                    <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['image']->value->getDescription(),50);?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['n']->value->getDate()->getDayOfMonth();?>
-/<?php echo $_smarty_tpl->tpl_vars['n']->value->getDate()->getMonth();?>
-/<?php echo $_smarty_tpl->tpl_vars['n']->value->getDate()->getYear();?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['n']->value->getAdmin()->getUsername();?>
+                    <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['image']->value->getFakeName(),50);?>
 </td>
                     <td>
-                        <a class="previewButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
+                        <a class="previewButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
 " data-toggle="tooltip" data-placement="top" title="Anteprima">
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                         </a>
-                        <a class="editButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
+                        <a class="editButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
 " data-toggle="tooltip" data-placement="top" title="Modifica">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </a>
@@ -77,7 +72,7 @@ $_smarty_tpl->tpl_vars['n']->_loop = true;
                 </tr>
             <?php } ?>
             <tr class="insertNewsRow">
-                <td colspan="5">
+                <td colspan="4">
                     Inserisci una nuova news
                 </td>
                 <td>
@@ -92,86 +87,56 @@ $_smarty_tpl->tpl_vars['n']->_loop = true;
 
 
 
-<?php  $_smarty_tpl->tpl_vars['n'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['n']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['news']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
- $_smarty_tpl->tpl_vars['n']->iteration=0;
-foreach ($_from as $_smarty_tpl->tpl_vars['n']->key => $_smarty_tpl->tpl_vars['n']->value) {
-$_smarty_tpl->tpl_vars['n']->_loop = true;
- $_smarty_tpl->tpl_vars['n']->iteration++;
+<?php  $_smarty_tpl->tpl_vars['image'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['image']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['images']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['image']->iteration=0;
+foreach ($_from as $_smarty_tpl->tpl_vars['image']->key => $_smarty_tpl->tpl_vars['image']->value) {
+$_smarty_tpl->tpl_vars['image']->_loop = true;
+ $_smarty_tpl->tpl_vars['image']->iteration++;
 ?>
 
     <!-- Lista delle anteprime
     ======================================================================== -->
-    <div class="postPreview" data-pid="<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
+    <div class="imagePreview" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
 ">
-        <a class="closePreviewButton closeTooltip" data-pid="<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
+        <a class="closePreviewButton closeTooltip" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
 " data-toggle="tooltip" data-placement="bottom" title="Chiudi anteprima">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </a>
         <div class="container-fluid no-padding">
-            <div id="postCardContainer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div id="postCard">
-                    <header class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <h1 class="hooked"><?php echo $_smarty_tpl->tpl_vars['n']->value->getTitle();?>
-</h1>
-                        </div>
-                    </header>
-                    <div class="postContent">
-                        <div class="row postImage">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <img src="uploads/logo.jpg" alt="img" />
-                            </div>
-                        </div>
-                        <div class="mobilePostContent">
-                            <div class="row postCardText">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <p><?php echo $_smarty_tpl->tpl_vars['n']->value->getText();?>
-</p>
-                                </div>
-                            </div>
-                            <footer class="row">
-                                <div class="postCardDate col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                                    <p class="flag"><?php echo $_smarty_tpl->tpl_vars['n']->value->getDate()->getDayOfMonth();?>
-/<?php echo $_smarty_tpl->tpl_vars['n']->value->getDate()->getMonth();?>
-/<?php echo $_smarty_tpl->tpl_vars['n']->value->getDate()->getYear();?>
-</p>
-                                </div>
-                            </footer>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value->getFakeName();?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['image']->value->getRealName();?>
+" />
         </div>
     </div>
 
 
     <!-- Forms di edit
     ======================================================================== -->
-    <div class="editFormContainer" data-pid="<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
+    <div class="editFormContainer" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
 ">
-        <a class="closeEditFormButton closeTooltip" data-pid="<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
+        <a class="closeEditFormButton closeTooltip" data-pid="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
 " data-toggle="tooltip" data-placement="left" title="Chiudi anteprima">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </a>
         <form class="form-horizontal" action="" method="POST">
-            <input type="hidden" name="pid" value="<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
+            <input type="hidden" name="pid" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
 " />
             <div class="form-group">
-                <label for="title<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
-" class="col-sm-1 control-label">Titolo</label>
-                <div class="col-sm-11">
-                    <input type="text" class="form-control" id="title<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
-" name="title" value="<?php echo $_smarty_tpl->tpl_vars['n']->value->getTitle();?>
+                <label for="name<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
+" class="col-sm-2 control-label">Nome</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
+" name="name" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getRealName();?>
 " placeholder="Titolo">
                 </div>
             </div>
             <div class="form-group">
-                <label for="text<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
-" class="col-sm-1 control-label">Testo</label>
-                <div class="col-sm-11">
-                    <textarea id="<?php echo $_smarty_tpl->tpl_vars['n']->value->getID();?>
-" name="text" class="form-control" rows="10" placeholder="Testo"><?php echo $_smarty_tpl->tpl_vars['n']->value->getText();?>
+                <label for="description<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
+" class="col-sm-2 control-label">Descrizione</label>
+                <div class="col-sm-10">
+                    <textarea id="description<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
+" name="description" class="form-control" rows="10" placeholder="Descrizione"><?php echo $_smarty_tpl->tpl_vars['image']->value->getDescription();?>
 </textarea>
                 </div>
             </div>
@@ -194,15 +159,15 @@ $_smarty_tpl->tpl_vars['n']->_loop = true;
     </a>
     <form class="form-horizontal" action="" method="POST">
         <div class="form-group">
-            <label for="title" class="col-sm-1 control-label">Titolo</label>
-            <div class="col-sm-11">
-                <input type="text" class="form-control" id="title" name="title"  placeholder="Titolo">
+            <label for="name" class="col-sm-2 control-label">Nome</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name"  placeholder="Name">
             </div>
         </div>
         <div class="form-group">
-            <label for="text" class="col-sm-1 control-label">Testo</label>
-            <div class="col-sm-11">
-                <textarea id="" name="text" class="form-control" rows="10" placeholder="Testo"></textarea>
+            <label for="description" class="col-sm-2 control-label">Descrizione</label>
+            <div class="col-sm-10">
+                <textarea id="description" name="description" class="form-control" rows="10" placeholder="Descrizione"></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -250,12 +215,12 @@ $_smarty_tpl->tpl_vars['n']->_loop = true;
 
         function showPreview(e) {
 
-            document.querySelector('[data-pid="' + this.dataset.pid + '"].postPreview').addClass("show");
+            document.querySelector('[data-pid="' + this.dataset.pid + '"].imagePreview').addClass("show");
         }
 
         function closePreview(e) {
 
-            document.querySelector('[data-pid="' + this.dataset.pid + '"].postPreview').removeClass("show");
+            document.querySelector('[data-pid="' + this.dataset.pid + '"].imagePreview').removeClass("show");
         }
 
 
