@@ -58,7 +58,7 @@ class LoginController extends MaraneBaseController {
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
-        return $this->getDataLayer()->getAdmin($username, md5(md5($password)));
+        return $this->getDataLayer()->getAdmin($username, md5(md5(md5(md5(md5($password))))));
     }
 
     private function goToLogin() {

@@ -14,36 +14,47 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
         display: none;
     }
 
-    p.flag{
+    h1.hooked{
+        font-size: 1.5rem;
+        color: #ffffff;
         background-color: #770000;
-        color: #fff;
-        display: inline-block;
-        height: 1.6rem;
-        line-height: 1.6rem;
-        padding: 0 0.4rem;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 10;
+        padding: 1rem 0;
+        text-align: center;
+        margin: auto;
+        text-transform: capitalize;
+        position: relative;
 
-        &::after{
-            border-bottom: 0.8rem solid #770000;
-            border-right: 0.8rem solid transparent;
-            border-top: 0.8rem solid #770000;
-            border-left: 0.8rem solid #770000;
+        &::after, &::before{
             content: "";
             position: absolute;
-            top: 0;
-            bottom: 0;
-            right: -1.5rem;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        &::before{
+            top: -0.7rem;
+            border-top: 0.8rem dashed #770000;
+        }
+
+        &::after{
+            bottom: -1rem;
+            border-bottom: 1.1rem dashed #770000;
         }
     }
 
 
+    #outlineMenu{
+
+        #brandIcon{
+
+            margin-left: 0;
+        }
+    }
 
 
     /* POST LIST
-    ============================================================================= */
+    ========================================================================= */
 
     .sectionTitle.only-mobile{
 
@@ -60,27 +71,54 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
 
         .post{
             position: relative;
+            height: 8rem;
+            background-color: #ffffff;
+            box-shadow: 0 0 3px #c0c0c0;
 
             header{
+
+                position: absolute;
+                left: 8rem;
+                top: 1rem;
+
                 h1{
+
+                    margin: auto;
+                    color: #770000;
+                    font-size: 1.3rem;
+
                 }
             }
 
             .postText{
+
                 display: none;
+
             }
 
             .postImage{
 
+                height: 6rem;
+                position: relative;
+                top: 50%;
+                left: 1rem;
+                @include transform(translate3d(0, -50%, 0));
+
+
                 img{
-                    height: 8rem;
+                    height: 6rem;
                     object-fit: cover;
-                    width: 100%;
+                    width: 6rem;
+                    border-radius: 50%;
+                    box-shadow: 0 0 3px 2px #007700;
                 }
             }
 
             footer{
-                font-size: 0.7rem;
+                position: absolute;
+                left: 8.5rem;
+                top: 3rem;
+                font-size: 0.8rem;
 
                 .postDate{
                     p{
@@ -107,17 +145,14 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
                     top: 0;
                     z-index: 100;
 
-                    &::after{
-                        content: "\0003E";
+                    span{
+                        position: absolute;
+                        top: 50%;
+                        right: 1rem;
                         font-size: 2.1rem;
-                        color: #ffffff;
-                        float: right;
-                        line-height: 8rem;
-                        margin-right: 1rem;
-                        @include transform(scaleY(1.5));
-                        text-shadow: 0 0 3px #000000;
+                        color: #aa0000;
+                        @include transform(translate3d(0, -50%, 0));
                     }
-
 
                     &:hover{
                         text-decoration: none;
@@ -130,7 +165,7 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
     }
 
     /* POST CARD
-    ============================================================================= */
+    ========================================================================= */
 
     #postCardContainer{
 
@@ -140,6 +175,15 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
 
                 h1{
 
+                }
+            }
+
+            .postImage{
+
+                img{
+                    width: 100%;
+                    height: 15rem;
+                    object-fit: cover;
                 }
             }
 
@@ -187,4 +231,66 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
 
         }
     }
+
+
+    /* GALLERY
+    ========================================================================= */
+    #myCarousel.galleryCarousel{
+
+        .galleryColumn{
+
+            .imageContainer{
+                padding: 0.5rem;
+                text-align: center;
+                margin: 1rem auto;
+
+                img{
+                    border-radius: 50%;
+                    width: 10rem;
+                    height: 10rem;
+                    box-shadow: 0 0 3px #222222;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+
+    /* BACKEND
+    ========================================================================= */
+
+    #leftCol{
+        float: none;
+        width: 100%;
+        height: auto;
+
+        li{
+            float: left;
+
+            &.active{
+
+                a::after{
+                    border-top: none;
+                    border-bottom: 0.5rem solid #eeeeee;
+                    border-left: 0.5rem solid transparent;
+                    border-right: 0.5rem solid transparent;
+                    bottom: 0;
+                    left: 50%;
+                    @include transform(translate3d(-50%, 0, 0));
+                }
+            }
+
+        }
+
+    }
+
+    #outlineBodyBack{
+
+        width: 100%;
+        height: auto;
+        overflow-y: visible;
+
+    }
+
+
 }

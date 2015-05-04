@@ -5,15 +5,18 @@
 =============================================================================*/
 @media (min-width: 1200px) {
 
-    .postContainer{
+    #mySliderWrap{
 
-        &:nth-of-type(2n+2){
-            clear: none;
+        height: 25rem;
+
+        .page{
+
+            img{
+
+                height: 25rem;
+            }
         }
 
-        &:nth-of-type(3n+2){
-            clear: left;
-        }
     }
 
 }

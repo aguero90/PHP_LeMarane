@@ -13,7 +13,6 @@ class ImageMySQL implements Image {
     private $description;
     protected $dirty;
     protected $dataLayer;
-    private $posts;
 
     public function __construct(MaraneDataLayer $dataLayer, array $resultSet = null) {
 
@@ -29,8 +28,6 @@ class ImageMySQL implements Image {
 
         $this->dirty = false;
         $this->dataLayer = $dataLayer;
-
-        $this->posts = null;
     }
 
     private function constructorDataAndResult(MaraneDataLayer $dataLayer, array $resultSet) {
@@ -86,22 +83,6 @@ class ImageMySQL implements Image {
         return $this;
     }
 
-    // RELAZIONI
-    // ========================================================================
-
-    public function getPosts() {
-        if (MyUtils::isEmpty($this->posts)) {
-            $this->posts = $this->dataLayer->getPosts($this);
-        }
-        return $this->posts;
-    }
-
-    public function setPosts(array $posts) {
-        $this->posts = $posts;
-        $this->dirty = true;
-        return $this;
-    }
-
     // COPY FROM
     // ========================================================================
 
@@ -111,9 +92,6 @@ class ImageMySQL implements Image {
         $this->realName = $image->getRealName();
         $this->fakeName = $image->getFakeName();
         $this->description = $image->getDescription();
-
-        unset($this->posts);
-        $this->posts = null;
 
         $this->dirty = true;
 

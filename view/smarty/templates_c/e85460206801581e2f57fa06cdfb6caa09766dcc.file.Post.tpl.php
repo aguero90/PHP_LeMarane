@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-25 21:59:02
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-02 09:05:22
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\Post.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:31456553bf2068e9665-85206268%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:124655447732bc6388-83636840%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'e85460206801581e2f57fa06cdfb6caa09766dcc' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\front\\Post.tpl',
-      1 => 1429817080,
+      1 => 1430398895,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '31456553bf2068e9665-85206268',
+  'nocache_hash' => '124655447732bc6388-83636840',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_553bf206ac20e6_06281862',
+  'unifunc' => 'content_55447732e64890_84664998',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553bf206ac20e6_06281862')) {function content_553bf206ac20e6_06281862($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_55447732e64890_84664998')) {function content_55447732e64890_84664998($_smarty_tpl) {?>
 <!-- LOGO
 ============================================================================ -->
 <div id="logo" class="container-fluid not-mobile">
@@ -49,7 +49,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="postContent">
                 <div class="row postImage">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <img src="uploads/logo.jpg" alt="img" />
+                        <img src="<?php echo $_smarty_tpl->tpl_vars['post']->value->getImage()->getFakeName();?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['post']->value->getImage()->getRealName();?>
+" />
                     </div>
                 </div>
                 <div class="mobilePostContent">

@@ -1,0 +1,47 @@
+
+#myCarousel{
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+    #carouselSlider{
+        white-space: nowrap;
+        @include transform-origin(center center);
+        @include transition(transform .7s ease);
+
+        .page{
+            white-space: normal;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+        }
+    }
+
+    #paginationContainer{
+        text-align: center;
+
+        ul.pagination{
+
+            li{
+                a{
+                    background-color: #222222;
+                    border: 1px solid #444444;
+                    color: #ffffff;
+                    @include transition(background-color .3s ease);
+
+                    &:hover{
+                        background-color: #444444;
+                    }
+
+                }
+
+                &.active{
+                    a{
+                        background-color: #770000;
+                        border-color: #770000;
+
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,105 +1,143 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-28 21:58:34
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-04 15:58:00
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\PostManagement.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:15439553fe66a8c44f3-29123937%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2248555477ae86b8a77-67173054%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'd5a056a8d3a529e7ff4b72024063f85fc73d819f' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\back\\PostManagement.tpl',
-      1 => 1430246944,
+      1 => 1430583471,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '15439553fe66a8c44f3-29123937',
+  'nocache_hash' => '2248555477ae86b8a77-67173054',
   'function' => 
   array (
   ),
   'variables' => 
   array (
     'posts' => 0,
+    'itemsForPage' => 0,
     'post' => 0,
+    'pagination' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_553fe66aed7004_44095905',
+  'unifunc' => 'content_55477ae927ae08_74701494',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553fe66aed7004_44095905')) {function content_553fe66aed7004_44095905($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\Smarty-3.1.17\\libs\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_55477ae927ae08_74701494')) {function content_55477ae927ae08_74701494($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!-- TABELLA NEWS
 ============================================================================ -->
-<div class="newsManagement table-responsive">
-    <table class="table table-striped table-hover table-condensed table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Titolo</th>
-                <th>Testo</th>
-                <th>Data</th>
-                <th>Autore</th>
-                <th>Azioni</th>
-            </tr>
-        </thead>
-        <tbody>
 
-            <?php  $_smarty_tpl->tpl_vars['post'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['post']->_loop = false;
+<div id="myCarousel">
+
+
+    <div id="carouselSlider">
+
+        <!-- TABELLE -->
+        <?php  $_smarty_tpl->tpl_vars['post'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['post']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['posts']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['post']->total= $_smarty_tpl->_count($_from);
  $_smarty_tpl->tpl_vars['post']->iteration=0;
 foreach ($_from as $_smarty_tpl->tpl_vars['post']->key => $_smarty_tpl->tpl_vars['post']->value) {
 $_smarty_tpl->tpl_vars['post']->_loop = true;
  $_smarty_tpl->tpl_vars['post']->iteration++;
+ $_smarty_tpl->tpl_vars['post']->last = $_smarty_tpl->tpl_vars['post']->iteration === $_smarty_tpl->tpl_vars['post']->total;
 ?>
 
-                <tr id="JS_rowForPost<?php echo $_smarty_tpl->tpl_vars['post']->value->getID();?>
+            <?php if ($_smarty_tpl->tpl_vars['post']->iteration%$_smarty_tpl->tpl_vars['itemsForPage']->value===1) {?>
+                <!-- Se è il primo della nuova pagina, ricreo la tabella -->
+
+                <div id="page<?php echo (($_smarty_tpl->tpl_vars['post']->iteration-1)/$_smarty_tpl->tpl_vars['itemsForPage']->value)+1;?>
+" class="tableManagement table-responsive page" data-number="<?php echo (($_smarty_tpl->tpl_vars['post']->iteration-1)/$_smarty_tpl->tpl_vars['itemsForPage']->value)+1;?>
 ">
-                    <td><?php echo $_smarty_tpl->tpl_vars['post']->iteration;?>
+                    <table class="table table-striped table-hover table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Titolo</th>
+                                <th>Immagine</th>
+                                <th>Testo</th>
+                                <th>Data</th>
+                                <th>Autore</th>
+                                <th>Azioni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        <?php }?>
+
+
+
+                        <tr id="JS_relativeRow<?php echo $_smarty_tpl->tpl_vars['post']->value->getID();?>
+">
+                            <td><?php echo $_smarty_tpl->tpl_vars['post']->iteration;?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['post']->value->getTitle();?>
+                            <td><?php echo $_smarty_tpl->tpl_vars['post']->value->getTitle();?>
 </td>
-                    <td data-fullText="<?php echo $_smarty_tpl->tpl_vars['post']->value->getText();?>
+                            <td data-fakeName="<?php echo $_smarty_tpl->tpl_vars['post']->value->getImage()->getFakeName();?>
+" data-description="<?php echo $_smarty_tpl->tpl_vars['post']->value->getImage()->getDescription();?>
+"><a href="<?php echo $_smarty_tpl->tpl_vars['post']->value->getImage()->getFakeName();?>
+" target="_blank"><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['post']->value->getImage()->getRealName(),25," ... ");?>
+</a></td>
+                            <td data-fullText="<?php echo $_smarty_tpl->tpl_vars['post']->value->getText();?>
 " ><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['post']->value->getText(),50," ... ");?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['post']->value->getDate()->getDayOfMonth();?>
+                            <td><?php echo $_smarty_tpl->tpl_vars['post']->value->getDate()->getDayOfMonth();?>
 /<?php echo $_smarty_tpl->tpl_vars['post']->value->getDate()->getMonth();?>
 /<?php echo $_smarty_tpl->tpl_vars['post']->value->getDate()->getYear();?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['post']->value->getAdmin()->getUsername();?>
+                            <td><?php echo $_smarty_tpl->tpl_vars['post']->value->getAdmin()->getUsername();?>
 </td>
-                    <td>
-                        <a class="previewButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['post']->value->getID();?>
+                            <td>
+                                <a class="previewButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['post']->value->getID();?>
 " data-toggle="tooltip" data-placement="top" title="Anteprima">
-                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                        </a>
-                        <a class="editButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['post']->value->getID();?>
+                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                </a>
+                                <a class="editButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['post']->value->getID();?>
 " data-toggle="tooltip" data-placement="top" title="Modifica">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        </a>
-                        <a class="removeButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['post']->value->getID();?>
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </a>
+                                <a class="removeButton" data-pid="<?php echo $_smarty_tpl->tpl_vars['post']->value->getID();?>
 " data-toggle="tooltip" data-placement="top" title="Rimuovi">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        </a>
-                    </td>
-                </tr>
-            <?php } ?>
-            <tr class="insertNewsRow">
-                <td colspan="5">
-                    Inserisci una nuova news
-                </td>
-                <td>
-                    <a id="insertButton" data-toggle="tooltip" data-placement="top" title="Inserisci">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </a>
+                            </td>
+                        </tr>
 
+                        <?php if ($_smarty_tpl->tpl_vars['post']->iteration%$_smarty_tpl->tpl_vars['itemsForPage']->value===0||$_smarty_tpl->tpl_vars['post']->last) {?>
+                            <!-- Se ho appena stampato l'ultima riga, chiudo la tabella -->
+                            <tr class="insertRow">
+                                <td colspan="6">
+                                    Inserisci una nuova news
+                                </td>
+                                <td>
+                                    <a class="insertButton" data-toggle="tooltip" data-placement="top" title="Inserisci">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            <?php }?>
+
+        <?php } ?>
+
+    </div>
+
+    <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['pagination']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+
+
+</div>
 
 <!-- anteprima
 ======================================================================== -->
-<div id="JS_postPreview" class="postPreview">
-    <a id="JS_postPreviewCloseButton" class="closePreviewButton closeTooltip" data-toggle="tooltip" data-placement="bottom" title="Chiudi anteprima">
+<div id="JS_preview" class="myPopover postPreview">
+    <a id="JS_previewCloseButton" class="closeTooltip" data-toggle="tooltip" data-placement="bottom" title="Chiudi anteprima">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </a>
     <div class="container-fluid no-padding">
@@ -107,24 +145,24 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
             <div id="postCard">
                 <header class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <h1 id="JS_postPreviewTitle" class="hooked"></h1>
+                        <h1 id="JS_previewTitle" class="hooked"></h1>
                     </div>
                 </header>
                 <div class="postContent">
                     <div class="row postImage">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <img src="uploads/logo.jpg" alt="img" />
+                            <img id="JS_previewImage" />
                         </div>
                     </div>
                     <div class="mobilePostContent">
                         <div class="row postCardText">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <p id="JS_postPreviewText"></p>
+                                <p id="JS_previewText"></p>
                             </div>
                         </div>
                         <footer class="row">
                             <div class="postCardDate col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                                <p class="flag" id="JS_postPreviewData"></p>
+                                <p class="flag" id="JS_previewDate"></p>
                             </div>
                         </footer>
                     </div>
@@ -137,14 +175,13 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
 
 <!-- Form di edit
 ======================================================================== -->
-<div id="JS_editForm" class="editFormContainer">
-    <a id="JS_editFormCloseButton" class="closeEditFormButton closeTooltip" data-toggle="tooltip" data-placement="left" title="Chiudi form">
+<div id="JS_editForm" class="myPopover editPost editFormContainer">
+    <a id="JS_editFormCloseButton" class="closeTooltip" data-toggle="tooltip" data-placement="left" title="Chiudi form">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </a>
     <form class="form-horizontal" action="admin.php" method="POST">
         <input type="hidden" name="sid" value="1" />
-        <input type="hidden" name="pid" value="<?php echo $_smarty_tpl->tpl_vars['post']->value->getID();?>
-" />
+        <input id="JS_editFormHiddenInput" type="hidden" name="pid"  />
         <div class="form-group">
             <label for="editTitle" class="col-sm-2 control-label">Titolo</label>
             <div class="col-sm-10">
@@ -152,15 +189,27 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
             </div>
         </div>
         <div class="form-group">
-            <label for="insertImage" class="col-sm-2 control-label">Immagine</label>
+            <label for="editImageFakeName" class="col-sm-2 control-label">Immagine</label>
             <div class="col-sm-10">
-                <input type="url" class="form-control" id="insertImage" name="image"  placeholder="URL Immagine">
+                <input type="url" class="form-control" id="editImageFakeName" name="imageFakeName"  placeholder="URL Immagine">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="editImageRealName" class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="editImageRealName" name="imageRealName"  placeholder="Nome Immagine">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="editImageDescription" class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <textarea id="editImageDescription" name="imageDescription" class="form-control" rows="3" placeholder="Descrizione Immagine"></textarea>
             </div>
         </div>
         <div class="form-group">
             <label for="editText" class="col-sm-2 control-label">Testo</label>
             <div class="col-sm-10">
-                <textarea id="editText" name="text" class="form-control" rows="10" placeholder="Testo"></textarea>
+                <textarea id="editText" name="text" class="form-control summernote" rows="10" placeholder="Testo"></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -174,8 +223,8 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
 
 <!-- Form di insert
 ============================================================================ -->
-<div id="JS_insertForm" class="insertFormContainer">
-    <a id="JS_insertFormCloseButton" class="closeInsertFormButton closeTooltip" data-toggle="tooltip" data-placement="left" title="Chiudi form">
+<div id="JS_insertForm" class="myPopover insertPost insertFormContainer">
+    <a id="JS_insertFormCloseButton" class="closeTooltip" data-toggle="tooltip" data-placement="left" title="Chiudi form">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </a>
     <form class="form-horizontal" action="admin.php" method="POST">
@@ -187,15 +236,27 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
             </div>
         </div>
         <div class="form-group">
-            <label for="insertImage" class="col-sm-2 control-label">Immagine</label>
+            <label for="insertImageFakeName" class="col-sm-2 control-label">Immagine</label>
             <div class="col-sm-10">
-                <input type="url" class="form-control" id="insertImage" name="image"  placeholder="URL Immagine">
+                <input type="url" class="form-control" id="insertImageFakeName" name="imageFakeName"  placeholder="URL Immagine">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="insertImageRealName" class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="insertImageRealName" name="imageRealName"  placeholder="Nome Immagine">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="insertImageDescription" class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <textarea id="insertImageDescription" name="imageDescription" class="form-control" rows="3" placeholder="Descrizione Immagine"></textarea>
             </div>
         </div>
         <div class="form-group">
             <label for="insertText" class="col-sm-2 control-label">Testo</label>
             <div class="col-sm-10">
-                <textarea idinserTtext name="text" class="form-control" rows="10" placeholder="Testo"></textarea>
+                <textarea id="insertText" name="text" class="form-control summernote" rows="10" placeholder="Testo"></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -208,13 +269,13 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
 
 <!-- Form di Remove
 ============================================================================ -->
-<div id="JS_removeForm" class="removeFormContainer">
-    <a id="JS_removeFormCloseButton" class="closeInsertFormButton closeTooltip" data-toggle="tooltip" data-placement="left" title="Chiudi form">
+<div id="JS_removeForm" class="myPopover removeFormContainer">
+    <a id="JS_removeFormCloseButton" class="closeTooltip" data-toggle="tooltip" data-placement="left" title="Chiudi form">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </a>
     <form class="form-horizontal" action="admin.php" method="POST">
         <input type="hidden" name="sid" value="1" />
-        <input id="JS_removeFormPID" type="hidden" name="pid" />
+        <input id="JS_removeFormHiddenInput" type="hidden" name="pid" />
         <div>
             <p>
                 <span>Attenzione!</span>
@@ -233,179 +294,165 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
 
     window.addEventListener("load", function () {
 
-        // TOOLTIP
+        // TOOLTIP BOOTSTRAP
         // =====================================================================
+        $('[data-toggle="tooltip"]').tooltip();
 
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
+
+
+        // TEXTEDITOR SUMMERNOTE
+        // =====================================================================
+        $('.summernote').summernote({
+            lang: 'it-IT',
+            height: 200
         });
 
-        // ANTEPRIMA
-        // =====================================================================
-        var relativePost; // questa variabile è condivisa tra tutti xD
 
-        var previewButtons = document.querySelectorAll('.previewButton');
-        var preview = {
-            container: document.getElementById("JS_postPreview"),
-            closeButton: document.getElementById("JS_postPreviewCloseButton"),
-            title: document.getElementById("JS_postPreviewTitle"),
-            text: document.getElementById("JS_postPreviewText"),
-            date: document.getElementById("JS_postPreviewData")
-        };
+        (new MyTablePopover()).init();
 
+        if (document.getElementById("paginationContainer")) {
 
-        for (var i = 0; i < previewButtons.length; i++) {
-
-            previewButtons[i].addEventListener("click", showPreview);
+            // se non esiste la paginazione è inutile avviare lo script
+            // "sparagnamo" xD
+            document.getElementById("myCarousel").myCarousel();
         }
 
-        preview.closeButton.addEventListener("click", closePreview);
 
-        function showPreview(e) {
+    });
+
+    var MyTablePopover = function () {
+    };
+
+    MyTablePopover.prototype = {
+        tableCarousel: null,
+        relativePost: null,
+        previewButtons: null,
+        preview: null,
+        editFormButtons: null,
+        editForm: null,
+        removeFormButtons: null,
+        removeForm: null,
+        insertFormButtons: null,
+        insertForm: null,
+        init: function () {
+
+            this.tableCarousel = document.getElementById("myCarousel");
+            // PREVIEW
+            this.previewButtons = this.tableCarousel.querySelectorAll('.previewButton');
+            this.preview = {
+                container: document.getElementById("JS_preview"),
+                closeButton: document.getElementById("JS_previewCloseButton"),
+                title: document.getElementById("JS_previewTitle"),
+                image: document.getElementById("JS_previewImage"),
+                text: document.getElementById("JS_previewText"),
+                date: document.getElementById("JS_previewDate")
+            };
+            // EDIT
+            this.editFormButtons = this.tableCarousel.querySelectorAll('.editButton');
+            this.editForm = {
+                container: document.getElementById("JS_editForm"),
+                closeButton: document.getElementById("JS_editFormCloseButton"),
+                hiddenInput: document.getElementById("JS_editFormHiddenInput"),
+                title: document.getElementById("editTitle"),
+                imageFakeName: document.getElementById("editImageFakeName"),
+                imageRealName: document.getElementById("editImageRealName"),
+                imageDescription: document.getElementById("editImageDescription"),
+                text: document.getElementById("editText")
+            };
+            // REMOVE
+            this.removeFormButtons = this.tableCarousel.querySelectorAll('.removeButton');
+            this.removeForm = {
+                container: document.getElementById("JS_removeForm"),
+                closeButton: document.getElementById("JS_removeFormCloseButton"),
+                title: document.getElementById("JS_removeFormTitle"),
+                hiddenInput: document.getElementById("JS_removeFormHiddenInput")
+            };
+            // INSERT
+            this.insertFormButtons = this.tableCarousel.querySelectorAll(".insertButton");
+            this.insertForm = {
+                container: document.getElementById("JS_insertForm"),
+                closeButton: document.getElementById("JS_insertFormCloseButton")
+            };
+            // AGGIUNGO I LISTENER
+            /*
+             * <NOTA: POICHÈ IL NUMERO DI BOTTONI DI PREVIEW, EDIT E REMOVE È >
+             *        <LO STESSO, LI AGGIUNGO IN UN SINGOLO FOR PER OTTIMIZZARE>
+             */
+            for (var i = 0; i < this.previewButtons.length; i++) {
+
+                this.previewButtons[i].addEventListener("click", this.show.bind(this, this.preview));
+                this.editFormButtons[i].addEventListener("click", this.show.bind(this, this.editForm));
+                this.removeFormButtons[i].addEventListener("click", this.show.bind(this, this.removeForm));
+            }
+
+            this.preview.closeButton.addEventListener("click", this.close.bind(this, this.preview));
+            this.editForm.closeButton.addEventListener("click", this.close.bind(this, this.editForm));
+            this.removeForm.closeButton.addEventListener("click", this.close.bind(this, this.removeForm));
+            // i bottoni di insert sono di meno, quindi le faccio in un ciclo separato
+            for (var i = 0; i < this.insertFormButtons.length; i++) {
+
+                this.insertFormButtons[i].addEventListener("click", this.show.bind(this, this.insertForm));
+            }
+
+            this.insertForm.closeButton.addEventListener("click", this.close.bind(this, this.insertForm));
+        },
+        show: function (element, e) {
 
             // se il post è già visibile, vuol dire che l'utente sta
             // cercando di aprirne 2 insieme.
             // Ma noi non vogliamo questo, perciò quello aperto lo chiudiamo
             // ed apriamo quello nuovo xD
-            if (preview.container.hasClass("show")) {
-                preview.container.removeClass("show");
+            if (element.container.hasClass("show")) {
+                element.container.removeClass("show");
             }
 
-            relativePost = document.getElementById("JS_rowForPost" + this.dataset.pid);
-
+            this.relativePost = document.getElementById("JS_relativeRow" + e.currentTarget.dataset.pid);
             // posso usare .cells[i] perchè stiamo parlando di una riga
             // di una tabella.
             // cells è un array contenente tutte le colonne di quella riga
-            preview.title.innerHTML = relativePost.cells[1].innerHTML;
-            preview.text.innerHTML = relativePost.cells[2].dataset.fulltext;
-            preview.date.innerHTML = relativePost.cells[3].innerHTML;
+            if (element === this.preview) {
 
-            preview.container.addClass("show");
-        }
+                element.title.innerHTML = this.relativePost.cells[1].innerHTML;
+                element.image.setAttribute("src", this.relativePost.cells[2].dataset.fakename);
+                element.image.setAttribute("alt", this.relativePost.cells[2].dataset.textContent);
+                element.text.innerHTML = this.relativePost.cells[3].dataset.fulltext;
+                element.date.innerHTML = this.relativePost.cells[4].innerHTML;
+            } else if (element === this.editForm) {
 
-        function closePreview(e) {
+                element.hiddenInput.value = e.currentTarget.dataset.pid;
+                element.title.value = this.relativePost.cells[1].innerHTML;
+                element.imageFakeName.value = this.relativePost.cells[2].dataset.fakename;
+                element.imageRealName.value = this.relativePost.cells[2].textContent; // altrimenti copia anche il tag <a>
+                element.imageDescription.innerHTML = this.relativePost.cells[2].dataset.description;
+                element.text.innerHTML = this.relativePost.cells[3].dataset.fulltext;
+            } else if (element === this.removeForm) {
 
-            preview.container.removeClass("show");
-        }
+                element.hiddenInput.value = e.currentTarget.dataset.pid;
+                element.title.innerHTML = this.relativePost.cells[1].innerHTML;
+            } else {
+                // insert
 
-
-
-        // MODIFICA
-        // =====================================================================
-
-        var editFormButtons = document.querySelectorAll('.editButton');
-        var editForm = {
-            container: document.getElementById("JS_editForm"),
-            closeButton: document.getElementById("JS_editFormCloseButton"),
-            title: document.getElementById("editTitle"),
-            text: document.getElementById("editText")
-        };
-
-        for (var i = 0; i < editFormButtons.length; i++) {
-
-            editFormButtons[i].addEventListener("click", showEditForm);
-        }
-
-        editForm.closeButton.addEventListener("click", closeEditForm);
-
-        function showEditForm(e) {
-
-            // se la form è già visibile, vuol dire che l'utente sta
-            // cercando di aprirne 2 insieme.
-            // Ma noi non vogliamo questo, perciò quello aperto la chiudiamo
-            // ed apriamo quella nuovo xD
-            if (editForm.container.hasClass("show")) {
-                editForm.container.removeClass("show");
+                // non devo fare nulla xD
             }
 
-            relativePost = document.getElementById("JS_rowForPost" + this.dataset.pid);
+            element.container.addClass("show");
+        },
+        close: function (element, e) {
 
-            // posso usare .cells[i] perchè stiamo parlando di una riga
-            // di una tabella.
-            // cells è un array contenente tutte le colonne di quella riga
-            editForm.title.value = relativePost.cells[1].innerHTML;
-            editForm.text.innerHTML = relativePost.cells[2].dataset.fulltext;
+            if (element === this.preview) {
 
-            editForm.container.addClass("show");
-        }
-
-
-        function closeEditForm(e) {
-
-            editForm.container.removeClass("show");
-        }
-
-
-        // RIMUOVI
-        // =====================================================================
-        var removeFormButtons = document.querySelectorAll('.removeButton');
-        var removeForm = {
-            container: document.getElementById("JS_removeForm"),
-            closeButton: document.getElementById("JS_removeFormCloseButton"),
-            title: document.getElementById("JS_removeFormTitle"),
-            input: document.getElementById("JS_removeFormPID")
-        };
-
-        for (var i = 0; i < removeFormButtons.length; i++) {
-
-            removeFormButtons[i].addEventListener("click", showRemoveForm);
-        }
-
-        removeForm.closeButton.addEventListener("click", closeRemoveForm);
-
-        function showRemoveForm(e) {
-
-            // se la form è già visibile, vuol dire che l'utente sta
-            // cercando di aprirne 2 insieme.
-            // Ma noi non vogliamo questo, perciò quello aperto la chiudiamo
-            // ed apriamo quella nuovo xD
-            if (removeForm.container.hasClass("show")) {
-                removeForm.container.removeClass("show");
+                // in questo modo, quando l'utente aprirà una nuova
+                // anteprima, la nuova immagine verrà caricata subito
+                element.image.removeAttribute("src");
+                element.image.removeAttribute("alt");
             }
 
-            relativePost = document.getElementById("JS_rowForPost" + this.dataset.pid);
-
-            // posso usare .cells[i] perchè stiamo parlando di una riga
-            // di una tabella.
-            // cells è un array contenente tutte le colonne di quella riga
-            removeForm.input.value = this.dataset.pid;
-            removeForm.title.innerHTML = relativePost.cells[1].innerHTML;
-
-            removeForm.container.addClass("show");
+            element.container.removeClass("show");
         }
 
 
-        function closeRemoveForm(e) {
 
-            removeForm.container.removeClass("show");
-        }
-
-
-        // INSERIMENTO
-        // =====================================================================
-
-        var insertFormButton = document.getElementById("insertButton");
-        var insertForm = {
-            container: document.getElementById("JS_insertForm"),
-            closeButton: document.getElementById("JS_insertFormCloseButton")
-        };
-
-        insertFormButton.addEventListener("click", showInsertForm);
-        insertForm.closeButton.addEventListener("click", closeInsertForm);
-
-
-        function showInsertForm(e) {
-
-            insertForm.container.addClass("show");
-        }
-
-
-        function closeInsertForm(e) {
-
-            insertForm.container.removeClass("show");
-        }
-
-    });
+    };
 </script>
 
 

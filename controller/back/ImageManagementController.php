@@ -7,6 +7,8 @@
  */
 class ImageManagementController extends MaraneBaseController {
 
+    const ITEMS_FOR_PAGE = 15;
+
     public function error() {
         // mostra errore
     }
@@ -59,17 +61,17 @@ class ImageManagementController extends MaraneBaseController {
         // la sessione NON è scaduta e possiamo analizzare i dati
         // ricevuti in POST
 
-        if (MyUtils::exist($_POST["ii"])) {
+        if (isset($_POST["ii"])) {
 
             // se nella POST esiste il campo "ii", cioè "INSERT IMAGE"
             // => prendo i dati ed aggiungo l'immagine
             $this->storeImage();
-        } elseif (MyUtils::exist($_POST["ei"])) {
+        } elseif (isset($_POST["ei"])) {
 
             // se nella POST esiste il campo "ei", cioè "EDIT IMAGE"
             // => prendo i dati e modifico l'immagine
-            $this->editIMAGE();
-        } elseif (MyUtils::exist($_GET["ri"])) {
+            $this->editImage();
+        } elseif (isset($_POST["ri"])) {
 
             // se nella POST esiste il campo "ri", cioè "REMOVE IMAGE"
             // => rimuovo l'immagine
@@ -79,28 +81,49 @@ class ImageManagementController extends MaraneBaseController {
             // mi è arrivato qualcosa di strano
             // GESTIRE
         }
+
+
+        $this->goToImageManagement();
     }
 
     private function storeImage() {
 
+        $image = $this->getDataLayer()->createImage();
+        $image->setRealName(filter_input(INPUT_POST, "realName", FILTER_SANITIZE_STRING));
+        $image->setFakeName(filter_input(INPUT_POST, "fakeName", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $image->setDescription(filter_input(INPUT_POST, "description", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+        $this->getDataLayer()->storeImage($image);
     }
 
     private function editImage() {
 
+        $image = $this->getDataLayer()->getImage(filter_input(INPUT_POST, "pid", FILTER_SANITIZE_NUMBER_INT));
+
+        $image->setRealName(filter_input(INPUT_POST, "realName", FILTER_SANITIZE_STRING));
+        $image->setFakeName(filter_input(INPUT_POST, "fakeName", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $image->setDescription(filter_input(INPUT_POST, "description", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+        $this->getDataLayer()->storeImage($image);
     }
 
     private function removeImage() {
 
+        $this->getDataLayer()->removeImage($this->getDataLayer()->getImage(filter_input(INPUT_POST, "pid", FILTER_SANITIZE_NUMBER_INT)));
     }
 
     private function goToImageManagement() {
 
         // prendiamo tutti i prodotti nel DB
-        $this->getSmarty()->assign("images", $this->getDataLayer()->getImages());
+        $images = $this->getDataLayer()->getImages();
+        $this->getSmarty()->assign("images", $images);
+        $this->getSmarty()->assign("numberOfPages", sizeof($images) / self::ITEMS_FOR_PAGE);
+        $this->getSmarty()->assign("itemsForPage", self::ITEMS_FOR_PAGE);
         $this->getSmarty()->assign("sid", 2);
 
 
         $this->getSmarty()->assign("contentTemplate", "back/ImageManagement.tpl"); // diciamo quale template deve includere
+        $this->getSmarty()->assign("pagination", "back/Pagination.tpl");
         $this->getSmarty()->display("back/Outline.tpl"); // mostriamo il template
     }
 

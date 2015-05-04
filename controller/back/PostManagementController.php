@@ -7,6 +7,8 @@
  */
 class PostManagementController extends MaraneBaseController {
 
+    const ITEMS_FOR_PAGE = 15;
+
     public function error() {
         // mostra errore
     }
@@ -90,16 +92,25 @@ class PostManagementController extends MaraneBaseController {
         $post->setText(filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         $post->setAdmin($this->getDataLayer()->getAdmin($_SESSION["MAID"]));
 
+        $image = $this->getDataLayer()->createImage();
+        $image->setRealName(filter_input(INPUT_POST, "imageRealName", FILTER_SANITIZE_STRING));
+        $image->setFakeName(filter_input(INPUT_POST, "imageFakeName", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $image->setDescription(filter_input(INPUT_POST, "imageDescription", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+        $post->setImage($image);
+
         $this->getDataLayer()->storePost($post);
     }
 
     private function editPost() {
 
-
         $post = $this->getDataLayer()->getPost(filter_input(INPUT_POST, "pid", FILTER_SANITIZE_NUMBER_INT));
 
         $post->setTitle(filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING));
         $post->setText(filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $post->getImage()->setRealName(filter_input(INPUT_POST, "imageRealName", FILTER_SANITIZE_STRING));
+        $post->getImage()->setFakeName(filter_input(INPUT_POST, "imageFakeName", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $post->getImage()->setDescription(filter_input(INPUT_POST, "imageDescription", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
 
         $this->getDataLayer()->storePost($post);
     }
@@ -112,11 +123,15 @@ class PostManagementController extends MaraneBaseController {
     private function goToPostManagement() {
 
         // prendiamo tutti i prodotti nel DB
-        $this->getSmarty()->assign("posts", $this->getDataLayer()->getPosts());
+        $posts = $this->getDataLayer()->getPosts();
+        $this->getSmarty()->assign("posts", $posts);
+        $this->getSmarty()->assign("numberOfPages", sizeof($posts) / self::ITEMS_FOR_PAGE);
+        $this->getSmarty()->assign("itemsForPage", self::ITEMS_FOR_PAGE);
         $this->getSmarty()->assign("sid", 1);
 
 
         $this->getSmarty()->assign("contentTemplate", "back/PostManagement.tpl"); // diciamo quale template deve includere
+        $this->getSmarty()->assign("pagination", "back/Pagination.tpl");
         $this->getSmarty()->display("back/Outline.tpl"); // mostriamo il template
     }
 

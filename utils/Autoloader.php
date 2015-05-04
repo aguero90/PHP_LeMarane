@@ -8,7 +8,7 @@
 class Autoloader {
 
     public static function smartyAutoloader($class) {
-        $path = $_SERVER['DOCUMENT_ROOT'] . "/PHP_LeMarane/lib/smarty-3.1.17/libs/{$class}.class.php";
+        $path = $_SERVER['DOCUMENT_ROOT'] . "/PHP_LeMarane/lib/smarty/libs/{$class}.class.php";
         if (is_readable($path)) {
             require_once $path;
         }

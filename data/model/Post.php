@@ -38,8 +38,4 @@ interface Post {
     public function getImage();
 
     public function setImage(Image $image);
-
-    public function getImages();
-
-    public function setImages(array $images);
 }

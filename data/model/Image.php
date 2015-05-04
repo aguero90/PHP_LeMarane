@@ -25,14 +25,4 @@ interface Image {
     public function setDirty($isDirty);
 
     public function copyFrom(Image $image);
-
-
-
-    /* =========================================================================
-      RELAZIONI
-      ======================================================================== */
-
-    public function getPosts();
-
-    public function setPosts(array $posts);
 }

@@ -1,3 +1,6 @@
+html{
+    font-size: 100%;
+}
 
 body{
     font-family: "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -8,7 +11,7 @@ body{
 
 textarea{
     resize: vertical;
-    min-height: 10rem;
+    min-height: 5rem;
     max-height: 25rem;
 }
 
@@ -24,63 +27,6 @@ textarea{
     height: 100%;
 }
 
-
-h1.hooked{
-    font-size: 1.5rem;
-    color: #ffffff;
-    background-color: #770000;
-    padding: 1rem 0;
-    text-align: center;
-    margin: auto;
-    text-transform: capitalize;
-    position: relative;
-
-    &::after, &::before{
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        z-index: 10;
-    }
-
-    &::before{
-        top: -0.7rem;
-        border-top: 0.8rem dashed #770000;
-    }
-
-    &::after{
-        bottom: -1rem;
-        border-bottom: 1.1rem dashed #770000;
-    }
-}
-
-h1.flag{
-    font-size: 1.5rem;
-    text-transform: capitalize;
-    background-color: #007700;
-    color: #fff;
-    display: inline-block;
-    height: 2.2rem;
-    line-height: 2.2rem;
-    padding: 0 0.7rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-
-    &::after{
-        border-bottom: 1.1rem solid #007700;
-        border-right: 1.1rem solid transparent;
-        border-top: 1.1rem solid #007700;
-        border-left: 1.1rem solid #007700;
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: -2.1rem;
-    }
-}
-
 button, a{
     outline: none !important;
     text-decoration: none !important;
@@ -90,7 +36,7 @@ button, a{
 .handlebarsButton{
     background-color: #007700;
     border-radius: 3px;
-    color: #fff;
+    color: #ffffff;
     display: inline-block;
     float: right;
     font-size: 0.9rem;
@@ -115,9 +61,10 @@ button, a{
         @include transition(all .5s ease);
     }
 
-    &:hover{
+    &:hover, &:focus{
         text-decoration: none;
         background-color: #005500;
+        color: #ffffff;
 
         &::before{
             left: -0.2rem;
@@ -141,8 +88,6 @@ button, a{
 button.handlebarsButton{
     border: none;
 }
-
-
 
 img{
     max-width: 100%;
@@ -180,6 +125,16 @@ img{
     background-color: #222222;
     background-image: none;
 
+    #brandIcon{
+
+        color: #cc6600;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 1rem;
+        margin-left: -15px;
+
+    }
+
     .nav.navbar-nav{
 
         li{
@@ -208,7 +163,6 @@ img{
 
 }
 
-
 #outlineFooter{
 
     background-color: #222222; // possibile variabile
@@ -232,8 +186,12 @@ img{
 
 }
 
-#logo{
-}
+
+
+
+// BACK-END
+// =============================================================================
+// =============================================================================
 
 #leftCol{
     height: 100%;
@@ -247,6 +205,11 @@ img{
             border-radius: 0;
 
             &:hover{
+                color: #770000;
+            }
+
+
+            &:focus{
                 color: #770000;
             }
         }
@@ -293,6 +256,30 @@ img{
     min-width: 400px;
     padding: 1rem;
 
+    #profileImage{
+
+        margin: -1rem -1rem 2rem -1rem;
+        padding: 2rem 0;
+        text-align: center;
+
+        background: rgb(216,224,222); /* Old browsers */
+        background: -moz-linear-gradient(45deg,  rgba(216,224,222,1) 0%, rgba(174,191,188,1) 10%, rgba(153,175,171,1) 22%, rgba(142,166,162,1) 35%, rgba(130,157,152,1) 51%, rgba(78,92,90,1) 82%, rgba(14,14,14,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(216,224,222,1)), color-stop(10%,rgba(174,191,188,1)), color-stop(22%,rgba(153,175,171,1)), color-stop(35%,rgba(142,166,162,1)), color-stop(51%,rgba(130,157,152,1)), color-stop(82%,rgba(78,92,90,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(45deg,  rgba(216,224,222,1) 0%,rgba(174,191,188,1) 10%,rgba(153,175,171,1) 22%,rgba(142,166,162,1) 35%,rgba(130,157,152,1) 51%,rgba(78,92,90,1) 82%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(45deg,  rgba(216,224,222,1) 0%,rgba(174,191,188,1) 10%,rgba(153,175,171,1) 22%,rgba(142,166,162,1) 35%,rgba(130,157,152,1) 51%,rgba(78,92,90,1) 82%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(45deg,  rgba(216,224,222,1) 0%,rgba(174,191,188,1) 10%,rgba(153,175,171,1) 22%,rgba(142,166,162,1) 35%,rgba(130,157,152,1) 51%,rgba(78,92,90,1) 82%,rgba(14,14,14,1) 100%); /* IE10+ */
+        background: linear-gradient(45deg,  rgba(216,224,222,1) 0%,rgba(174,191,188,1) 10%,rgba(153,175,171,1) 22%,rgba(142,166,162,1) 35%,rgba(130,157,152,1) 51%,rgba(78,92,90,1) 82%,rgba(14,14,14,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8e0de', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+        img{
+            height: 5rem;
+            width: 5rem;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
 
     button{
         height: 2.5rem;
@@ -304,167 +291,74 @@ img{
 #outlineBodyBack{
     height: 100%;
     overflow-y: scroll;
-}
+    overflow-x: hidden;
 
+    #myCarousel{
 
-.newsManagement{
-    width: 90%;
-    margin: 4rem auto auto;
+        #carouselSlider{
 
-    th, td{
-        text-align: center;
-    }
+            .page{
 
-    tr.insertNewsRow{
+                table{
+                    width: 90%;
+                    margin: 3rem auto 0;
 
-        td{
+                    tr.insertRow{
+                        td{
+                            &:first-of-type{
+                                background-color: #222222;
+                                color: #ffffff;
+                            }
 
+                            &:last-of-type{
+                                background-color: #008800;
 
-            &:first-of-type{
-                background-color: #222222 !important;
-                color: #ffffff;
-            }
+                                a{
+                                    display: block;
 
-            &:last-of-type{
-                background-color: #008800 !important;
-            }
-        }
+                                    span.glyphicon{
+                                        color: #ffffff;
+                                    }
+                                }
+                            }
+                        }
+                    }
 
+                    th, td{
+                        text-align: center;
+                    }
 
+                    a{
+                        cursor: pointer;
 
+                        span.glyphicon{
+                            margin-left: 0.2rem;
+                            margin-right: 0.2rem;
 
-        a{
-            display: block;
+                        }
 
-            span.glyphicon{
-                color: #ffffff;
-            }
-        }
+                        &.previewButton{
+                            span.glyphicon{
+                                color: #555555;
+                            }
+                        }
 
+                        &.editButton{
+                            span.glyphicon{
+                                color: #006699;
+                            }
+                        }
 
-    }
+                        &.removeButton{
+                            span.glyphicon{
+                                color: #aa0000;
+                            }
+                        }
+                    }
 
-
-
-    a{
-        cursor: pointer;
-
-        span.glyphicon{
-            margin-left: 0.2rem;
-            margin-right: 0.2rem;
-
-        }
-
-        &:nth-of-type(1){
-            span.glyphicon{
-                color: #555555;
-            }
-        }
-
-        &:nth-of-type(2){
-            span.glyphicon{
-                color: #006699;
-            }
-        }
-
-        &:nth-of-type(3){
-            span.glyphicon{
-                color: #aa0000;
-            }
-        }
-    }
-}
-
-.postPreview{
-    background-color: #eeeeee;
-}
-
-.postPreview, .editFormContainer, .insertFormContainer, .removeFormContainer, .imagePreview{
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 0;
-    @include transform(scale(0, 0));
-    @include transition(all .7s ease);
-
-    .closeTooltip{
-        position: absolute;
-        top: 1rem;
-        right: 2rem;
-        z-index: 10;
-        color: #ffffff;
-        cursor: pointer;
-    }
-
-    &.show{
-        @include transform(scale(1, 1));
-        opacity: 1;
-    }
-}
-
-.editFormContainer, .insertFormContainer, .removeFormContainer{
-    top: 2rem;
-    bottom: auto;
-    width: 90%;
-    margin: auto;
-    max-width: 45rem;
-    padding: 3rem 2rem 1rem 2rem;
-    background-color: #ffffff;
-    border-radius: 3px;
-    box-shadow: 0 0 3px #c0c0c0;
-
-    label{
-        padding: 0.3rem 1rem 0 0 !important;
-    }
-
-    .closeTooltip{
-        top: 0.5rem;
-        right: 1rem;
-        color: #222222;
-    }
-}
-
-
-.removeFormContainer{
-    top: 5rem;
-    width: 60%;
-    max-width: 30rem;
-
-
-    form{
-        span{
-            display: block;
-            font-size: 1.5rem;
-            color: #770000;
-            margin-bottom: 1rem;
-        }
-
-        p{
-            margin-bottom: 1rem;
-        }
-
-        button{
-            background-color: #990000;
-
-            &:hover{
-                background-color: #770000;
+                }
             }
         }
     }
 }
 
-
-.imagePreview{
-
-    .closeTooltip{
-        background-color: #ffffff;
-        height: 2rem;
-        width: 2rem;
-        text-align: center;
-        line-height: 2rem;
-        border-radius: 100rem;
-        color: #222222;
-    }
-}

@@ -42,16 +42,16 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
             $this->sPostByID = $this->connection->prepare("SELECT * FROM e_post WHERE ID=?");
             $this->sPostByComment = $this->connection->prepare("SELECT postID FROM e_comment WHERE ID=?");
             $this->sPostsByAdmin = $this->connection->prepare("SELECT ID FROM e_post WHERE adminID=?");
-            $this->sPostsByImage = $this->connection->prepare("SELECT postID FROM r_post_image WHERE imageID=?");
+            // $this->sPostsByImage = $this->connection->prepare("SELECT postID FROM r_post_image WHERE imageID=?");
             $this->sPosts = $this->connection->prepare("SELECT ID FROM e_post");
-            $this->iPost = $this->connection->prepare("INSERT INTO e_post (title, text, date, adminID) VALUES (?, ?, ?, ?)");
-            $this->uPost = $this->connection->prepare("UPDATE e_post SET title=?, text=?, date=?, adminID=? WHERE ID=?");
+            $this->iPost = $this->connection->prepare("INSERT INTO e_post (title, text, date, adminID, imageID) VALUES (?, ?, ?, ?, ?)");
+            $this->uPost = $this->connection->prepare("UPDATE e_post SET title=?, text=?, date=?, adminID=?, imageID=? WHERE ID=?");
             $this->dPost = $this->connection->prepare("DELETE FROM e_post WHERE ID=?");
 
             // Image
             $this->sImageByID = $this->connection->prepare("SELECT * FROM e_image WHERE ID=?");
             $this->sImageByPost = $this->connection->prepare("SELECT imageID FROM e_post WHERE ID=?");
-            $this->sImagesByPost = $this->connection->prepare("SELECT imageID FROM r_post_image WHERE postID=?");
+            // this->sImagesByPost = $this->connection->prepare("SELECT imageID FROM r_post_image WHERE postID=?");
             $this->sImages = $this->connection->prepare("SELECT ID FROM e_image");
             $this->iImage = $this->connection->prepare("INSERT INTO e_image (realName, fakeName, description) VALUES (?, ?, ?)");
             $this->uImage = $this->connection->prepare("UPDATE e_image SET realName=?, fakeName=?, description=? WHERE ID=?");
@@ -95,7 +95,7 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
 
         if (!MyUtils::isEmpty($arg2)) {
             return $this->selectAdminByUsernameAndPassword($arg1, $arg2);
-        } elseif (is_int($arg1)) {
+        } elseif (is_numeric($arg1)) {
             return $this->selectAdminByID($arg1);
         } else {
             return $this->selectAdminByPost($arg1);
@@ -198,7 +198,7 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
      */
     public function getImage($arg) {
 
-        if (is_int($arg)) {
+        if (is_numeric($arg)) {
             return $this->selectImageByID($arg);
         } else {
             return $this->selectImageByPost($arg);
@@ -470,14 +470,10 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
             $this->iImage->bindValue(3, $image->getDescription());
             $this->iImage->execute();
 
-            $ID = (int) $this->connection->lastInsertId();
+            // NON SALVO LA RELAZIONE POICHÈ SOLO IL POST
+            // PUO' CONTENERE DELLE IMMAGINI, NON VICEVERSA
 
-            // save relationship
-            foreach ($image->getPosts() as $post) {
-                $this->insertPostImage($post->getID(), $ID);
-            }
-
-            $image->copyFrom($this->getImage($ID));
+            $image->copyFrom($this->getImage($this->connection->lastInsertId()));
             $image->setDirty(false);
         } catch (PDOException $ex) {
             echo "PDOEXCEPTION ===========================";
@@ -498,19 +494,8 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
             $this->uImage->bindValue(4, $image->getID());
             $this->uImage->execute();
 
-            // save relationship
-            $memoryPosts = $image->getPosts();
-            $DBPosts = $this->getPosts($image);
-            // inseriamo la relazione $post $product per tutti quei prodotti
-            // che sono in memoria ma non nel DB
-            foreach (array_diff($memoryPosts, $DBPosts) as $post) {
-                $this->insertPostImage($post->getID(), $image->getID());
-            }
-            // eliminiamo la relazione $post $product per tutti quei prodotti
-            // che sono nel DB ma non in memoria
-            foreach (array_diff($DBPosts, $memoryPosts) as $post) {
-                $this->deletePostImage($post->getID(), $image->getID());
-            }
+            // NON SALVO LA RELAZIONE POICHÈ SOLO IL POST
+            // PUO' CONTENERE DELLE IMMAGINI, NON VICEVERSA
 
             $image->copyFrom($this->getImage($image->getID()));
             $image->setDirty(false);
@@ -529,7 +514,7 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
                 // update
                 return $post->isDirty() ? $this->updatePost($post) : $post;
             } else {
-                // $comment
+                // insert
                 return $this->insertPost($post);
             }
         } catch (PDOException $ex) {
@@ -538,23 +523,42 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
         }
     }
 
-    // iPost = INSERT INTO e_post (title, text, date, adminID) VALUES (?, ?, ?, ?)
+    // iPost = INSERT INTO e_post (title, text, date, adminID, imageID) VALUES (?, ?, ?, ?, ?)
     private function insertPost(Post $post) {
 
         try {
 
             $this->iPost->bindValue(1, $post->getTitle());
             $this->iPost->bindValue(2, $post->getText());
-            $this->iPost->bindValue(3, (new MyDate())->toStringForDB());
+            $now = new MyDate();
+            $this->iPost->bindValue(3, $now->toStringForDB());
             $this->iPost->bindValue(4, $post->getAdmin()->getID());
-            $this->iPost->execute();
+            if ($post->getImage()->getID() === 0) {
+                // l'immagine non è sul DB => la salvo
+                $this->storeImage($post->getImage());
+            }
+            $this->iPost->bindValue(5, $post->getImage()->getID());
+            if (!$this->iPost->execute()) {
+                var_dump("Non ho inserito il post :(");
+                var_dump($post);
+                die();
+            }
 
             $ID = (int) $this->connection->lastInsertId();
 
             // save relationship
-            foreach ($post->getImages() as $image) {
-                $this->insertPostImage($ID, $image->getID());
-            }
+            //
+            //AL MOMENTO SUPPONIAMO CHE CI SIA UNA SOLA IMMAGINE PER POST
+            //
+//            foreach ($post->getImages() as $image) {
+//
+//                if ($image->getID() === 0) {
+//                    // l'immagine non è sul DB => la inserisco
+//                    $this->storeImage($image);
+//                }
+//
+//                $this->insertPostImage($ID, $image->getID());
+//            }
 
             $post->copyFrom($this->getPost($ID));
             $post->setDirty(false);
@@ -566,7 +570,7 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
         return $post;
     }
 
-    // uPost = UPDATE e_post SET title=?, text=?, date=?, adminID=? WHERE ID=?
+    // uPost = UPDATE e_post SET title=?, text=?, date=?, adminID=?, imageID=? WHERE ID=?
     private function updatePost(Post $post) {
 
         try {
@@ -575,22 +579,30 @@ class MaraneDataLayerMySQL extends DataLayerMySQL implements MaraneDataLayer {
             $this->uPost->bindValue(2, $post->getText());
             $this->uPost->bindValue(3, $post->getDate()->toStringForDB());
             $this->uPost->bindValue(4, $post->getAdmin()->getID());
-            $this->uPost->bindValue(5, $post->getID());
+            if ($post->getImage()->isDirty()) {
+                // l'immagine è stata modificata => la aggiorno
+                $this->storeImage($post->getImage());
+            }
+            $this->uPost->bindValue(5, $post->getImage()->getID());
+            $this->uPost->bindValue(6, $post->getID());
             $this->uPost->execute();
 
             // save relationship
-            $memoryImages = $post->getImages();
-            $DBImages = $this->getImages($post);
-            // inseriamo la relazione $post $product per tutti quei prodotti
-            // che sono in memoria ma non nel DB
-            foreach (array_diff($memoryImages, $DBImages) as $image) {
-                $this->insertPostImage($post->getID(), $image->getID());
-            }
-            // eliminiamo la relazione $post $product per tutti quei prodotti
-            // che sono nel DB ma non in memoria
-            foreach (array_diff($DBImages, $memoryImages) as $image) {
-                $this->deletePostImage($post->getID(), $image->getID());
-            }
+            //
+            //AL MOMENTO SUPPONIAMO CHE CI SIA UNA SOLA IMMAGINE PER POST
+            //
+//            $memoryImages = $post->getImages();
+//            $DBImages = $this->getImages($post);
+//            // inseriamo la relazione $post $product per tutti quei prodotti
+//            // che sono in memoria ma non nel DB
+//            foreach (array_diff($memoryImages, $DBImages) as $image) {
+//                $this->insertPostImage($post->getID(), $image->getID());
+//            }
+//            // eliminiamo la relazione $post $product per tutti quei prodotti
+//            // che sono nel DB ma non in memoria
+//            foreach (array_diff($DBImages, $memoryImages) as $image) {
+//                $this->deletePostImage($post->getID(), $image->getID());
+//            }
 
             $post->copyFrom($this->getPost($post->getID()));
             $post->setDirty(false);

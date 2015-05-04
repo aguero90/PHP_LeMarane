@@ -1,0 +1,20 @@
+
+// CSS
+// =============================================================================
+// =============================================================================
+
+La tecnica per allineare orizzontalmente tramite "display: inline-bloc;" e
+"white-space: nowrap" crea degl spazi bianchi a causa dei new line (/n)
+presenti nel documento HTML.
+Quindi per risolvere questo problema basta comprimere il file HTML facendo in
+modo che non contenga degli spazi bianchi xD
+
+
+
+
+
+
+
+
+
+

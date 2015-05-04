@@ -10,8 +10,8 @@
 
         <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" type="text/css" href="view/lib/animate/animate.css"/>
-        <link rel="stylesheet" type="text/css" href="view/lib/myFormFramework/main.min.css"/>
+        <link rel="stylesheet" type="text/css" href="view/lib/summernote/summernote.css"/>
+        <link rel="stylesheet" type="text/css" href="view/lib/fontAwsome/css/font-awesome.css"/>
         <link rel="stylesheet" type="text/css" href="view/css/front.css"/>
     </head>
     <body>
@@ -28,7 +28,8 @@
                     <ul class="nav nav-pills nav-stacked">
                         <li {if isset($sid) && $sid==1} class="active" {/if}><a href="?sid=1">News</a></li>
                         <li {if isset($sid) && $sid==2} class="active" {/if}><a href="?sid=2">Immagini</a></li>
-                        <li><a href="Index.php">Sito</a></li>
+                        <li {if isset($sid) && $sid==3} class="active" {/if}><a href="?sid=3">Amministratori</a></li>
+                        <li><a href="index.php">Sito</a></li>
                     </ul>
                 </div>
 
@@ -49,6 +50,8 @@
         ==================================================================== -->
         <script type="text/javascript" src="view/lib/jQuery/jquery-1.11.2.min.js"></script>
         <script type="text/javascript" src="view/lib/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="view/lib/myFormFramework/myFormFramework.min.js"></script>
+        <script type="text/javascript" src="view/lib/summernote/summernote.js"></script>
+        <script type="text/javascript" src="view/lib/summernote/summernote-it-IT.js"></script>
+        <script type="text/javascript" src="view/js/MyCarousel.js"></script>
     </body>
 </html>

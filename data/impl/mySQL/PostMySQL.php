@@ -17,7 +17,6 @@ class PostMySQL implements Post {
     private $admin;
     private $imageID;
     private $image;
-    private $images;
 
     public function __construct(MaraneDataLayer $dataLayer, array $resultSet = null) {
 
@@ -38,7 +37,6 @@ class PostMySQL implements Post {
         $this->admin = null;
         $this->imageID = 0;
         $this->image = null;
-        $this->images = null;
     }
 
     private function constructorDataAndResult(MaraneDataLayer $dataLayer, array $resultSet) {
@@ -111,14 +109,7 @@ class PostMySQL implements Post {
         if ($this->imageID > 0 && MyUtils::isEmpty($this->image)) {
             $this->image = $this->dataLayer->getImage($this->imageID);
         }
-        return $this->admin;
-    }
-
-    public function getImages() {
-        if (MyUtils::isEmpty($this->images)) {
-            $this->images = $this->dataLayer->getImages($this);
-        }
-        return $this->images;
+        return $this->image;
     }
 
     public function setAdmin(Admin $admin) {
@@ -131,12 +122,6 @@ class PostMySQL implements Post {
     public function setImage(Image $image) {
         $this->imageID = $image->getID();
         $this->image = $image;
-        $this->dirty = true;
-        return $this;
-    }
-
-    public function setImages(array $images) {
-        $this->images = $images;
         $this->dirty = true;
         return $this;
     }
@@ -162,9 +147,6 @@ class PostMySQL implements Post {
         }
         unset($this->image);
         $this->image = null;
-
-        unset($this->images);
-        $this->images = null;
 
         $this->dirty = true;
 

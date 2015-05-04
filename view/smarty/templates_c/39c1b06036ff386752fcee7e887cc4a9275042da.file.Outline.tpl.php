@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-04-28 21:58:34
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-04 15:58:09
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\Outline.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:30382553fe66a66abf8-41715443%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1609155477af1334443-70560777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '39c1b06036ff386752fcee7e887cc4a9275042da' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\back\\Outline.tpl',
-      1 => 1430120777,
+      1 => 1430738665,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '30382553fe66a66abf8-41715443',
+  'nocache_hash' => '1609155477af1334443-70560777',
   'function' => 
   array (
   ),
@@ -23,9 +23,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_553fe66a89d3f6_43932546',
+  'unifunc' => 'content_55477af160adf0_12200842',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553fe66a89d3f6_43932546')) {function content_553fe66a89d3f6_43932546($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_55477af160adf0_12200842')) {function content_55477af160adf0_12200842($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <!-- NOTA: bootstrap include già normalize.css quindi non c'è bisogno del reset -->
     <head>
@@ -38,8 +38,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" type="text/css" href="view/lib/animate/animate.css"/>
-        <link rel="stylesheet" type="text/css" href="view/lib/myFormFramework/main.min.css"/>
+        <link rel="stylesheet" type="text/css" href="view/lib/summernote/summernote.css"/>
+        <link rel="stylesheet" type="text/css" href="view/lib/fontAwsome/css/font-awesome.css"/>
         <link rel="stylesheet" type="text/css" href="view/css/front.css"/>
     </head>
     <body>
@@ -56,7 +56,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <ul class="nav nav-pills nav-stacked">
                         <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==1) {?> class="active" <?php }?>><a href="?sid=1">News</a></li>
                         <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==2) {?> class="active" <?php }?>><a href="?sid=2">Immagini</a></li>
-                        <li><a href="Index.php">Sito</a></li>
+                        <li <?php if (isset($_smarty_tpl->tpl_vars['sid']->value)&&$_smarty_tpl->tpl_vars['sid']->value==3) {?> class="active" <?php }?>><a href="?sid=3">Amministratori</a></li>
+                        <li><a href="index.php">Sito</a></li>
                     </ul>
                 </div>
 
@@ -78,6 +79,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         ==================================================================== -->
         <script type="text/javascript" src="view/lib/jQuery/jquery-1.11.2.min.js"></script>
         <script type="text/javascript" src="view/lib/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="view/lib/myFormFramework/myFormFramework.min.js"></script>
+        <script type="text/javascript" src="view/lib/summernote/summernote.js"></script>
+        <script type="text/javascript" src="view/lib/summernote/summernote-it-IT.js"></script>
+        <script type="text/javascript" src="view/js/MyCarousel.js"></script>
     </body>
 </html><?php }} ?>

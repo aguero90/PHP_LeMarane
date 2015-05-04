@@ -1,0 +1,365 @@
+
+/* ColoredSpinner
+==============================================================================*/
+@-webkit-keyframes coloredSpinner {
+    0% {
+        filter: hue-rotate(0deg);
+        -webkit-filter: hue-rotate(0deg);
+        @include transform(rotate(0deg));
+    }
+
+    100% {
+        @include transform(rotate(1779deg));
+        filter: hue-rotate(-359deg);
+        -webkit-filter: hue-rotate(-359deg);
+    }
+}
+
+@keyframes coloredSpinner {
+    0% {
+        filter: hue-rotate(0deg);
+        -webkit-filter: hue-rotate(0deg);
+        @include transform(rotate(0deg));
+    }
+
+    100% {
+        @include transform(rotate(1779deg));
+        filter: hue-rotate(-359deg);
+        -webkit-filter: hue-rotate(-359deg);
+    }
+}
+
+
+/* blur
+==============================================================================*/
+@-webkit-keyframes blur {
+    0% {
+        filter: blur(10px);
+        -webkit-filter: blur(10px);
+    }
+
+    100% {
+        filter: blur(0);
+        -webkit-filter: blur(0);
+    }
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(10px);
+        -webkit-filter: blur(10px);
+    }
+
+    100% {
+        filter: blur(0);
+        -webkit-filter: blur(0);
+    }
+}
+
+/* grayScale
+==============================================================================*/
+@-webkit-keyframes grayScale {
+    0% {
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+    }
+
+    100% {
+        filter: grayscale(0%);
+        -webkit-filter: grayscale(0%);
+    }
+}
+
+@keyframes grayScale {
+    0% {
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+    }
+
+    100% {
+        filter: grayscale(0%);
+        -webkit-filter: grayscale(0%);
+    }
+}
+
+/* sepia
+==============================================================================*/
+@-webkit-keyframes sepia {
+    0% {
+        filter: sepia(100%);
+        -webkit-filter: sepia(100%);
+    }
+
+    100% {
+        filter: sepia(0%);
+        -webkit-filter: sepia(0%);
+    }
+}
+
+@keyframes sepia {
+    0% {
+        filter: sepia(100%);
+        -webkit-filter: sepia(100%);
+    }
+
+    100% {
+        filter: sepia(0%);
+        -webkit-filter: sepia(0%);
+    }
+}
+
+/* brightness
+==============================================================================*/
+@-webkit-keyframes brightness {
+    0% {
+        filter: brightness(200%);
+        -webkit-filter: brightness(200%);
+    }
+
+    100% {
+        filter: brightness(100%);
+        -webkit-filter: brightness(100%);
+    }
+}
+
+@keyframes brightness {
+    0% {
+        filter: brightness(200%);
+        -webkit-filter: brightness(200%);
+    }
+
+    100% {
+        filter: brightness(100%);
+        -webkit-filter: brightness(100%);
+    }
+}
+
+/* brightnessReverse
+==============================================================================*/
+@-webkit-keyframes brightnessReverse {
+    0% {
+        filter: brightness(0%);
+        -webkit-filter: brightness(0%);
+    }
+
+    100% {
+        filter: brightness(100%);
+        -webkit-filter: brightness(100%);
+    }
+}
+
+@keyframes brightnessReverse {
+    0% {
+        filter: brightness(0%);
+        -webkit-filter: brightness(0%);
+    }
+
+    100% {
+        filter: brightness(100%);
+        -webkit-filter: brightness(100%);
+    }
+}
+
+
+#mySliderWrap{
+    position: relative;
+    width: 100%;
+    height: 20rem;
+    overflow: hidden;
+
+    #waitingSpinner{
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        .coloredSpinner{
+            @include animation(coloredSpinner 5s linear 0s infinite);
+        }
+
+        span{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: #aa0000;
+
+        }
+    }
+
+    .page{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        @include transition(opacity 1s ease);
+
+        &.animated{
+            @include transition(opacity 1s ease);
+            opacity: 1;
+
+            &.blur{
+                @include animation(blur 1.4s ease);
+            }
+
+            &.grayScale{
+                @include animation(grayScale 1.4s ease);
+            }
+
+            &.sepia{
+                @include animation(sepia 1.4s ease);
+            }
+
+            &.brightness{
+                @include animation(brightness 1.4s ease);
+            }
+
+            &.brightnessReverse{
+                @include animation(brightnessReverse 1.4s ease);
+            }
+        }
+
+
+        img{
+            width: 100%;
+            height: 20rem;
+            object-fit: cover;
+        }
+
+        .description{
+            position: absolute;
+            top: 5%;
+            right: 2%;
+            background-color: #222222;
+            border-radius: 3px;
+            padding: 0.5rem 1rem;
+
+            p{
+                display: inline;
+                color: #eeeeee;
+                font-size: 1.3rem;
+                text-align: center;
+            }
+        }
+    }
+
+
+    #previousImage, #nextImage{
+        position: absolute;
+        top: 50%;
+        @include transform(translate3d(0, -50%, 0));
+        background-color: #333333;
+        padding: 0.5rem;
+        z-index: 10;
+        cursor: pointer;
+        @include transition(all 1s ease);
+
+        span{
+            color: #eeeeee;
+        }
+
+        &:hover{
+            background-color: #000000;
+        }
+
+    }
+
+    #previousImage{
+        left: 0;
+        border-radius: 0 3px 3px 0;
+        padding-right: 1rem;
+    }
+
+    #nextImage{
+        right: 0;
+        border-radius: 3px 0 0 3px;
+        padding-left: 1rem;
+        padding-right: 0.7rem;
+    }
+
+
+    #navigation{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 0.3rem;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+
+        #progressBar{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 0.2rem;
+            background-color: #aa0000;
+            @include transform(translate3d(0, -100%, 0));
+
+            &.start{
+                @include transition(all 15s linear);
+                width: 100%;
+            }
+
+        }
+
+
+        .navigationItem{
+            vertical-align: middle;
+            position: relative;
+            width: 0.8rem;
+            height: 0.8rem;
+            margin: 0 0.2rem;
+            background-color: #eeeeee;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+
+            .thumbnail{
+                position: absolute;
+                top: 0;
+                left: 50%;
+                @include transform(translate3d(-50%, -110%, 0));
+                height: 5rem;
+                width: 5rem;
+                border-radius: 50%;
+                padding: 0.2rem;
+                opacity: 0;
+                box-shadow: 0 0 3px #222222;
+                filter: blur(10px); -webkit-filter: blur(10px);
+                @include transition(all .5s ease);
+                z-index: -1;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                &::after{
+                    content: "";
+                    border-top: 0.5rem solid #ffffff;
+                    border-left: 0.5rem solid transparent;
+                    border-right: 0.5rem solid transparent;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    @include transform(translate3d(-50%, 90%, 0));
+                }
+            }
+
+            &:hover{
+
+                .thumbnail{
+                    @include transform(translate3d(-50%, -120%, 0));
+                    opacity: 1;
+                    filter: blur(0); -webkit-filter: blur(0);
+                    z-index: 10;
+                }
+            }
+        }
+
+    }
+
+
+}

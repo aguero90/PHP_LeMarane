@@ -10,8 +10,6 @@
 
         <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="view/lib/bootstrap/css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" type="text/css" href="view/lib/animate/animate.css"/>
-        <link rel="stylesheet" type="text/css" href="view/lib/myFormFramework/main.min.css"/>
         <link rel="stylesheet" type="text/css" href="view/css/front.css"/>
     </head>
     <body>
@@ -20,7 +18,11 @@
         ==================================================================== -->
         <div id="outlineBody">
 
-            <form class="form-horizontal" id="login" action="Admin.php" method="POST">
+            <form class="form-horizontal" id="login" action="admin.php" method="POST">
+
+                <div id="profileImage">
+                    <img src="http://www.golenbock.com/wp-content/uploads/2015/01/placeholder-user.png" alt="profilo"></img>
+                </div>
 
                 <input type="hidden" name="sid" value="0" />
 
@@ -51,6 +53,5 @@
         ==================================================================== -->
         <script type="text/javascript" src="view/lib/jQuery/jquery-1.11.2.min.js"></script>
         <script type="text/javascript" src="view/lib/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="view/lib/myFormFramework/myFormFramework.min.js"></script>
     </body>
 </html>

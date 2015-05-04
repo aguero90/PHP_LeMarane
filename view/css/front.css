@@ -12,6 +12,9 @@
 /* MIXINS
 ===============================================================================================
 =============================================================================================== */
+html {
+  font-size: 100%; }
+
 body {
   font-family: "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -21,7 +24,7 @@ body {
 
 textarea {
   resize: vertical;
-  min-height: 10rem;
+  min-height: 5rem;
   max-height: 25rem; }
 
 .fillTheContainer {
@@ -34,52 +37,6 @@ textarea {
 .fullHeight {
   height: 100%; }
 
-h1.hooked {
-  font-size: 1.5rem;
-  color: #ffffff;
-  background-color: #770000;
-  padding: 1rem 0;
-  text-align: center;
-  margin: auto;
-  text-transform: capitalize;
-  position: relative; }
-  h1.hooked::after, h1.hooked::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 10; }
-  h1.hooked::before {
-    top: -0.7rem;
-    border-top: 0.8rem dashed #770000; }
-  h1.hooked::after {
-    bottom: -1rem;
-    border-bottom: 1.1rem dashed #770000; }
-
-h1.flag {
-  font-size: 1.5rem;
-  text-transform: capitalize;
-  background-color: #007700;
-  color: #fff;
-  display: inline-block;
-  height: 2.2rem;
-  line-height: 2.2rem;
-  padding: 0 0.7rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10; }
-  h1.flag::after {
-    border-bottom: 1.1rem solid #007700;
-    border-right: 1.1rem solid transparent;
-    border-top: 1.1rem solid #007700;
-    border-left: 1.1rem solid #007700;
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -2.1rem; }
-
 button, a {
   outline: none !important;
   text-decoration: none !important; }
@@ -87,7 +44,7 @@ button, a {
 .handlebarsButton {
   background-color: #007700;
   border-radius: 3px;
-  color: #fff;
+  color: #ffffff;
   display: inline-block;
   float: right;
   font-size: 0.9rem;
@@ -113,13 +70,14 @@ button, a {
     transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease; }
-  .handlebarsButton:hover {
+  .handlebarsButton:hover, .handlebarsButton:focus {
     text-decoration: none;
-    background-color: #005500; }
-    .handlebarsButton:hover::before {
+    background-color: #005500;
+    color: #ffffff; }
+    .handlebarsButton:hover::before, .handlebarsButton:focus::before {
       left: -0.2rem;
       opacity: 1; }
-    .handlebarsButton:hover::after {
+    .handlebarsButton:hover::after, .handlebarsButton:focus::after {
       right: -0.2rem;
       opacity: 1; }
   .handlebarsButton:active {
@@ -158,6 +116,12 @@ img {
 #outlineMenu {
   background-color: #222222;
   background-image: none; }
+  #outlineMenu #brandIcon {
+    color: #cc6600;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 1rem;
+    margin-left: -15px; }
   #outlineMenu .nav.navbar-nav li span {
     margin-right: 0.5rem; }
   #outlineMenu .nav.navbar-nav li.active:nth-of-type(1) span {
@@ -189,6 +153,8 @@ img {
       border-radius: 0; }
       #leftCol li a:hover {
         color: #770000; }
+      #leftCol li a:focus {
+        color: #770000; }
     #leftCol li.active a {
       background-color: #770000;
       position: relative; }
@@ -214,110 +180,436 @@ img {
   max-width: 700px;
   min-width: 400px;
   padding: 1rem; }
+  #login #profileImage {
+    margin: -1rem -1rem 2rem -1rem;
+    padding: 2rem 0;
+    text-align: center;
+    background: #d8e0de;
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, #d8e0de 0%, #aebfbc 10%, #99afab 22%, #8ea6a2 35%, #829d98 51%, #4e5c5a 82%, #0e0e0e 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #d8e0de), color-stop(10%, #aebfbc), color-stop(22%, #99afab), color-stop(35%, #8ea6a2), color-stop(51%, #829d98), color-stop(82%, #4e5c5a), color-stop(100%, #0e0e0e));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg, #d8e0de 0%, #aebfbc 10%, #99afab 22%, #8ea6a2 35%, #829d98 51%, #4e5c5a 82%, #0e0e0e 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg, #d8e0de 0%, #aebfbc 10%, #99afab 22%, #8ea6a2 35%, #829d98 51%, #4e5c5a 82%, #0e0e0e 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg, #d8e0de 0%, #aebfbc 10%, #99afab 22%, #8ea6a2 35%, #829d98 51%, #4e5c5a 82%, #0e0e0e 100%);
+    /* IE10+ */
+    background: linear-gradient(45deg, #d8e0de 0%, #aebfbc 10%, #99afab 22%, #8ea6a2 35%, #829d98 51%, #4e5c5a 82%, #0e0e0e 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8e0de', endColorstr='#0e0e0e',GradientType=1 );
+    /* IE6-9 fallback on horizontal gradient */ }
+    #login #profileImage img {
+      height: 5rem;
+      width: 5rem;
+      object-fit: cover;
+      border-radius: 50%; }
   #login button {
     height: 2.5rem;
     width: 100%; }
 
 #outlineBodyBack {
   height: 100%;
-  overflow-y: scroll; }
-
-.newsManagement {
-  width: 90%;
-  margin: 4rem auto auto; }
-  .newsManagement th, .newsManagement td {
-    text-align: center; }
-  .newsManagement tr.insertNewsRow td:first-of-type {
-    background-color: #222222 !important;
-    color: #ffffff; }
-  .newsManagement tr.insertNewsRow td:last-of-type {
-    background-color: #008800 !important; }
-  .newsManagement tr.insertNewsRow a {
-    display: block; }
-    .newsManagement tr.insertNewsRow a span.glyphicon {
+  overflow-y: scroll;
+  overflow-x: hidden; }
+  #outlineBodyBack #myCarousel #carouselSlider .page table {
+    width: 90%;
+    margin: 3rem auto 0; }
+    #outlineBodyBack #myCarousel #carouselSlider .page table tr.insertRow td:first-of-type {
+      background-color: #222222;
       color: #ffffff; }
-  .newsManagement a {
-    cursor: pointer; }
-    .newsManagement a span.glyphicon {
-      margin-left: 0.2rem;
-      margin-right: 0.2rem; }
-    .newsManagement a:nth-of-type(1) span.glyphicon {
-      color: #555555; }
-    .newsManagement a:nth-of-type(2) span.glyphicon {
-      color: #006699; }
-    .newsManagement a:nth-of-type(3) span.glyphicon {
-      color: #aa0000; }
+    #outlineBodyBack #myCarousel #carouselSlider .page table tr.insertRow td:last-of-type {
+      background-color: #008800; }
+      #outlineBodyBack #myCarousel #carouselSlider .page table tr.insertRow td:last-of-type a {
+        display: block; }
+        #outlineBodyBack #myCarousel #carouselSlider .page table tr.insertRow td:last-of-type a span.glyphicon {
+          color: #ffffff; }
+    #outlineBodyBack #myCarousel #carouselSlider .page table th, #outlineBodyBack #myCarousel #carouselSlider .page table td {
+      text-align: center; }
+    #outlineBodyBack #myCarousel #carouselSlider .page table a {
+      cursor: pointer; }
+      #outlineBodyBack #myCarousel #carouselSlider .page table a span.glyphicon {
+        margin-left: 0.2rem;
+        margin-right: 0.2rem; }
+      #outlineBodyBack #myCarousel #carouselSlider .page table a.previewButton span.glyphicon {
+        color: #555555; }
+      #outlineBodyBack #myCarousel #carouselSlider .page table a.editButton span.glyphicon {
+        color: #006699; }
+      #outlineBodyBack #myCarousel #carouselSlider .page table a.removeButton span.glyphicon {
+        color: #aa0000; }
 
-.postPreview {
-  background-color: #eeeeee; }
+#myCarousel {
+  overflow-y: hidden;
+  overflow-x: hidden; }
+  #myCarousel #carouselSlider {
+    white-space: nowrap;
+    transform-origin: center center;
+    -ms-transform-origin: center center;
+    -moz-transform-origin: center center;
+    -webkit-transform-origin: center center;
+    transition: transform 0.7s ease;
+    -moz-transition: transform 0.7s ease;
+    -webkit-transition: transform 0.7s ease; }
+    #myCarousel #carouselSlider .page {
+      white-space: normal;
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%; }
+  #myCarousel #paginationContainer {
+    text-align: center; }
+    #myCarousel #paginationContainer ul.pagination li a {
+      background-color: #222222;
+      border: 1px solid #444444;
+      color: #ffffff;
+      transition: background-color 0.3s ease;
+      -moz-transition: background-color 0.3s ease;
+      -webkit-transition: background-color 0.3s ease; }
+      #myCarousel #paginationContainer ul.pagination li a:hover {
+        background-color: #444444; }
+    #myCarousel #paginationContainer ul.pagination li.active a {
+      background-color: #770000;
+      border-color: #770000; }
 
-.postPreview, .editFormContainer, .insertFormContainer, .removeFormContainer, .imagePreview {
+.myPopover {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   opacity: 0;
+  z-index: 10;
   transform: scale(0, 0);
   -moz-transform: scale(0, 0);
   -webkit-transform: scale(0, 0);
   transition: all 0.7s ease;
   -moz-transition: all 0.7s ease;
   -webkit-transition: all 0.7s ease; }
-  .postPreview .closeTooltip, .editFormContainer .closeTooltip, .insertFormContainer .closeTooltip, .removeFormContainer .closeTooltip, .imagePreview .closeTooltip {
+  .myPopover .closeTooltip {
     position: absolute;
     top: 1rem;
     right: 2rem;
     z-index: 10;
     color: #ffffff;
     cursor: pointer; }
-  .postPreview.show, .editFormContainer.show, .insertFormContainer.show, .removeFormContainer.show, .imagePreview.show {
+  .myPopover.show {
     transform: scale(1, 1);
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
     opacity: 1; }
+  .myPopover.postPreview {
+    background-color: #eeeeee; }
+  .myPopover.editFormContainer, .myPopover.insertFormContainer, .myPopover.removeFormContainer, .myPopover.imagePreview {
+    top: 2rem;
+    bottom: auto;
+    width: 90%;
+    margin: auto;
+    max-width: 45rem;
+    padding: 3rem 2rem 1rem 2rem;
+    background-color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #c0c0c0; }
+    .myPopover.editFormContainer label, .myPopover.insertFormContainer label, .myPopover.removeFormContainer label, .myPopover.imagePreview label {
+      padding: 0.3rem 1rem 0 0 !important; }
+    .myPopover.editFormContainer .closeTooltip, .myPopover.insertFormContainer .closeTooltip, .myPopover.removeFormContainer .closeTooltip, .myPopover.imagePreview .closeTooltip {
+      top: 0.5rem;
+      right: 1rem;
+      color: #222222; }
+  .myPopover.removeFormContainer {
+    top: 5rem;
+    width: 60%;
+    max-width: 30rem; }
+    .myPopover.removeFormContainer form span {
+      display: block;
+      font-size: 1.5rem;
+      color: #770000;
+      margin-bottom: 1rem; }
+    .myPopover.removeFormContainer form button {
+      background-color: #990000;
+      margin-top: 1rem; }
+      .myPopover.removeFormContainer form button:hover {
+        background-color: #770000; }
+  .myPopover.insertPost, .myPopover.editPost {
+    max-width: none; }
 
-.editFormContainer, .insertFormContainer, .removeFormContainer {
-  top: 2rem;
-  bottom: auto;
-  width: 90%;
-  margin: auto;
-  max-width: 45rem;
-  padding: 3rem 2rem 1rem 2rem;
-  background-color: #ffffff;
-  border-radius: 3px;
-  box-shadow: 0 0 3px #c0c0c0; }
-  .editFormContainer label, .insertFormContainer label, .removeFormContainer label {
-    padding: 0.3rem 1rem 0 0 !important; }
-  .editFormContainer .closeTooltip, .insertFormContainer .closeTooltip, .removeFormContainer .closeTooltip {
-    top: 0.5rem;
-    right: 1rem;
-    color: #222222; }
-
-.removeFormContainer {
-  top: 5rem;
-  width: 60%;
-  max-width: 30rem; }
-  .removeFormContainer form span {
-    display: block;
-    font-size: 1.5rem;
-    color: #770000;
-    margin-bottom: 1rem; }
-  .removeFormContainer form p {
-    margin-bottom: 1rem; }
-  .removeFormContainer form button {
-    background-color: #990000; }
-    .removeFormContainer form button:hover {
-      background-color: #770000; }
-
-.imagePreview .closeTooltip {
-  background-color: #ffffff;
-  height: 2rem;
-  width: 2rem;
-  text-align: center;
-  line-height: 2rem;
-  border-radius: 100rem;
-  color: #222222; }
+/* ColoredSpinner
+==============================================================================*/
+@-webkit-keyframes coloredSpinner {
+  0% {
+    filter: hue-rotate(0deg);
+    -webkit-filter: hue-rotate(0deg);
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); }
+  100% {
+    transform: rotate(1779deg);
+    -moz-transform: rotate(1779deg);
+    -webkit-transform: rotate(1779deg);
+    filter: hue-rotate(-359deg);
+    -webkit-filter: hue-rotate(-359deg); } }
+@keyframes coloredSpinner {
+  0% {
+    filter: hue-rotate(0deg);
+    -webkit-filter: hue-rotate(0deg);
+    transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); }
+  100% {
+    transform: rotate(1779deg);
+    -moz-transform: rotate(1779deg);
+    -webkit-transform: rotate(1779deg);
+    filter: hue-rotate(-359deg);
+    -webkit-filter: hue-rotate(-359deg); } }
+/* blur
+==============================================================================*/
+@-webkit-keyframes blur {
+  0% {
+    filter: blur(10px);
+    -webkit-filter: blur(10px); }
+  100% {
+    filter: blur(0);
+    -webkit-filter: blur(0); } }
+@keyframes blur {
+  0% {
+    filter: blur(10px);
+    -webkit-filter: blur(10px); }
+  100% {
+    filter: blur(0);
+    -webkit-filter: blur(0); } }
+/* grayScale
+==============================================================================*/
+@-webkit-keyframes grayScale {
+  0% {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%); }
+  100% {
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%); } }
+@keyframes grayScale {
+  0% {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%); }
+  100% {
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%); } }
+/* sepia
+==============================================================================*/
+@-webkit-keyframes sepia {
+  0% {
+    filter: sepia(100%);
+    -webkit-filter: sepia(100%); }
+  100% {
+    filter: sepia(0%);
+    -webkit-filter: sepia(0%); } }
+@keyframes sepia {
+  0% {
+    filter: sepia(100%);
+    -webkit-filter: sepia(100%); }
+  100% {
+    filter: sepia(0%);
+    -webkit-filter: sepia(0%); } }
+/* brightness
+==============================================================================*/
+@-webkit-keyframes brightness {
+  0% {
+    filter: brightness(200%);
+    -webkit-filter: brightness(200%); }
+  100% {
+    filter: brightness(100%);
+    -webkit-filter: brightness(100%); } }
+@keyframes brightness {
+  0% {
+    filter: brightness(200%);
+    -webkit-filter: brightness(200%); }
+  100% {
+    filter: brightness(100%);
+    -webkit-filter: brightness(100%); } }
+/* brightnessReverse
+==============================================================================*/
+@-webkit-keyframes brightnessReverse {
+  0% {
+    filter: brightness(0%);
+    -webkit-filter: brightness(0%); }
+  100% {
+    filter: brightness(100%);
+    -webkit-filter: brightness(100%); } }
+@keyframes brightnessReverse {
+  0% {
+    filter: brightness(0%);
+    -webkit-filter: brightness(0%); }
+  100% {
+    filter: brightness(100%);
+    -webkit-filter: brightness(100%); } }
+#mySliderWrap {
+  position: relative;
+  width: 100%;
+  height: 20rem;
+  overflow: hidden; }
+  #mySliderWrap #waitingSpinner {
+    position: relative;
+    width: 100%;
+    height: 100%; }
+    #mySliderWrap #waitingSpinner .coloredSpinner {
+      animation: coloredSpinner 5s linear 0s infinite;
+      -webkit-animation: coloredSpinner 5s linear 0s infinite;
+      -moz-animation: coloredSpinner 5s linear 0s infinite; }
+    #mySliderWrap #waitingSpinner span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: #aa0000; }
+  #mySliderWrap .page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -webkit-transition: opacity 1s ease; }
+    #mySliderWrap .page.animated {
+      transition: opacity 1s ease;
+      -moz-transition: opacity 1s ease;
+      -webkit-transition: opacity 1s ease;
+      opacity: 1; }
+      #mySliderWrap .page.animated.blur {
+        animation: blur 1.4s ease;
+        -webkit-animation: blur 1.4s ease;
+        -moz-animation: blur 1.4s ease; }
+      #mySliderWrap .page.animated.grayScale {
+        animation: grayScale 1.4s ease;
+        -webkit-animation: grayScale 1.4s ease;
+        -moz-animation: grayScale 1.4s ease; }
+      #mySliderWrap .page.animated.sepia {
+        animation: sepia 1.4s ease;
+        -webkit-animation: sepia 1.4s ease;
+        -moz-animation: sepia 1.4s ease; }
+      #mySliderWrap .page.animated.brightness {
+        animation: brightness 1.4s ease;
+        -webkit-animation: brightness 1.4s ease;
+        -moz-animation: brightness 1.4s ease; }
+      #mySliderWrap .page.animated.brightnessReverse {
+        animation: brightnessReverse 1.4s ease;
+        -webkit-animation: brightnessReverse 1.4s ease;
+        -moz-animation: brightnessReverse 1.4s ease; }
+    #mySliderWrap .page img {
+      width: 100%;
+      height: 20rem;
+      object-fit: cover; }
+    #mySliderWrap .page .description {
+      position: absolute;
+      top: 5%;
+      right: 2%;
+      background-color: #222222;
+      border-radius: 3px;
+      padding: 0.5rem 1rem; }
+      #mySliderWrap .page .description p {
+        display: inline;
+        color: #eeeeee;
+        font-size: 1.3rem;
+        text-align: center; }
+  #mySliderWrap #previousImage, #mySliderWrap #nextImage {
+    position: absolute;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    -moz-transform: translate3d(0, -50%, 0);
+    -webkit-transform: translate3d(0, -50%, 0);
+    background-color: #333333;
+    padding: 0.5rem;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -webkit-transition: all 1s ease; }
+    #mySliderWrap #previousImage span, #mySliderWrap #nextImage span {
+      color: #eeeeee; }
+    #mySliderWrap #previousImage:hover, #mySliderWrap #nextImage:hover {
+      background-color: #000000; }
+  #mySliderWrap #previousImage {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+    padding-right: 1rem; }
+  #mySliderWrap #nextImage {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    padding-left: 1rem;
+    padding-right: 0.7rem; }
+  #mySliderWrap #navigation {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0.3rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7); }
+    #mySliderWrap #navigation #progressBar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 0.2rem;
+      background-color: #aa0000;
+      transform: translate3d(0, -100%, 0);
+      -moz-transform: translate3d(0, -100%, 0);
+      -webkit-transform: translate3d(0, -100%, 0); }
+      #mySliderWrap #navigation #progressBar.start {
+        transition: all 15s linear;
+        -moz-transition: all 15s linear;
+        -webkit-transition: all 15s linear;
+        width: 100%; }
+    #mySliderWrap #navigation .navigationItem {
+      vertical-align: middle;
+      position: relative;
+      width: 0.8rem;
+      height: 0.8rem;
+      margin: 0 0.2rem;
+      background-color: #eeeeee;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer; }
+      #mySliderWrap #navigation .navigationItem .thumbnail {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate3d(-50%, -110%, 0);
+        -moz-transform: translate3d(-50%, -110%, 0);
+        -webkit-transform: translate3d(-50%, -110%, 0);
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+        padding: 0.2rem;
+        opacity: 0;
+        box-shadow: 0 0 3px #222222;
+        filter: blur(10px);
+        -webkit-filter: blur(10px);
+        transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease;
+        z-index: -1; }
+        #mySliderWrap #navigation .navigationItem .thumbnail img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover; }
+        #mySliderWrap #navigation .navigationItem .thumbnail::after {
+          content: "";
+          border-top: 0.5rem solid #ffffff;
+          border-left: 0.5rem solid transparent;
+          border-right: 0.5rem solid transparent;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translate3d(-50%, 90%, 0);
+          -moz-transform: translate3d(-50%, 90%, 0);
+          -webkit-transform: translate3d(-50%, 90%, 0); }
+      #mySliderWrap #navigation .navigationItem:hover .thumbnail {
+        transform: translate3d(-50%, -120%, 0);
+        -moz-transform: translate3d(-50%, -120%, 0);
+        -webkit-transform: translate3d(-50%, -120%, 0);
+        opacity: 1;
+        filter: blur(0);
+        -webkit-filter: blur(0);
+        z-index: 10; }
 
 /*
 
@@ -330,44 +622,71 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
   .not-mobile {
     display: none; }
 
-  p.flag {
+  h1.hooked {
+    font-size: 1.5rem;
+    color: #ffffff;
     background-color: #770000;
-    color: #fff;
-    display: inline-block;
-    height: 1.6rem;
-    line-height: 1.6rem;
-    padding: 0 0.4rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 10; }
-    p.flag::after {
-      border-bottom: 0.8rem solid #770000;
-      border-right: 0.8rem solid transparent;
-      border-top: 0.8rem solid #770000;
-      border-left: 0.8rem solid #770000;
+    padding: 1rem 0;
+    text-align: center;
+    margin: auto;
+    text-transform: capitalize;
+    position: relative; }
+    h1.hooked::after, h1.hooked::before {
       content: "";
       position: absolute;
-      top: 0;
-      bottom: 0;
-      right: -1.5rem; }
+      left: 0;
+      right: 0;
+      z-index: 10; }
+    h1.hooked::before {
+      top: -0.7rem;
+      border-top: 0.8rem dashed #770000; }
+    h1.hooked::after {
+      bottom: -1rem;
+      border-bottom: 1.1rem dashed #770000; }
+
+  #outlineMenu #brandIcon {
+    margin-left: 0; }
 
   /* POST LIST
-  ============================================================================= */
+  ========================================================================= */
   .sectionTitle.only-mobile h1::after {
     bottom: -0.3rem;
     border-bottom: 0.4rem dashed #770000; }
 
   .postContainer .post {
-    position: relative; }
+    position: relative;
+    height: 8rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px #c0c0c0; }
+    .postContainer .post header {
+      position: absolute;
+      left: 8rem;
+      top: 1rem; }
+      .postContainer .post header h1 {
+        margin: auto;
+        color: #770000;
+        font-size: 1.3rem; }
     .postContainer .post .postText {
       display: none; }
-    .postContainer .post .postImage img {
-      height: 8rem;
-      object-fit: cover;
-      width: 100%; }
+    .postContainer .post .postImage {
+      height: 6rem;
+      position: relative;
+      top: 50%;
+      left: 1rem;
+      transform: translate3d(0, -50%, 0);
+      -moz-transform: translate3d(0, -50%, 0);
+      -webkit-transform: translate3d(0, -50%, 0); }
+      .postContainer .post .postImage img {
+        height: 6rem;
+        object-fit: cover;
+        width: 6rem;
+        border-radius: 50%;
+        box-shadow: 0 0 3px 2px #007700; }
     .postContainer .post footer {
-      font-size: 0.7rem; }
+      position: absolute;
+      left: 8.5rem;
+      top: 3rem;
+      font-size: 0.8rem; }
       .postContainer .post footer .goToPost {
         display: none; }
     .postContainer .post span.only-mobile {
@@ -383,23 +702,25 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
         right: 0;
         top: 0;
         z-index: 100; }
-        .postContainer .post span.only-mobile a::after {
-          content: "\0003E";
+        .postContainer .post span.only-mobile a span {
+          position: absolute;
+          top: 50%;
+          right: 1rem;
           font-size: 2.1rem;
-          color: #ffffff;
-          float: right;
-          line-height: 8rem;
-          margin-right: 1rem;
-          transform: scaleY(1.5);
-          -moz-transform: scaleY(1.5);
-          -webkit-transform: scaleY(1.5);
-          text-shadow: 0 0 3px #000000; }
+          color: #aa0000;
+          transform: translate3d(0, -50%, 0);
+          -moz-transform: translate3d(0, -50%, 0);
+          -webkit-transform: translate3d(0, -50%, 0); }
         .postContainer .post span.only-mobile a:hover {
           text-decoration: none;
           color: #555555; }
 
   /* POST CARD
-  ============================================================================= */
+  ========================================================================= */
+  #postCardContainer #postCard .postImage img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover; }
   #postCardContainer #postCard .mobilePostContent {
     width: 90%;
     margin: auto;
@@ -425,7 +746,44 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
         border-right: 0.8rem solid #fff;
         border-top: 0.8rem solid #770000;
         content: "";
-        float: right; } }
+        float: right; }
+
+  /* GALLERY
+  ========================================================================= */
+  #myCarousel.galleryCarousel .galleryColumn .imageContainer {
+    padding: 0.5rem;
+    text-align: center;
+    margin: 1rem auto; }
+    #myCarousel.galleryCarousel .galleryColumn .imageContainer img {
+      border-radius: 50%;
+      width: 10rem;
+      height: 10rem;
+      box-shadow: 0 0 3px #222222;
+      object-fit: cover; }
+
+  /* BACKEND
+  ========================================================================= */
+  #leftCol {
+    float: none;
+    width: 100%;
+    height: auto; }
+    #leftCol li {
+      float: left; }
+      #leftCol li.active a::after {
+        border-top: none;
+        border-bottom: 0.5rem solid #eeeeee;
+        border-left: 0.5rem solid transparent;
+        border-right: 0.5rem solid transparent;
+        bottom: 0;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
+        -moz-transform: translate3d(-50%, 0, 0);
+        -webkit-transform: translate3d(-50%, 0, 0); }
+
+  #outlineBodyBack {
+    width: 100%;
+    height: auto;
+    overflow-y: visible; } }
 /* BREAKPOINT 1 - Small devices (tablets, 768px and up)
 =============================================================================
 ============================================================================= */
@@ -436,6 +794,63 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
   .with-margin {
     margin-top: 3rem;
     margin-bottom: 3rem; }
+
+  h1.hooked {
+    margin: 2rem -0.4rem 0 -0.4rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    color: #eeeeee;
+    background-color: #007700;
+    position: relative;
+    box-shadow: 0 0 5px #222222; }
+    h1.hooked::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translate3d(0, -100%, 0);
+      -moz-transform: translate3d(0, -100%, 0);
+      -webkit-transform: translate3d(0, -100%, 0);
+      border-right: 0.2rem solid #007700;
+      border-bottom: 0.2rem solid #007700;
+      border-top: 0.2rem solid transparent;
+      border-left: 0.2rem solid transparent; }
+    h1.hooked::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translate3d(0, -100%, 0);
+      -moz-transform: translate3d(0, -100%, 0);
+      -webkit-transform: translate3d(0, -100%, 0);
+      border-left: 0.2rem solid #007700;
+      border-bottom: 0.2rem solid #007700;
+      border-right: 0.2rem solid transparent;
+      border-top: 0.2rem solid transparent; }
+
+  h1.flag {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    background-color: #007700;
+    color: #fff;
+    display: inline-block;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    padding: 0 0.7rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10; }
+    h1.flag::after {
+      border-bottom: 1.1rem solid #007700;
+      border-right: 1.1rem solid transparent;
+      border-top: 1.1rem solid #007700;
+      border-left: 1.1rem solid #007700;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -2.1rem; }
 
   p.flag {
     background-color: #770000;
@@ -454,53 +869,144 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
 
   /* POST LIST
   ========================================================================= */
-  .postContainer {
-    position: relative;
-    /*
-    poich├¿ il primo elemento ├¿ il div nascosto
-    */ }
-    .postContainer .post {
-      width: 90%;
-      margin: auto;
-      padding: 0;
-      margin: 1rem auto;
-      border-bottom: none;
-      background-color: #ffffff;
-      box-shadow: 0 0 2px #555555; }
-      .postContainer .post .postImage {
-        height: auto;
-        width: auto;
-        object-fit: fill;
-        /* valore iniziale di object-fit */ }
-      .postContainer .post .postText {
-        display: initial; }
-        .postContainer .post .postText p {
-          margin: 0.5rem auto;
-          padding: 1rem;
-          text-align: justify; }
-      .postContainer .post footer .postDate p {
-        font-size: 0.9rem; }
-      .postContainer .post footer .goToPost {
-        display: initial; }
-        .postContainer .post footer .goToPost a {
-          margin: auto 1rem 1rem auto; }
-      .postContainer .post .only-mobile {
-        display: none; }
-    .postContainer:nth-of-type(2n+2) {
-      clear: left; }
+  #postListContainer #myCarousel.postListCarousel .postContainer .post {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+    margin: 1rem auto;
+    border-bottom: none;
+    background-color: #ffffff;
+    box-shadow: 0 0 2px #555555; }
+    #postListContainer #myCarousel.postListCarousel .postContainer .post .postImage {
+      border-bottom: 3px solid #770000; }
+      #postListContainer #myCarousel.postListCarousel .postContainer .post .postImage img {
+        height: 10rem;
+        width: 100%;
+        object-fit: cover; }
+    #postListContainer #myCarousel.postListCarousel .postContainer .post .postText {
+      display: initial; }
+      #postListContainer #myCarousel.postListCarousel .postContainer .post .postText p {
+        margin: 0.5rem auto;
+        padding: 1rem;
+        text-align: justify; }
+    #postListContainer #myCarousel.postListCarousel .postContainer .post footer .postDate p {
+      font-size: 0.9rem; }
+    #postListContainer #myCarousel.postListCarousel .postContainer .post footer .goToPost {
+      display: initial; }
+      #postListContainer #myCarousel.postListCarousel .postContainer .post footer .goToPost a {
+        margin: auto 1rem 1rem auto; }
+    #postListContainer #myCarousel.postListCarousel .postContainer .post .only-mobile {
+      display: none; }
+  #postListContainer #myCarousel.postListCarousel .page:first-of-type .postContainer:first-of-type {
+    /* solo la prima news */ }
+    #postListContainer #myCarousel.postListCarousel .page:first-of-type .postContainer:first-of-type .postImage {
+      border-bottom: 3px solid #007700; }
 
   /* POST CARD
-  ============================================================================= */
-  #postCardContainer #postCard .postContent {
+  ========================================================================= */
+  #postCardContainer #postCard {
     width: 90%;
     margin: auto;
     background-color: #ffffff;
     box-shadow: 0 0 2px #555555; }
-  #postCardContainer #postCard .postCardText p {
-    padding: 0 1rem;
-    margin: 2.5rem auto; }
-  #postCardContainer #postCard footer {
-    padding-bottom: 1.5rem; } }
+    #postCardContainer #postCard .postImage img {
+      width: 100%;
+      height: 25rem;
+      object-fit: cover; }
+    #postCardContainer #postCard .postCardText p {
+      text-align: justify;
+      padding: 0 4rem;
+      margin: 2.5rem auto; }
+    #postCardContainer #postCard footer {
+      padding-bottom: 1.5rem; }
+
+  /* Gallery
+  ========================================================================= */
+  #myCarousel.galleryCarousel {
+    padding-top: 2rem;
+    padding-bottom: 2rem; }
+    #myCarousel.galleryCarousel .galleryColumn .imageContainer {
+      position: relative;
+      background-color: #ffffff;
+      box-shadow: 0 0 3px #222222;
+      border-radius: 3px;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      text-align: center; }
+      #myCarousel.galleryCarousel .galleryColumn .imageContainer img {
+        border-radius: 3px; }
+      #myCarousel.galleryCarousel .galleryColumn .imageContainer .description {
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        bottom: 0.5rem;
+        right: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #eeeeee;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease; }
+        #myCarousel.galleryCarousel .galleryColumn .imageContainer .description p {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate3d(-50%, -50%, 0);
+          -moz-transform: translate3d(-50%, -50%, 0);
+          -webkit-transform: translate3d(-50%, -50%, 0); }
+          #myCarousel.galleryCarousel .galleryColumn .imageContainer .description p span {
+            margin-right: 0.5rem;
+            font-size: 1rem; }
+      #myCarousel.galleryCarousel .galleryColumn .imageContainer:hover .description {
+        opacity: 1; }
+
+  #JS_fullScreenContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background-color: #222222;
+    text-align: center;
+    transform: scale(0);
+    -moz-transform: scale(0);
+    -webkit-transform: scale(0);
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease; }
+    #JS_fullScreenContainer #JS_fullScreenCloseButton {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      color: #ffffff;
+      background-color: #222222;
+      width: 2rem;
+      height: 2rem;
+      text-align: center;
+      line-height: 2rem;
+      display: inline-block;
+      border-radius: 50%;
+      z-index: 999999;
+      box-shadow: 0 0 0 3px #eeeeee; }
+    #JS_fullScreenContainer img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      -moz-transform: translate3d(-50%, -50%, 0);
+      -webkit-transform: translate3d(-50%, -50%, 0); }
+    #JS_fullScreenContainer.showFullScreen {
+      opacity: 1;
+      transform: scale(1);
+      -moz-transform: scale(1);
+      -webkit-transform: scale(1);
+      z-index: 999998; } }
 /* BREAKPOINT 2 - Medium devices (desktops, 992px and up)
 =============================================================================
 =============================================================================*/
@@ -508,9 +1014,9 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
 =============================================================================
 =============================================================================*/
 @media (min-width: 1200px) {
-  .postContainer:nth-of-type(2n+2) {
-    clear: none; }
-  .postContainer:nth-of-type(3n+2) {
-    clear: left; } }
+  #mySliderWrap {
+    height: 25rem; }
+    #mySliderWrap .page img {
+      height: 25rem; } }
 
 /*# sourceMappingURL=front.css.map */
