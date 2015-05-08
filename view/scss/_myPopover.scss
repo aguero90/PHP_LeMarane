@@ -26,6 +26,11 @@
 
     &.postPreview{
         background-color: #eeeeee;
+
+        .closeTooltip{
+            top: 3.3rem;
+            right: 5rem;
+        }
     }
 
     &.editFormContainer,
@@ -79,5 +84,22 @@
 
     &.insertPost, &.editPost{
         max-width: none;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .myPopover{
+
+
+        &.postPreview{
+
+            .closeTooltip{
+                top: 1rem;
+                right: 2rem;
+            }
+        }
+
     }
 }

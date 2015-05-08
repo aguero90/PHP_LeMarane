@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-04 20:46:10
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 09:47:12
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\PostListPage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:54935547be72e377f7-77225503%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:23596554c6a0085f0f8-38903785%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '54935547be72e377f7-77225503',
+  'nocache_hash' => '23596554c6a0085f0f8-38903785',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_5547be73333317_25100987',
+  'unifunc' => 'content_554c6a00c56af9_28697869',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5547be73333317_25100987')) {function content_5547be73333317_25100987($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_554c6a00c56af9_28697869')) {function content_554c6a00c56af9_28697869($_smarty_tpl) {?>
 <!-- NEWS LIST
 ============================================================================ -->
 <div id="postListContainer" class="container-fluid no-padding with-margin">

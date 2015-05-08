@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-04 20:53:18
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 09:43:01
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\PostPage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:288595547c01e45be22-21588668%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:21688554c690528cce1-64393845%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '4e751b415ddb8918d1f1cb990a98f5b140acb197' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\front\\PostPage.tpl',
-      1 => 1430762451,
+      1 => 1431014418,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '288595547c01e45be22-21588668',
+  'nocache_hash' => '21688554c690528cce1-64393845',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_5547c01e778c34_25819800',
+  'unifunc' => 'content_554c6905572fe6_29201386',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5547c01e778c34_25819800')) {function content_5547c01e778c34_25819800($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_554c6905572fe6_29201386')) {function content_554c6905572fe6_29201386($_smarty_tpl) {?>
 <!-- POST
 ============================================================================ -->
 <div class="container-fluid no-padding">
@@ -45,8 +45,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="mobilePostContent">
                 <div class="row postCardText">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <p><?php echo $_smarty_tpl->tpl_vars['post']->value->getText();?>
-</p>
+                        <div><?php echo mb_convert_encoding($_smarty_tpl->tpl_vars['post']->value->getText(), 'UTF-8', 'HTML-ENTITIES');?>
+</div>
                     </div>
                 </div>
                 <footer class="row">

@@ -110,7 +110,7 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
                     object-fit: cover;
                     width: 6rem;
                     border-radius: 50%;
-                    box-shadow: 0 0 3px 2px #007700;
+                    box-shadow: 0 0 3px 1px #222222;
                 }
             }
 
@@ -196,11 +196,10 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
 
             .postCardText{
 
-                p{
+                &>div{
                     padding: 0 1rem;
                     margin: 2.5rem auto 5rem;
                     font-size: 0.9rem;
-                    text-align: justify;
                 }
             }
 

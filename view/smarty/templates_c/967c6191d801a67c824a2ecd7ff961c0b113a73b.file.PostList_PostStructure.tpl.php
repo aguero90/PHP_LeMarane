@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-04 20:46:11
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 09:47:12
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\PostList_PostStructure.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:309865547be73381519-26145965%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:22261554c6a00c7dbf3-47878105%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '967c6191d801a67c824a2ecd7ff961c0b113a73b' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\front\\PostList_PostStructure.tpl',
-      1 => 1430765168,
+      1 => 1431014485,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '309865547be73381519-26145965',
+  'nocache_hash' => '22261554c6a00c7dbf3-47878105',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_5547be737944a6_06654582',
+  'unifunc' => 'content_554c6a011cf606_59410521',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5547be737944a6_06654582')) {function content_5547be737944a6_06654582($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_554c6a011cf606_59410521')) {function content_554c6a011cf606_59410521($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
 ?>
 <div class="postContainer col-xs-12 col-sm-6 col-md-6 col-lg-4">
     <div class="post">
@@ -48,8 +48,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </div>
         <div class="row postText">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['post']->value->getText(),512," ... ");?>
-</p>
+                <div><?php echo smarty_modifier_truncate(mb_convert_encoding($_smarty_tpl->tpl_vars['post']->value->getText(), 'UTF-8', 'HTML-ENTITIES'),512," ... ");?>
+</div>
             </div>
         </div>
         <footer class="row">

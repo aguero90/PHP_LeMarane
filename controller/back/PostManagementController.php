@@ -88,14 +88,27 @@ class PostManagementController extends MaraneBaseController {
 
         $post = $this->getDataLayer()->createPost();
 
+        // SANITIZZAZIONE
         $post->setTitle(filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING));
         $post->setText(filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-        $post->setAdmin($this->getDataLayer()->getAdmin($_SESSION["MAID"]));
+        $post->setAdmin($this->getDataLayer()->getAdmin(filter_input(INPUT_SESSION, "MAID", FILTER_SANITIZE_NUMBER_INT)));
 
-        $image = $this->getDataLayer()->createImage();
-        $image->setRealName(filter_input(INPUT_POST, "imageRealName", FILTER_SANITIZE_STRING));
-        $image->setFakeName(filter_input(INPUT_POST, "imageFakeName", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-        $image->setDescription(filter_input(INPUT_POST, "imageDescription", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+
+
+        if (isset($_POST["iid"])) {
+
+            // l'utente ha selezionato un'immagine esistente
+            $image = $this->getDataLayer()->getImage(filter_input(INPUT_POST, "iid", FILTER_SANITIZE_NUMBER_INT));
+        } else {
+
+            // l'utente ha inserito una nuova immagine
+            $image = $this->getDataLayer()->createImage();
+            $image->setRealName(filter_input(INPUT_POST, "imageRealName", FILTER_SANITIZE_STRING));
+            $image->setFakeName(filter_input(INPUT_POST, "imageFakeName", FILTER_SANITIZE_URL));
+            $image->setDescription(filter_input(INPUT_POST, "imageDescription", FILTER_SANITIZE_STRING));
+        }
+
 
         $post->setImage($image);
 
@@ -108,9 +121,10 @@ class PostManagementController extends MaraneBaseController {
 
         $post->setTitle(filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING));
         $post->setText(filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
         $post->getImage()->setRealName(filter_input(INPUT_POST, "imageRealName", FILTER_SANITIZE_STRING));
-        $post->getImage()->setFakeName(filter_input(INPUT_POST, "imageFakeName", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-        $post->getImage()->setDescription(filter_input(INPUT_POST, "imageDescription", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $post->getImage()->setFakeName(filter_input(INPUT_POST, "imageFakeName", FILTER_SANITIZE_URL));
+        $post->getImage()->setDescription(filter_input(INPUT_POST, "imageDescription", FILTER_SANITIZE_STRING));
 
         $this->getDataLayer()->storePost($post);
     }
@@ -122,12 +136,17 @@ class PostManagementController extends MaraneBaseController {
 
     private function goToPostManagement() {
 
-        // prendiamo tutti i prodotti nel DB
+        // prendiamo tutti i post nel DB
         $posts = $this->getDataLayer()->getPosts();
         $this->getSmarty()->assign("posts", $posts);
         $this->getSmarty()->assign("numberOfPages", sizeof($posts) / self::ITEMS_FOR_PAGE);
         $this->getSmarty()->assign("itemsForPage", self::ITEMS_FOR_PAGE);
         $this->getSmarty()->assign("sid", 1);
+
+        // per la selezione dell'immagine
+        $images = $this->getDataLayer()->getImages();
+        $this->getSmarty()->assign("images", $images);
+
 
 
         $this->getSmarty()->assign("contentTemplate", "back/PostManagement.tpl"); // diciamo quale template deve includere

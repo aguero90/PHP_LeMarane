@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-04 15:58:00
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 09:47:06
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\PostManagement.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2248555477ae86b8a77-67173054%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:20116554c69fa22d091-40133073%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'd5a056a8d3a529e7ff4b72024063f85fc73d819f' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\back\\PostManagement.tpl',
-      1 => 1430583471,
+      1 => 1431012529,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2248555477ae86b8a77-67173054',
+  'nocache_hash' => '20116554c69fa22d091-40133073',
   'function' => 
   array (
   ),
@@ -21,12 +21,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'itemsForPage' => 0,
     'post' => 0,
     'pagination' => 0,
+    'images' => 0,
+    'image' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_55477ae927ae08_74701494',
+  'unifunc' => 'content_554c69fae620b9_86659450',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55477ae927ae08_74701494')) {function content_55477ae927ae08_74701494($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_554c69fae620b9_86659450')) {function content_554c69fae620b9_86659450($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!-- TABELLA NEWS
 ============================================================================ -->
@@ -214,7 +216,7 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="handlebarsButton" name="ep" value="1" class="btn btn-default">Modifica</button>
+                <button type="submit" name="ep" value="1" class="handlebarsButton">Modifica</button>
             </div>
         </div>
     </form>
@@ -236,21 +238,43 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
             </div>
         </div>
         <div class="form-group">
-            <label for="insertImageFakeName" class="col-sm-2 control-label">Immagine</label>
+            <label for="nothing" class="col-sm-2 control-label">Immagine</label>
             <div class="col-sm-10">
-                <input type="url" class="form-control" id="insertImageFakeName" name="imageFakeName"  placeholder="URL Immagine">
+                <p class="lineBehindText"><span id="JS_newImageButton">Nuova</span></p>
+            </div>
+        </div>
+        <div id="JS_newImageContent">
+            <div class="form-group">
+                <label for="insertImageFakeName" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <input type="url" class="form-control" id="insertImageFakeName" name="imageFakeName"  placeholder="URL Immagine">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="insertImageRealName" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="insertImageRealName" name="imageRealName"  placeholder="Nome Immagine">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="insertImageDescription" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <textarea id="insertImageDescription" name="imageDescription" class="form-control" rows="3" placeholder="Descrizione Immagine"></textarea>
+                </div>
             </div>
         </div>
         <div class="form-group">
-            <label for="insertImageRealName" class="col-sm-2 control-label"></label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="insertImageRealName" name="imageRealName"  placeholder="Nome Immagine">
+            <div class="col-sm-offset-2 col-sm-10">
+                <p class="lineBehindText"><span id="JS_oldImageButton">Esistente</span></p>
             </div>
         </div>
-        <div class="form-group">
-            <label for="insertImageDescription" class="col-sm-2 control-label"></label>
-            <div class="col-sm-10">
-                <textarea id="insertImageDescription" name="imageDescription" class="form-control" rows="3" placeholder="Descrizione Immagine"></textarea>
+        <div id="JS_oldImageContent">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <img id="JS_insertImageSelectionImage" />
+                    <button id="JS_insertImageSelectionButton" class="handlebarsButton fullWidth">Seleziona</button>
+                    <input type="hidden" id="JS_insertImageSelectionHiddenInput" name="iid" />
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -261,7 +285,7 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="handlebarsButton" name="ip" value="1" class="btn btn-default">Inserisci</button>
+                <button type="submit" name="ip" value="1" class="handlebarsButton">Inserisci</button>
             </div>
         </div>
     </form>
@@ -284,10 +308,36 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="handlebarsButton" name="rp" value="1" class="btn btn-default">Rimuovi</button>
+                <button type="submit" name="rp" value="1" class="handlebarsButton">Rimuovi</button>
             </div>
         </div>
     </form>
+</div>
+
+
+<!-- Template image selection
+============================================================================ -->
+<div id="JS_imageSelectionContainer">
+    <header>
+        <h1>Clicca sull'immagine che vuoi selezionare</h1>
+        <span id="JS_imageSelectionCloseButton" data-toggle="tooltip" data-placement="left" title="Chiudi fullscreen" class="closeFullScreen glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </header>
+
+    <?php  $_smarty_tpl->tpl_vars['image'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['image']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['images']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['image']->key => $_smarty_tpl->tpl_vars['image']->value) {
+$_smarty_tpl->tpl_vars['image']->_loop = true;
+?>
+
+        <div class="imageContainer col-xs-6 col-sm-4 col-md-4 col-lg-3">
+            <img src="<?php echo $_smarty_tpl->tpl_vars['image']->value->getFakeName();?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['image']->value->getRealName();?>
+" data-id="<?php echo $_smarty_tpl->tpl_vars['image']->value->getID();?>
+" />
+        </div>
+
+    <?php } ?>
+
 </div>
 
 <script>
@@ -306,6 +356,51 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
             lang: 'it-IT',
             height: 200
         });
+
+
+        // SHOW GALLERY FOR SELECTION
+        // =====================================================================
+
+        var imageSelectionContainer = document.getElementById("JS_imageSelectionContainer");
+        var insertImageSelectionButton = document.getElementById("JS_insertImageSelectionButton");
+        var imageSelectionCloseButton = document.getElementById("JS_imageSelectionCloseButton");
+        var insertImageSelectionHiddenInput = document.getElementById("JS_insertImageSelectionHiddenInput");
+        var insertImageSelectionImage = document.getElementById("JS_insertImageSelectionImage");
+
+        insertImageSelectionButton.addEventListener("click", showImageSelectionContainer);
+        imageSelectionCloseButton.addEventListener("click", closeImageSelectionContainer);
+
+        function showImageSelectionContainer(e) {
+
+            e.preventDefault(); // per non fa ricaricare la pagina
+
+            imageSelectionContainer.setAttribute("class", "show");
+        }
+
+        function closeImageSelectionContainer(e) {
+
+            imageSelectionContainer.removeAttribute("class");
+        }
+
+        var images = imageSelectionContainer.querySelectorAll("img");
+
+        for (var i = 0; i < images.length; i++) {
+
+            images[i].addEventListener("click", imageSelected);
+        }
+
+        function imageSelected(e) {
+
+            insertImageSelectionHiddenInput.setAttribute("value", this.dataset.id);
+
+            insertImageSelectionImage.setAttribute("src", this.getAttribute("src"));
+            insertImageSelectionImage.setAttribute("alt", this.getAttribute("alt"));
+
+            closeImageSelectionContainer();
+        }
+
+
+
 
 
         (new MyTablePopover()).init();

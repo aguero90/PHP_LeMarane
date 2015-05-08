@@ -173,13 +173,13 @@ MySlider.prototype = {
 
             // ha mosso verso destra, quindi
             // vuole andare a sinistra
-            this.goToPreviousPageButton.click();
+            this.showPreviousImage();
 
         } else if (this.touchStartX - this.touchEndX >= 200) {
 
             // ha mosso verso sinistra, quindi
             // vuole andare a destra
-            this.goToNextPageButton.click();
+            this.showNextImage();
         }
     }
 };

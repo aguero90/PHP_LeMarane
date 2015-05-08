@@ -22,7 +22,9 @@ body {
   /* per la navbar di bootstrap */
   background-color: #eeeeee; }
 
-textarea {
+form label.light {
+  font-weight: normal; }
+form textarea {
   resize: vertical;
   min-height: 5rem;
   max-height: 25rem; }
@@ -84,9 +86,31 @@ button, a {
     position: relative;
     top: 1px;
     left: 1px; }
+  .handlebarsButton.fullWidth {
+    width: 100%;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem; }
 
 button.handlebarsButton {
   border: none; }
+
+.lineBehindText {
+  display: block;
+  text-align: center;
+  position: relative;
+  padding: 0.5rem 0;
+  box-shadow: 0 0 3px 7px #ffffff inset; }
+  .lineBehindText span {
+    background-color: #ffffff;
+    padding: 0 0.5rem; }
+  .lineBehindText:before {
+    content: "";
+    border-top: 1px solid #c0c0c0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: -1; }
 
 img {
   max-width: 100%;
@@ -95,7 +119,7 @@ img {
 /* per annullare quel padding fastidioso messo di default da bootstrap */
 .container-fluid.no-padding {
   padding: 0; }
-  .container-fluid.no-padding .row {
+  .container-fluid.no-padding .row, .container-fluid.no-padding .form-group {
     margin-left: 0;
     margin-right: 0; }
   .container-fluid.no-padding .col-xs-1, .container-fluid.no-padding .col-sm-1, .container-fluid.no-padding .col-md-1, .container-fluid.no-padding .col-lg-1,
@@ -239,6 +263,64 @@ img {
       #outlineBodyBack #myCarousel #carouselSlider .page table a.removeButton span.glyphicon {
         color: #aa0000; }
 
+#JS_insertImageSelectionImage {
+  height: 15rem;
+  margin: 1rem auto;
+  position: relative;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  -moz-transform: translate3d(-50%, 0, 0);
+  -webkit-transform: translate3d(-50%, 0, 0); }
+
+#JS_imageSelectionContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  background-color: #eeeeee;
+  text-align: center;
+  z-index: 999998;
+  transform: scale(0);
+  -moz-transform: scale(0);
+  -webkit-transform: scale(0);
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease; }
+  #JS_imageSelectionContainer header {
+    margin: auto;
+    padding: 0.5rem;
+    border-bottom: 2px dashed #770000; }
+    #JS_imageSelectionContainer header h1 {
+      font-size: 1.3rem;
+      display: inline-block;
+      width: 95%; }
+    #JS_imageSelectionContainer header #JS_imageSelectionCloseButton {
+      cursor: pointer;
+      color: #222222; }
+  #JS_imageSelectionContainer .imageContainer {
+    padding: 1rem; }
+    #JS_imageSelectionContainer .imageContainer img {
+      height: 10rem;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+      box-shadow: 3px 3px 3px #555555;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      -webkit-transition: all 0.2s ease; }
+      #JS_imageSelectionContainer .imageContainer img:hover {
+        box-shadow: 6px 6px 6px #555555;
+        transform: translate3d(-1%, -1%, 0);
+        -moz-transform: translate3d(-1%, -1%, 0);
+        -webkit-transform: translate3d(-1%, -1%, 0); }
+  #JS_imageSelectionContainer.show {
+    opacity: 1;
+    transform: scale(1);
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1); }
+
 #myCarousel {
   overflow-y: hidden;
   overflow-x: hidden; }
@@ -299,6 +381,9 @@ img {
     opacity: 1; }
   .myPopover.postPreview {
     background-color: #eeeeee; }
+    .myPopover.postPreview .closeTooltip {
+      top: 3.3rem;
+      right: 5rem; }
   .myPopover.editFormContainer, .myPopover.insertFormContainer, .myPopover.removeFormContainer, .myPopover.imagePreview {
     top: 2rem;
     bottom: auto;
@@ -332,6 +417,10 @@ img {
   .myPopover.insertPost, .myPopover.editPost {
     max-width: none; }
 
+@media (max-width: 767px) {
+  .myPopover.postPreview .closeTooltip {
+    top: 1rem;
+    right: 2rem; } }
 /* ColoredSpinner
 ==============================================================================*/
 @-webkit-keyframes coloredSpinner {
@@ -681,7 +770,7 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
         object-fit: cover;
         width: 6rem;
         border-radius: 50%;
-        box-shadow: 0 0 3px 2px #007700; }
+        box-shadow: 0 0 3px 1px #222222; }
     .postContainer .post footer {
       position: absolute;
       left: 8.5rem;
@@ -726,11 +815,10 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
     margin: auto;
     box-shadow: 0 0 2px #555555;
     background-color: #ffffff; }
-  #postCardContainer #postCard .postCardText p {
+  #postCardContainer #postCard .postCardText > div {
     padding: 0 1rem;
     margin: 2.5rem auto 5rem;
-    font-size: 0.9rem;
-    text-align: justify; }
+    font-size: 0.9rem; }
   #postCardContainer #postCard footer .postCardDate {
     margin-bottom: 1.5rem; }
     #postCardContainer #postCard footer .postCardDate p {
@@ -885,7 +973,7 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
         object-fit: cover; }
     #postListContainer #myCarousel.postListCarousel .postContainer .post .postText {
       display: initial; }
-      #postListContainer #myCarousel.postListCarousel .postContainer .post .postText p {
+      #postListContainer #myCarousel.postListCarousel .postContainer .post .postText > div {
         margin: 0.5rem auto;
         padding: 1rem;
         text-align: justify; }
@@ -913,8 +1001,7 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
       width: 100%;
       height: 25rem;
       object-fit: cover; }
-    #postCardContainer #postCard .postCardText p {
-      text-align: justify;
+    #postCardContainer #postCard .postCardText > div {
       padding: 0 4rem;
       margin: 2.5rem auto; }
     #postCardContainer #postCard footer {

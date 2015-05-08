@@ -90,8 +90,8 @@ class ImageManagementController extends MaraneBaseController {
 
         $image = $this->getDataLayer()->createImage();
         $image->setRealName(filter_input(INPUT_POST, "realName", FILTER_SANITIZE_STRING));
-        $image->setFakeName(filter_input(INPUT_POST, "fakeName", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-        $image->setDescription(filter_input(INPUT_POST, "description", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $image->setFakeName(filter_input(INPUT_POST, "fakeName", FILTER_SANITIZE_URL));
+        $image->setDescription(filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING));
 
         $this->getDataLayer()->storeImage($image);
     }
@@ -101,8 +101,8 @@ class ImageManagementController extends MaraneBaseController {
         $image = $this->getDataLayer()->getImage(filter_input(INPUT_POST, "pid", FILTER_SANITIZE_NUMBER_INT));
 
         $image->setRealName(filter_input(INPUT_POST, "realName", FILTER_SANITIZE_STRING));
-        $image->setFakeName(filter_input(INPUT_POST, "fakeName", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-        $image->setDescription(filter_input(INPUT_POST, "description", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $image->setFakeName(filter_input(INPUT_POST, "fakeName", FILTER_SANITIZE_URL));
+        $image->setDescription(filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING));
 
         $this->getDataLayer()->storeImage($image);
     }

@@ -55,8 +55,12 @@ class LoginController extends MaraneBaseController {
 
     private function getAdminByData() {
 
+        // SANITIZZAZIONE
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+
+        // VALIDAZIONE
+        // non la facciamo per le stringhe
 
         return $this->getDataLayer()->getAdmin($username, md5(md5(md5(md5(md5($password))))));
     }
