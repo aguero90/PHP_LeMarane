@@ -6,6 +6,7 @@ var MyCarousel = function (element) {
 MyCarousel.prototype = {
     carouselContainer: null,
     carouselSlider: null,
+    pages: null,
     paginationItems: null,
     goToPreviousPageButton: null,
     goToNextPageButton: null,
@@ -15,10 +16,12 @@ MyCarousel.prototype = {
     init: function () {
 
         this.carouselSlider = document.getElementById("carouselSlider");
+        this.pages = this.carouselContainer.querySelectorAll(".page");
         this.paginationItems = this.carouselContainer.querySelectorAll(".paginationItem");
         this.goToPreviousPageButton = document.getElementById("goToPreviousPage");
         this.goToNextPageButton = document.getElementById("goToNextPage");
         this.currentPaginationItem = this.paginationItems[0];
+        this.pages[this.currentPaginationItem.dataset.number - 1].addClass("visible");
 
 
         for (var i = 0; i < this.paginationItems.length; i++) {
@@ -47,12 +50,12 @@ MyCarousel.prototype = {
             return;
         }
 
-
-        this.setTranslate(e.currentTarget.dataset.number);
+        this.setEffects(e.currentTarget.dataset.number, this.currentPaginationItem.dataset.number);
 
 
         this.currentPaginationItem.removeClass("active");
         e.currentTarget.addClass("active");
+
         this.currentPaginationItem = e.currentTarget;
 
     },
@@ -76,7 +79,7 @@ MyCarousel.prototype = {
 
         this.paginationItems[this.currentPaginationItem.dataset.number].click();
     },
-    setTranslate: function (pageNumber) {
+    setEffects: function (newPageNumber, currentPageNumber) {
 
         /* <NOTA: metto -100.2 perchè c'è un problemino di spazi nella lista di post o.O>
          *
@@ -88,8 +91,24 @@ MyCarousel.prototype = {
          * Quindi per risolvere questo problema basta comprimere il file HTML facendo in
          * modo che non contenga degli spazi bianchi xD
          */
-        this.carouselSlider.setAttribute("style", "transform: translate3d(" + -100.2 * (pageNumber - 1) + "%, 0, 0);");
 
+        if (this.pages[newPageNumber - 1].scrollHeight <= this.pages[currentPageNumber - 1].scrollHeight) {
+
+            // la nuova pagina è più bassa
+            // devo prima spostare e poi restringere
+            // => aggiungo la classe "normalTransition"
+            this.carouselSlider.setAttribute("class", "normalTransition");
+
+        } else {
+
+            // la nuova pagina è più alta
+            // devo prima allargare e poi spostare
+            // => aggiungo la classe "reverseTransition"
+            this.carouselSlider.setAttribute("class", "reverseTransition");
+
+        }
+
+        this.carouselSlider.setAttribute("style", "transform: translate3d(" + -100.2 * (newPageNumber - 1) + "%, 0, 0); max-height: " + this.pages[newPageNumber - 1].scrollHeight + "px;");
     },
     isTouchDevice: function () {
 

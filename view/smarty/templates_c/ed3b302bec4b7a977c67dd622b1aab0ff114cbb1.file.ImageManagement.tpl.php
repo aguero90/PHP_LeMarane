@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 09:47:03
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 11:10:16
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\ImageManagement.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:513554c69f7bc9f66-78450018%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:23767554c7d7832fa91-60449460%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '513554c69f7bc9f66-78450018',
+  'nocache_hash' => '23767554c7d7832fa91-60449460',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_554c69f8784378_92946431',
+  'unifunc' => 'content_554c7d78af7da9_16390766',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554c69f8784378_92946431')) {function content_554c69f8784378_92946431($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_554c7d78af7da9_16390766')) {function content_554c7d78af7da9_16390766($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!-- TABELLA IMMAGINI
 ============================================================================ -->

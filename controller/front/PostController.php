@@ -16,6 +16,10 @@ class PostController extends MaraneBaseController {
         // prendiamo il post in questione dalla URL
         $this->getSmarty()->assign("post", $this->getDataLayer()->getPost((int) filter_input(INPUT_GET, POST_ID, FILTER_SANITIZE_NUMBER_INT)));
 
+        if (SecurityLayer::checkSession()) {
+
+            $this->getSmarty()->assign("logged", true);
+        }
 
         // servono all'outline
         $this->getSmarty()->assign("menu", "front/Menu.tpl");

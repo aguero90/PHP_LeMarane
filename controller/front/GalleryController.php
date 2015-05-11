@@ -24,8 +24,14 @@ class GalleryController extends MaraneBaseController {
         $this->getSmarty()->assign("numberOfPages", sizeof($images) / self::ITEMS_FOR_PAGE);
         $this->getSmarty()->assign("sid", 2);
 
+        if (SecurityLayer::checkSession()) {
+
+            $this->getSmarty()->assign("logged", true);
+        }
+
         // servono all'outline
         $this->getSmarty()->assign("menu", "front/Menu.tpl");
+
 
         $this->getSmarty()->assign("logo", "front/Logo.tpl");
         $this->getSmarty()->assign("contentTemplate", "front/GalleryPage.tpl"); // diciamo quale template deve includere

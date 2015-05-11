@@ -23,6 +23,11 @@
                 <li {if isset($sid) && $sid==2}class="active"{/if} >
                     <a href="index.php?sid=3"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Gallery</a>
                 </li>
+                {if isset($logged)}
+                    <li>
+                        <a href="admin.php"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Gestione</a>
+                    </li>
+                {/if}
             </ul>
         </div><!-- /.navbar-collapse -->
     </div> <!-- /container -->

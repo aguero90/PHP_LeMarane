@@ -6,12 +6,19 @@
     #carouselSlider{
         white-space: nowrap;
         @include transform-origin(center center);
-        @include transition(transform .7s ease);
+
+        &.normalTransition{
+            @include transition(transform .7s ease, max-height .5s ease .5s);
+        }
+
+        &.reverseTransition{
+            @include transition(max-height .5s ease, transform .7s ease .4s);
+        }
 
         .page{
             white-space: normal;
+            vertical-align: top;
             display: inline-block;
-            vertical-align: middle;
             width: 100%;
         }
     }
@@ -38,7 +45,6 @@
                     a{
                         background-color: #770000;
                         border-color: #770000;
-
                     }
                 }
             }

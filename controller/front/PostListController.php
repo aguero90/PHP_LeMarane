@@ -23,6 +23,11 @@ class PostListController extends MaraneBaseController {
         $this->getSmarty()->assign("numberOfPages", sizeof($posts) / self::ITEMS_FOR_PAGE);
         $this->getSmarty()->assign("sid", 1);
 
+        if (SecurityLayer::checkSession()) {
+
+            $this->getSmarty()->assign("logged", true);
+        }
+
 
         // servono all'outline
         $this->getSmarty()->assign("menu", "front/Menu.tpl");

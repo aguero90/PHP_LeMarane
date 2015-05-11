@@ -14,6 +14,7 @@ class SecurityLayer {
      */
     public static function checkSession() {
 
+        // session_status() === PHP_SESSION_ACTIVE non piace ad altervista xD
         return (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION["MAID"]));
     }
 

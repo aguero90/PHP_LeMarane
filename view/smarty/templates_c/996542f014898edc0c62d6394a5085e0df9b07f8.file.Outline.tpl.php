@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 09:47:12
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 13:18:19
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\Outline.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:28729554c6a004b58f3-26603842%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:10787554c9b7b387f04-81391621%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '28729554c6a004b58f3-26603842',
+  'nocache_hash' => '10787554c9b7b387f04-81391621',
   'function' => 
   array (
   ),
@@ -25,9 +25,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_554c6a0068a4f0_61672151',
+  'unifunc' => 'content_554c9b7b529ee5_80232494',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554c6a0068a4f0_61672151')) {function content_554c6a0068a4f0_61672151($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_554c9b7b529ee5_80232494')) {function content_554c9b7b529ee5_80232494($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <!-- NOTA: bootstrap include già normalize.css quindi non c'è bisogno del reset -->
     <head>
