@@ -91,12 +91,12 @@ class PostManagementController extends MaraneBaseController {
         // SANITIZZAZIONE
         $post->setTitle(filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING));
         $post->setText(filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-        $post->setAdmin($this->getDataLayer()->getAdmin(filter_input(INPUT_SESSION, "MAID", FILTER_SANITIZE_NUMBER_INT)));
+        $post->setAdmin($this->getDataLayer()->getAdmin($_SESSION["MAID"]));
 
 
 
 
-        if (isset($_POST["iid"])) {
+        if (isset($_POST["iid"]) && !MyUtils::isEmpty($_POST["iid"])) {
 
             // l'utente ha selezionato un'immagine esistente
             $image = $this->getDataLayer()->getImage(filter_input(INPUT_POST, "iid", FILTER_SANITIZE_NUMBER_INT));

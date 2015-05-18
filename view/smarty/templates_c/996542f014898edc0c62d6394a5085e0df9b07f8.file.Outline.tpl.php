@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 13:18:19
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-17 21:05:46
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\Outline.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:10787554c9b7b387f04-81391621%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:40625558e68a1266b6-98462749%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '996542f014898edc0c62d6394a5085e0df9b07f8' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\front\\Outline.tpl',
-      1 => 1430751777,
+      1 => 1431802336,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '10787554c9b7b387f04-81391621',
+  'nocache_hash' => '40625558e68a1266b6-98462749',
   'function' => 
   array (
   ),
@@ -25,9 +25,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_554c9b7b529ee5_80232494',
+  'unifunc' => 'content_5558e68a3705b3_58983169',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554c9b7b529ee5_80232494')) {function content_554c9b7b529ee5_80232494($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5558e68a3705b3_58983169')) {function content_5558e68a3705b3_58983169($_smarty_tpl) {?><!DOCTYPE html>
 <html>
     <!-- NOTA: bootstrap include già normalize.css quindi non c'è bisogno del reset -->
     <head>
@@ -72,8 +72,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         <script>
 
-
-
             window.addEventListener("load", function () {
 
                 var slider = document.getElementById("mySliderWrap");
@@ -82,7 +80,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
                     slider.mySlider();
                 }
+
             });
+
         </script>
     </body>
 </html><?php }} ?>

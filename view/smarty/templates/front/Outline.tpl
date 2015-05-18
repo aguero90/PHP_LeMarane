@@ -38,8 +38,6 @@
 
         <script>
 
-
-
             window.addEventListener("load", function () {
 
                 var slider = document.getElementById("mySliderWrap");
@@ -48,7 +46,9 @@
 
                     slider.mySlider();
                 }
+
             });
+
         </script>
     </body>
 </html>

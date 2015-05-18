@@ -1,35 +1,35 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-08 12:43:51
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-17 21:05:46
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\front\GalleryPage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:20474554c9367069864-19419199%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:265815558e68a67d9b7-87336574%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'aa04f01f017f375cfb1b0b3b701d5abacedd88e9' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\front\\GalleryPage.tpl',
-      1 => 1430732420,
+      1 => 1431878105,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '20474554c9367069864-19419199',
+  'nocache_hash' => '265815558e68a67d9b7-87336574',
   'function' => 
   array (
   ),
   'variables' => 
   array (
+    'images' => 0,
     'numberOfPages' => 0,
     'i' => 0,
     'itemsForPage' => 0,
     'j' => 0,
-    'images' => 0,
     'imageStructure' => 0,
     'pagination' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_554c9367cc5975_86310355',
+  'unifunc' => 'content_5558e68b767fd6_02759571',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554c9367cc5975_86310355')) {function content_554c9367cc5975_86310355($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5558e68b767fd6_02759571')) {function content_5558e68b767fd6_02759571($_smarty_tpl) {?>
 <!-- GALLERY
 ============================================================================ -->
 <div class="container-fluid no-padding">
@@ -39,76 +39,85 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </div>
     </div>
 
-    <div id="myCarousel" class="galleryCarousel">
+    <?php if (count($_smarty_tpl->tpl_vars['images']->value)>0) {?>
 
-        <div id="carouselSlider">
+        <div id="myCarousel" class="galleryCarousel">
 
-            <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? ($_smarty_tpl->tpl_vars['numberOfPages']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['numberOfPages']->value-1))+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+            <div id="carouselSlider">
+
+                <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? ($_smarty_tpl->tpl_vars['numberOfPages']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['numberOfPages']->value-1))+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
 
-                <div id="page<?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
+                    <div id="page<?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
 " class="page " data-number="<?php echo $_smarty_tpl->tpl_vars['i']->value+1;?>
 ">
 
-                    <div class="galleryColumn colonna1 col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                        <?php $_smarty_tpl->tpl_vars['j'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['j']->step = 1;$_smarty_tpl->tpl_vars['j']->total = (int) ceil(($_smarty_tpl->tpl_vars['j']->step > 0 ? ($_smarty_tpl->tpl_vars['itemsForPage']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['itemsForPage']->value-1))+1)/abs($_smarty_tpl->tpl_vars['j']->step));
+                        <div class="galleryColumn colonna1 col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <?php $_smarty_tpl->tpl_vars['j'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['j']->step = 1;$_smarty_tpl->tpl_vars['j']->total = (int) ceil(($_smarty_tpl->tpl_vars['j']->step > 0 ? ($_smarty_tpl->tpl_vars['itemsForPage']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['itemsForPage']->value-1))+1)/abs($_smarty_tpl->tpl_vars['j']->step));
 if ($_smarty_tpl->tpl_vars['j']->total > 0) {
 for ($_smarty_tpl->tpl_vars['j']->value = 0, $_smarty_tpl->tpl_vars['j']->iteration = 1;$_smarty_tpl->tpl_vars['j']->iteration <= $_smarty_tpl->tpl_vars['j']->total;$_smarty_tpl->tpl_vars['j']->value += $_smarty_tpl->tpl_vars['j']->step, $_smarty_tpl->tpl_vars['j']->iteration++) {
 $_smarty_tpl->tpl_vars['j']->first = $_smarty_tpl->tpl_vars['j']->iteration == 1;$_smarty_tpl->tpl_vars['j']->last = $_smarty_tpl->tpl_vars['j']->iteration == $_smarty_tpl->tpl_vars['j']->total;?>
-                            <?php if (($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)<sizeof($_smarty_tpl->tpl_vars['images']->value)&&($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)%4===1) {?>
-                                <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['imageStructure']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+                                <?php if (($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)<sizeof($_smarty_tpl->tpl_vars['images']->value)&&($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)%4===1) {?>
+                                    <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['imageStructure']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-                            <?php }?>
-                        <?php }} ?>
-                    </div> <!-- /.colonna1 -->
+                                <?php }?>
+                            <?php }} ?>
+                        </div> <!-- /.colonna1 -->
 
-                    <div class="galleryColumn colonna2 col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                        <?php $_smarty_tpl->tpl_vars['j'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['j']->step = 1;$_smarty_tpl->tpl_vars['j']->total = (int) ceil(($_smarty_tpl->tpl_vars['j']->step > 0 ? ($_smarty_tpl->tpl_vars['itemsForPage']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['itemsForPage']->value-1))+1)/abs($_smarty_tpl->tpl_vars['j']->step));
+                        <div class="galleryColumn colonna2 col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <?php $_smarty_tpl->tpl_vars['j'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['j']->step = 1;$_smarty_tpl->tpl_vars['j']->total = (int) ceil(($_smarty_tpl->tpl_vars['j']->step > 0 ? ($_smarty_tpl->tpl_vars['itemsForPage']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['itemsForPage']->value-1))+1)/abs($_smarty_tpl->tpl_vars['j']->step));
 if ($_smarty_tpl->tpl_vars['j']->total > 0) {
 for ($_smarty_tpl->tpl_vars['j']->value = 0, $_smarty_tpl->tpl_vars['j']->iteration = 1;$_smarty_tpl->tpl_vars['j']->iteration <= $_smarty_tpl->tpl_vars['j']->total;$_smarty_tpl->tpl_vars['j']->value += $_smarty_tpl->tpl_vars['j']->step, $_smarty_tpl->tpl_vars['j']->iteration++) {
 $_smarty_tpl->tpl_vars['j']->first = $_smarty_tpl->tpl_vars['j']->iteration == 1;$_smarty_tpl->tpl_vars['j']->last = $_smarty_tpl->tpl_vars['j']->iteration == $_smarty_tpl->tpl_vars['j']->total;?>
-                            <?php if (($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)<sizeof($_smarty_tpl->tpl_vars['images']->value)&&($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)%4===2) {?>
-                                <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['imageStructure']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+                                <?php if (($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)<sizeof($_smarty_tpl->tpl_vars['images']->value)&&($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)%4===2) {?>
+                                    <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['imageStructure']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-                            <?php }?>
-                        <?php }} ?>
-                    </div> <!-- /.colonna2 -->
+                                <?php }?>
+                            <?php }} ?>
+                        </div> <!-- /.colonna2 -->
 
-                    <div class="galleryColumn colonna3 col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                        <?php $_smarty_tpl->tpl_vars['j'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['j']->step = 1;$_smarty_tpl->tpl_vars['j']->total = (int) ceil(($_smarty_tpl->tpl_vars['j']->step > 0 ? ($_smarty_tpl->tpl_vars['itemsForPage']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['itemsForPage']->value-1))+1)/abs($_smarty_tpl->tpl_vars['j']->step));
+                        <div class="galleryColumn colonna3 col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <?php $_smarty_tpl->tpl_vars['j'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['j']->step = 1;$_smarty_tpl->tpl_vars['j']->total = (int) ceil(($_smarty_tpl->tpl_vars['j']->step > 0 ? ($_smarty_tpl->tpl_vars['itemsForPage']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['itemsForPage']->value-1))+1)/abs($_smarty_tpl->tpl_vars['j']->step));
 if ($_smarty_tpl->tpl_vars['j']->total > 0) {
 for ($_smarty_tpl->tpl_vars['j']->value = 0, $_smarty_tpl->tpl_vars['j']->iteration = 1;$_smarty_tpl->tpl_vars['j']->iteration <= $_smarty_tpl->tpl_vars['j']->total;$_smarty_tpl->tpl_vars['j']->value += $_smarty_tpl->tpl_vars['j']->step, $_smarty_tpl->tpl_vars['j']->iteration++) {
 $_smarty_tpl->tpl_vars['j']->first = $_smarty_tpl->tpl_vars['j']->iteration == 1;$_smarty_tpl->tpl_vars['j']->last = $_smarty_tpl->tpl_vars['j']->iteration == $_smarty_tpl->tpl_vars['j']->total;?>
-                            <?php if (($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)<sizeof($_smarty_tpl->tpl_vars['images']->value)&&($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)%4===3) {?>
-                                <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['imageStructure']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+                                <?php if (($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)<sizeof($_smarty_tpl->tpl_vars['images']->value)&&($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)%4===3) {?>
+                                    <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['imageStructure']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-                            <?php }?>
-                        <?php }} ?>
-                    </div> <!-- /.colonna3 -->
+                                <?php }?>
+                            <?php }} ?>
+                        </div> <!-- /.colonna3 -->
 
-                    <div class="galleryColumn colonna4 col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                        <?php $_smarty_tpl->tpl_vars['j'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['j']->step = 1;$_smarty_tpl->tpl_vars['j']->total = (int) ceil(($_smarty_tpl->tpl_vars['j']->step > 0 ? ($_smarty_tpl->tpl_vars['itemsForPage']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['itemsForPage']->value-1))+1)/abs($_smarty_tpl->tpl_vars['j']->step));
+                        <div class="galleryColumn colonna4 col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <?php $_smarty_tpl->tpl_vars['j'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['j']->step = 1;$_smarty_tpl->tpl_vars['j']->total = (int) ceil(($_smarty_tpl->tpl_vars['j']->step > 0 ? ($_smarty_tpl->tpl_vars['itemsForPage']->value-1)+1 - (0) : 0-(($_smarty_tpl->tpl_vars['itemsForPage']->value-1))+1)/abs($_smarty_tpl->tpl_vars['j']->step));
 if ($_smarty_tpl->tpl_vars['j']->total > 0) {
 for ($_smarty_tpl->tpl_vars['j']->value = 0, $_smarty_tpl->tpl_vars['j']->iteration = 1;$_smarty_tpl->tpl_vars['j']->iteration <= $_smarty_tpl->tpl_vars['j']->total;$_smarty_tpl->tpl_vars['j']->value += $_smarty_tpl->tpl_vars['j']->step, $_smarty_tpl->tpl_vars['j']->iteration++) {
 $_smarty_tpl->tpl_vars['j']->first = $_smarty_tpl->tpl_vars['j']->iteration == 1;$_smarty_tpl->tpl_vars['j']->last = $_smarty_tpl->tpl_vars['j']->iteration == $_smarty_tpl->tpl_vars['j']->total;?>
-                            <?php if (($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)<sizeof($_smarty_tpl->tpl_vars['images']->value)&&($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)%4===0) {?>
-                                <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['imageStructure']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+                                <?php if (($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)<sizeof($_smarty_tpl->tpl_vars['images']->value)&&($_smarty_tpl->tpl_vars['i']->value*$_smarty_tpl->tpl_vars['itemsForPage']->value+$_smarty_tpl->tpl_vars['j']->value)%4===0) {?>
+                                    <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['imageStructure']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-                            <?php }?>
-                        <?php }} ?>
-                    </div> <!-- /.colonna4 -->
-                </div> <!-- /.page -->
+                                <?php }?>
+                            <?php }} ?>
+                        </div> <!-- /.colonna4 -->
+                    </div> <!-- /.page -->
 
-            <?php }} ?>
+                <?php }} ?>
 
-        </div> <!-- /#carouselSlider -->
+            </div> <!-- /#carouselSlider -->
+            <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['pagination']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-        <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['pagination']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+        </div> <!-- /#galleryCarousel -->
 
-
-    </div> <!-- /#galleryCarousel -->
+    <?php } else { ?>
+        <div class="noContentFront">
+            <p>
+                <span>Oops...</span>
+                In questo momento non sono presenti immagini :(
+            </p>
+        </div>
+    <?php }?>
 </div>
 
 

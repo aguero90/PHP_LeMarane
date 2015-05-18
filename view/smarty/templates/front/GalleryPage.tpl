@@ -8,54 +8,63 @@
         </div>
     </div>
 
-    <div id="myCarousel" class="galleryCarousel">
+    {if $images|@count > 0}
 
-        <div id="carouselSlider">
+        <div id="myCarousel" class="galleryCarousel">
 
-            {for $i=0 to ($numberOfPages - 1)}
+            <div id="carouselSlider">
 
-                <div id="page{$i + 1}" class="page " data-number="{$i + 1}">
+                {for $i=0 to ($numberOfPages - 1)}
 
-                    <div class="galleryColumn colonna1 col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                        {for $j=0 to ($itemsForPage - 1)}
-                            {if ($i * $itemsForPage + $j) < sizeof($images) && ($i * $itemsForPage + $j) % 4 === 1}
-                                {include file=$imageStructure}
-                            {/if}
-                        {/for}
-                    </div> <!-- /.colonna1 -->
+                    <div id="page{$i + 1}" class="page " data-number="{$i + 1}">
 
-                    <div class="galleryColumn colonna2 col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                        {for $j=0 to ($itemsForPage - 1)}
-                            {if ($i * $itemsForPage + $j) < sizeof($images) &&  ($i * $itemsForPage + $j) % 4 === 2}
-                                {include file=$imageStructure}
-                            {/if}
-                        {/for}
-                    </div> <!-- /.colonna2 -->
+                        <div class="galleryColumn colonna1 col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            {for $j=0 to ($itemsForPage - 1)}
+                                {if ($i * $itemsForPage + $j) < sizeof($images) && ($i * $itemsForPage + $j) % 4 === 1}
+                                    {include file=$imageStructure}
+                                {/if}
+                            {/for}
+                        </div> <!-- /.colonna1 -->
 
-                    <div class="galleryColumn colonna3 col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                        {for $j=0 to ($itemsForPage - 1)}
-                            {if ($i * $itemsForPage + $j) < sizeof($images) &&  ($i * $itemsForPage + $j) % 4 === 3}
-                                {include file=$imageStructure}
-                            {/if}
-                        {/for}
-                    </div> <!-- /.colonna3 -->
+                        <div class="galleryColumn colonna2 col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            {for $j=0 to ($itemsForPage - 1)}
+                                {if ($i * $itemsForPage + $j) < sizeof($images) &&  ($i * $itemsForPage + $j) % 4 === 2}
+                                    {include file=$imageStructure}
+                                {/if}
+                            {/for}
+                        </div> <!-- /.colonna2 -->
 
-                    <div class="galleryColumn colonna4 col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                        {for $j=0 to ($itemsForPage - 1)}
-                            {if ($i * $itemsForPage + $j) < sizeof($images) && ($i * $itemsForPage + $j) % 4 === 0}
-                                {include file=$imageStructure}
-                            {/if}
-                        {/for}
-                    </div> <!-- /.colonna4 -->
-                </div> <!-- /.page -->
+                        <div class="galleryColumn colonna3 col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            {for $j=0 to ($itemsForPage - 1)}
+                                {if ($i * $itemsForPage + $j) < sizeof($images) &&  ($i * $itemsForPage + $j) % 4 === 3}
+                                    {include file=$imageStructure}
+                                {/if}
+                            {/for}
+                        </div> <!-- /.colonna3 -->
 
-            {/for}
+                        <div class="galleryColumn colonna4 col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            {for $j=0 to ($itemsForPage - 1)}
+                                {if ($i * $itemsForPage + $j) < sizeof($images) && ($i * $itemsForPage + $j) % 4 === 0}
+                                    {include file=$imageStructure}
+                                {/if}
+                            {/for}
+                        </div> <!-- /.colonna4 -->
+                    </div> <!-- /.page -->
 
-        </div> <!-- /#carouselSlider -->
+                {/for}
 
-        {include file=$pagination}
+            </div> <!-- /#carouselSlider -->
+            {include file=$pagination}
+        </div> <!-- /#galleryCarousel -->
 
-    </div> <!-- /#galleryCarousel -->
+    {else}
+        <div class="noContentFront">
+            <p>
+                <span>Oops...</span>
+                In questo momento non sono presenti immagini :(
+            </p>
+        </div>
+    {/if}
 </div>
 
 

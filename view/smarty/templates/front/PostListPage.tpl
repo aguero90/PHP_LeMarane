@@ -9,32 +9,40 @@
         </div>
     </div>
 
-    <div id="myCarousel" class="postListCarousel">
+    {if $posts|@count > 0}
 
-        <div id="carouselSlider">
+        <div id="myCarousel" class="postListCarousel">
+            <div id="carouselSlider">
+                {foreach $posts as $post}
 
-            {foreach $posts as $post}
+                    {if $post@iteration % $itemsForPage === 1}
+                        <!-- Se è il primo della nuova pagina, ricreo la tabella -->
 
-                {if $post@iteration % $itemsForPage === 1}
-                    <!-- Se è il primo della nuova pagina, ricreo la tabella -->
+                        <div id="page{(($post@iteration - 1) / $itemsForPage) + 1}" class="page" data-number="{(($post@iteration - 1) / $itemsForPage) + 1}">
 
-                    <div id="page{(($post@iteration - 1) / $itemsForPage) + 1}" class="page" data-number="{(($post@iteration - 1) / $itemsForPage) + 1}">
+                        {/if}
 
+                        {include file=$postStructure}
+
+                        {if $post@iteration % $itemsForPage === 0 || $post@last}
+                            <!-- Se ho appena stampato l'ultima riga, chiudo la tabella -->
+                        </div>
                     {/if}
+                {/foreach}
+            </div> <!-- /#carouselSlider -->
+            {include file=$pagination}
+        </div><!-- /#newsCarousel -->
 
-                    {include file=$postStructure}
+    {else}
+        <div class="noContentFront">
+            <p>
+                <span>Oops...</span>
+                In questo momento non sono presenti news :(
+            </p>
+        </div>
+    {/if}
 
-                    {if $post@iteration % $itemsForPage === 0 || $post@last}
-                        <!-- Se ho appena stampato l'ultima riga, chiudo la tabella -->
-                    </div>
-                {/if}
-            {/foreach}
 
-        </div> <!-- /#carouselSlider -->
-
-        {include file=$pagination}
-
-    </div><!-- /#newsCarousel -->
 </div>
 
 
