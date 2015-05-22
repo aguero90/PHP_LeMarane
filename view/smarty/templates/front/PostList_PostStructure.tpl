@@ -18,7 +18,7 @@
         </div>
         <div class="row postText">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div>{$post->getText()|unescape:"htmlall"|truncate:512:" ... "}</div>
+                <div>{$post->getText()|unescape:"html"|truncate:512:" ... "}</div>
             </div>
         </div>
         <footer class="row">

@@ -58,6 +58,13 @@
         }
     }
 
+    &.imagePreview{
+
+        .imageContainer{
+            text-align: center;
+        }
+    }
+
     &.removeFormContainer{
         top: 5rem;
         width: 60%;

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-17 21:05:38
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-18 13:09:40
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\ImageManagement.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:273805558e68295fd03-87481373%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:265465559c874d60277-62224537%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ed3b302bec4b7a977c67dd622b1aab0ff114cbb1' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\back\\ImageManagement.tpl',
-      1 => 1431889485,
+      1 => 1431932065,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '273805558e68295fd03-87481373',
+  'nocache_hash' => '265465559c874d60277-62224537',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_5558e6833ba810_28134558',
+  'unifunc' => 'content_5559c874e98422_36000921',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5558e6833ba810_28134558')) {function content_5558e6833ba810_28134558($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_5559c874e98422_36000921')) {function content_5559c874e98422_36000921($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!-- TABELLA IMMAGINI
 ============================================================================ -->

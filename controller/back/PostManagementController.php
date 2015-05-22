@@ -90,7 +90,7 @@ class PostManagementController extends MaraneBaseController {
 
         // SANITIZZAZIONE
         $post->setTitle(filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING));
-        $post->setText(filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $post->setText(filter_input(INPUT_POST, "text", FILTER_SANITIZE_SPECIAL_CHARS));
         $post->setAdmin($this->getDataLayer()->getAdmin($_SESSION["MAID"]));
 
 

@@ -423,6 +423,8 @@ img {
       top: 0.5rem;
       right: 1rem;
       color: #222222; }
+  .myPopover.imagePreview .imageContainer {
+    text-align: center; }
   .myPopover.removeFormContainer {
     top: 5rem;
     width: 60%;
