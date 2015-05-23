@@ -17,7 +17,7 @@
             <div class="mobilePostContent">
                 <div class="row postCardText">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div>{$post->getText()|unescape:"htmlall"}</div>
+                        <div>{$post->getText()|unescape:"html"}</div>
                     </div>
                 </div>
                 <footer class="row">

@@ -152,7 +152,7 @@
             <div class="form-group">
                 <label for="editText" class="col-sm-2 control-label">Testo</label>
                 <div class="col-sm-10">
-                    <textarea id="editText" name="text" class="form-control summernote" rows="10" placeholder="Testo"></textarea>
+                    <textarea id="editText" name="text" class="form-control" rows="10" placeholder="Testo"></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -254,7 +254,7 @@
         <div class="form-group">
             <label for="insertText" class="col-sm-2 control-label">Testo</label>
             <div class="col-sm-10">
-                <textarea id="insertText" name="text" class="form-control summernote" rows="10" placeholder="Testo"></textarea>
+                <textarea id="insertText" name="text" class="form-control" rows="10" placeholder="Testo"></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -296,9 +296,29 @@
 
         // TEXTEDITOR SUMMERNOTE
         // =====================================================================
-        $('.summernote').summernote({
+        $('#editText').summernote({
             lang: 'it-IT',
             height: 200
+        });
+
+        $('#insertText').summernote({
+            lang: 'it-IT',
+            height: 200
+        });
+
+        var forEditor;
+        var summernoteEditImageButton = document.getElementById("editText").nextElementSibling.querySelector('[data-event="showImageDialog"]');
+        var summernoteInsertImageButton = document.getElementById("insertText").nextElementSibling.querySelector('[data-event="showImageDialog"]');
+
+
+        summernoteEditImageButton.removeAttribute("data-event");
+        summernoteEditImageButton.addEventListener("click", function (e) {
+            showImageSelectionContainer(e, "edit");
+        });
+
+        summernoteInsertImageButton.removeAttribute("data-event");
+        summernoteInsertImageButton.addEventListener("click", function (e) {
+            showImageSelectionContainer(e, "insert");
         });
 
 
@@ -316,11 +336,13 @@
 
 
 
-        function showImageSelectionContainer(e) {
+        function showImageSelectionContainer(e, editor) {
 
             e.preventDefault(); // per non fa ricaricare la pagina
 
             imageSelectionContainer.setAttribute("class", "show");
+
+            forEditor = editor;
         }
 
         function closeImageSelectionContainer(e) {
@@ -337,10 +359,23 @@
 
         function imageSelected(e) {
 
-            insertImageSelectionHiddenInput.setAttribute("value", this.dataset.id);
 
-            insertImageSelectionImage.setAttribute("src", this.getAttribute("src"));
-            insertImageSelectionImage.setAttribute("alt", this.getAttribute("alt"));
+            switch (forEditor) {
+
+                case "edit":
+                    $('#editText').summernote("insertImage", this.getAttribute("src"), this.getAttribute("alt"));
+                    break;
+
+                case "insert":
+                    $('#insertText').summernote("insertImage", this.getAttribute("src"), this.getAttribute("alt"));
+                    break;
+
+                default:
+                    insertImageSelectionHiddenInput.setAttribute("value", this.dataset.id);
+                    insertImageSelectionImage.setAttribute("src", this.getAttribute("src"));
+                    insertImageSelectionImage.setAttribute("alt", this.getAttribute("alt"));
+
+            }
 
             closeImageSelectionContainer();
         }
@@ -488,6 +523,8 @@
                 element.imageRealName.value = this.relativePost.cells[2].textContent; // altrimenti copia anche il tag <a>
                 element.imageDescription.innerHTML = this.relativePost.cells[2].dataset.description;
                 element.text.innerHTML = this.relativePost.cells[3].dataset.fulltext;
+                // aggiungiamo ora il testo in summernote
+                $("#editText").code(this.relativePost.cells[3].dataset.fulltext);
             } else if (element === this.removeForm) {
 
                 element.hiddenInput.value = e.currentTarget.dataset.pid;

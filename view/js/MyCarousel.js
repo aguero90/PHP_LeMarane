@@ -21,7 +21,6 @@ MyCarousel.prototype = {
         this.goToPreviousPageButton = document.getElementById("goToPreviousPage");
         this.goToNextPageButton = document.getElementById("goToNextPage");
         this.currentPaginationItem = this.paginationItems[0];
-        this.pages[this.currentPaginationItem.dataset.number - 1].addClass("visible");
 
 
         for (var i = 0; i < this.paginationItems.length; i++) {
@@ -38,6 +37,8 @@ MyCarousel.prototype = {
             this.carouselContainer.addEventListener("touchend", this.touchEnd.bind(this));
         }
 
+        // inizializiamo l'effetto
+        this.carouselSlider.setAttribute("style", "transform: translate3d(0, 0, 0); max-height: " + this.pages[0].scrollHeight + "px;");
     },
     changePage: function (e) {
 

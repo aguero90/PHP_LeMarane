@@ -908,7 +908,7 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
     margin-top: 3rem;
     margin-bottom: 3rem; }
 
-  h1.hooked {
+  h1.hooked, h1.ribbon {
     margin: 2rem -0.4rem 0 -0.4rem;
     padding: 0.5rem 0;
     text-align: center;
@@ -916,7 +916,7 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
     background-color: #007700;
     position: relative;
     box-shadow: 0 0 5px #222222; }
-    h1.hooked::before {
+    h1.hooked::before, h1.ribbon::before {
       content: "";
       position: absolute;
       left: 0;
@@ -928,7 +928,7 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
       border-bottom: 0.2rem solid #007700;
       border-top: 0.2rem solid transparent;
       border-left: 0.2rem solid transparent; }
-    h1.hooked::after {
+    h1.hooked::after, h1.ribbon::after {
       content: "";
       position: absolute;
       right: 0;
@@ -953,7 +953,8 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 10; }
+    z-index: 10;
+    max-width: 80%; }
     h1.flag::after {
       border-bottom: 1.1rem solid #007700;
       border-right: 1.1rem solid transparent;
@@ -990,19 +991,32 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
     border-bottom: none;
     background-color: #ffffff;
     box-shadow: 0 0 2px #555555; }
-    #postListContainer #myCarousel.postListCarousel .postContainer .post .postImage {
-      border-bottom: 3px solid #770000; }
-      #postListContainer #myCarousel.postListCarousel .postContainer .post .postImage img {
-        height: 10rem;
-        width: 100%;
-        object-fit: cover; }
+    #postListContainer #myCarousel.postListCarousel .postContainer .post .postImage img {
+      height: 10rem;
+      width: 100%;
+      object-fit: cover; }
+    #postListContainer #myCarousel.postListCarousel .postContainer .post h1.ribbon {
+      margin-top: -0.5rem;
+      font-size: 1.6rem;
+      line-height: 1.2; }
     #postListContainer #myCarousel.postListCarousel .postContainer .post .postText {
       display: initial;
       color: black; }
       #postListContainer #myCarousel.postListCarousel .postContainer .post .postText > div {
         margin: 0.5rem auto;
-        padding: 1rem;
-        text-align: justify; }
+        padding: 1rem; }
+        #postListContainer #myCarousel.postListCarousel .postContainer .post .postText > div .truncate {
+          height: 10rem;
+          overflow-y: hidden;
+          position: relative; }
+          #postListContainer #myCarousel.postListCarousel .postContainer .post .postText > div .truncate:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 0 2rem 1.5rem #ffffff; }
     #postListContainer #myCarousel.postListCarousel .postContainer .post footer .postDate p {
       font-size: 0.9rem; }
     #postListContainer #myCarousel.postListCarousel .postContainer .post footer .goToPost {
@@ -1013,8 +1027,14 @@ NOTA: separo nettamente tra versione per smartphone e le altre versioni
       display: none; }
   #postListContainer #myCarousel.postListCarousel .page:first-of-type .postContainer:first-of-type {
     /* solo la prima news */ }
-    #postListContainer #myCarousel.postListCarousel .page:first-of-type .postContainer:first-of-type .postImage {
-      border-bottom: 3px solid #007700; }
+    #postListContainer #myCarousel.postListCarousel .page:first-of-type .postContainer:first-of-type h1.ribbon {
+      background-color: #770000; }
+      #postListContainer #myCarousel.postListCarousel .page:first-of-type .postContainer:first-of-type h1.ribbon::before {
+        border-bottom-color: #770000;
+        border-right-color: #770000; }
+      #postListContainer #myCarousel.postListCarousel .page:first-of-type .postContainer:first-of-type h1.ribbon::after {
+        border-bottom-color: #770000;
+        border-left-color: #770000; }
 
   /* POST CARD
   ========================================================================= */

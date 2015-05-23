@@ -120,7 +120,7 @@ class PostManagementController extends MaraneBaseController {
         $post = $this->getDataLayer()->getPost(filter_input(INPUT_POST, "pid", FILTER_SANITIZE_NUMBER_INT));
 
         $post->setTitle(filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING));
-        $post->setText(filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $post->setText(filter_input(INPUT_POST, "text", FILTER_SANITIZE_SPECIAL_CHARS));
 
         $post->getImage()->setRealName(filter_input(INPUT_POST, "imageRealName", FILTER_SANITIZE_STRING));
         $post->getImage()->setFakeName(filter_input(INPUT_POST, "imageFakeName", FILTER_SANITIZE_URL));

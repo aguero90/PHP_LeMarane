@@ -13,7 +13,7 @@
         margin-bottom: 3rem;
     }
 
-    h1.hooked{
+    h1.hooked, h1.ribbon{
 
         margin: 2rem -0.4rem 0 -0.4rem;
         padding: 0.5rem 0;
@@ -63,6 +63,7 @@
         top: 0;
         left: 0;
         z-index: 10;
+        max-width: 80%;
 
         &::after{
             border-bottom: 1.1rem solid #007700;
@@ -75,6 +76,7 @@
             bottom: 0;
             right: -2.1rem;
         }
+
     }
 
     p.flag{
@@ -117,13 +119,17 @@
 
                     .postImage{
 
-                        border-bottom: 3px solid #770000;
-
                         img{
                             height: 10rem;
                             width: 100%;
                             object-fit: cover;
                         }
+                    }
+
+                    h1.ribbon{
+                        margin-top: -0.5rem;
+                        font-size: 1.6rem;
+                        line-height: 1.2;
                     }
 
                     .postText{
@@ -133,7 +139,22 @@
                         &>div{
                             margin: 0.5rem auto;
                             padding: 1rem;
-                            text-align: justify;
+
+                            .truncate{
+                                height: 10rem;
+                                overflow-y: hidden;
+                                position: relative;
+
+                                &:after{
+                                    content: "";
+                                    display: block;
+                                    position: absolute;
+                                    bottom: 0;
+                                    left: 0;
+                                    right: 0;
+                                    box-shadow: 0 0 2rem 1.5rem #ffffff;
+                                }
+                            }
                         }
                     }
 
@@ -166,12 +187,23 @@
                 .postContainer:first-of-type{
                     /* solo la prima news */
 
-                    .postImage{
+                    h1.ribbon{
 
-                        border-bottom: 3px solid #007700;
+                        background-color: #770000;
+
+                        &::before{
+
+                            border-bottom-color: #770000;
+                            border-right-color: #770000;
+                        }
+
+                        &::after{
+
+                            border-bottom-color: #770000;
+                            border-left-color: #770000;
+                        }
                     }
                 }
-
             }
         }
     }

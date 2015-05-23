@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.17, created on 2015-05-22 16:01:25
+<?php /* Smarty version Smarty-3.1.17, created on 2015-05-23 10:38:05
          compiled from "C:\wamp\www\PHP_LeMarane\view\smarty\templates\back\PostManagement.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:4602555f36b5680975-82698625%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1741955603c6dd8a826-52435573%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'd5a056a8d3a529e7ff4b72024063f85fc73d819f' => 
     array (
       0 => 'C:\\wamp\\www\\PHP_LeMarane\\view\\smarty\\templates\\back\\PostManagement.tpl',
-      1 => 1431932065,
+      1 => 1432370267,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '4602555f36b5680975-82698625',
+  'nocache_hash' => '1741955603c6dd8a826-52435573',
   'function' => 
   array (
   ),
@@ -26,9 +26,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.17',
-  'unifunc' => 'content_555f36b582f163_20064462',
+  'unifunc' => 'content_55603c6eb8eb42_15734242',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_555f36b582f163_20064462')) {function content_555f36b582f163_20064462($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_55603c6eb8eb42_15734242')) {function content_55603c6eb8eb42_15734242($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'C:\\wamp\\www\\PHP_LeMarane\\lib\\smarty\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!-- TABELLA NEWS
 ============================================================================ -->
@@ -210,7 +210,7 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
             <div class="form-group">
                 <label for="editText" class="col-sm-2 control-label">Testo</label>
                 <div class="col-sm-10">
-                    <textarea id="editText" name="text" class="form-control summernote" rows="10" placeholder="Testo"></textarea>
+                    <textarea id="editText" name="text" class="form-control" rows="10" placeholder="Testo"></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -312,7 +312,7 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
         <div class="form-group">
             <label for="insertText" class="col-sm-2 control-label">Testo</label>
             <div class="col-sm-10">
-                <textarea id="insertText" name="text" class="form-control summernote" rows="10" placeholder="Testo"></textarea>
+                <textarea id="insertText" name="text" class="form-control" rows="10" placeholder="Testo"></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -361,9 +361,29 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
 
         // TEXTEDITOR SUMMERNOTE
         // =====================================================================
-        $('.summernote').summernote({
+        $('#editText').summernote({
             lang: 'it-IT',
             height: 200
+        });
+
+        $('#insertText').summernote({
+            lang: 'it-IT',
+            height: 200
+        });
+
+        var forEditor;
+        var summernoteEditImageButton = document.getElementById("editText").nextElementSibling.querySelector('[data-event="showImageDialog"]');
+        var summernoteInsertImageButton = document.getElementById("insertText").nextElementSibling.querySelector('[data-event="showImageDialog"]');
+
+
+        summernoteEditImageButton.removeAttribute("data-event");
+        summernoteEditImageButton.addEventListener("click", function (e) {
+            showImageSelectionContainer(e, "edit");
+        });
+
+        summernoteInsertImageButton.removeAttribute("data-event");
+        summernoteInsertImageButton.addEventListener("click", function (e) {
+            showImageSelectionContainer(e, "insert");
         });
 
 
@@ -381,11 +401,13 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
 
 
 
-        function showImageSelectionContainer(e) {
+        function showImageSelectionContainer(e, editor) {
 
             e.preventDefault(); // per non fa ricaricare la pagina
 
             imageSelectionContainer.setAttribute("class", "show");
+
+            forEditor = editor;
         }
 
         function closeImageSelectionContainer(e) {
@@ -402,10 +424,23 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
 
         function imageSelected(e) {
 
-            insertImageSelectionHiddenInput.setAttribute("value", this.dataset.id);
 
-            insertImageSelectionImage.setAttribute("src", this.getAttribute("src"));
-            insertImageSelectionImage.setAttribute("alt", this.getAttribute("alt"));
+            switch (forEditor) {
+
+                case "edit":
+                    $('#editText').summernote("insertImage", this.getAttribute("src"), this.getAttribute("alt"));
+                    break;
+
+                case "insert":
+                    $('#insertText').summernote("insertImage", this.getAttribute("src"), this.getAttribute("alt"));
+                    break;
+
+                default:
+                    insertImageSelectionHiddenInput.setAttribute("value", this.dataset.id);
+                    insertImageSelectionImage.setAttribute("src", this.getAttribute("src"));
+                    insertImageSelectionImage.setAttribute("alt", this.getAttribute("alt"));
+
+            }
 
             closeImageSelectionContainer();
         }
@@ -553,6 +588,8 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
                 element.imageRealName.value = this.relativePost.cells[2].textContent; // altrimenti copia anche il tag <a>
                 element.imageDescription.innerHTML = this.relativePost.cells[2].dataset.description;
                 element.text.innerHTML = this.relativePost.cells[3].dataset.fulltext;
+                // aggiungiamo ora il testo in summernote
+                $("#editText").code(this.relativePost.cells[3].dataset.fulltext);
             } else if (element === this.removeForm) {
 
                 element.hiddenInput.value = e.currentTarget.dataset.pid;

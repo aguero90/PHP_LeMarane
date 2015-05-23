@@ -6,19 +6,19 @@
                 <span class="fa fa-angle-right"></span>
             </a>
         </span>
-        <header class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h1 class="flag">{$post->getTitle()}</h1>
-            </div>
-        </header>
         <div class="row postImage">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <img src="{$post->getImage()->getFakeName()}" alt="{$post->getImage()->getRealName()}" />
             </div>
         </div>
+        <header class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1 class="ribbon">{$post->getTitle()}</h1>
+            </div>
+        </header>
         <div class="row postText">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div>{$post->getText()|unescape:"html"|truncate:512:" ... "}</div>
+                <div class="truncate">{$post->getText()|unescape:"html"}</div>
             </div>
         </div>
         <footer class="row">
